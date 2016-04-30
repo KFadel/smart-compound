@@ -72,7 +72,8 @@ public class Order extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "facility_id", referencedColumnName = "rec_id")
-	private Integer facilityId;
+	private Facility facility;
+
 	@ManyToOne
 	@JoinColumn(name = "tenant_id", referencedColumnName = "rec_id")
 	private Tenant tenantId;
@@ -189,13 +190,7 @@ public class Order extends BaseEntity implements Serializable {
 		this.serviceLocationDesc = serviceLocationDesc;
 	}
 
-	public Integer getFacilityId() {
-		return facilityId;
-	}
-
-	public void setFacilityId(Integer facilityId) {
-		this.facilityId = facilityId;
-	}
+	
 
 	@Override
 	public Long getId() {
@@ -227,8 +222,16 @@ public class Order extends BaseEntity implements Serializable {
 				+ channel + ", notes=" + notes + ", serviceLocationlongtude="
 				+ serviceLocationlongtude + ", serviceLocationlattitude="
 				+ serviceLocationlattitude + ", serviceLocationDesc="
-				+ serviceLocationDesc + ", facilityId=" + facilityId
+				+ serviceLocationDesc + ", facilityId=" + facility
 				+ ", tenantId=" + tenantId + "]";
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
 	}
 
 }
