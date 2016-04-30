@@ -11,6 +11,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.ntgclarity.smartcompound.common.constatnt.MessagesKeys;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.portal.base.BaseBean;
 import com.ntgclarity.smartcompound.portal.utils.WebUtils;
 
@@ -42,7 +44,7 @@ public class LoginBean extends BaseBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public void login() {
+	public void login() throws SmartCompoundException {
 		UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 				userName, password);
 
@@ -53,8 +55,10 @@ public class LoginBean extends BaseBean implements Serializable {
 		WebUtils.injectIntoSession("SPRING_SECURITY_CONTEXT",
 				SecurityContextHolder.getContext());
 
-		addInfoMessage("you have been successfully authenticated");
+		// addInfoMessage("you have been successfully authenticated");
 		System.out.println();
+		throw new SmartCompoundException(
+				MessagesKeys.SMART_COMPOUND_LOGIN_INFO_MSG);
 
 	}
 
