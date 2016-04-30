@@ -36,8 +36,7 @@ public class BaseBean implements Serializable {
 
 	public void addMessage(FacesMessage.Severity severity, String summary,
 			String detail) {
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(severity, summary, detail));
+		FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(severity, summary, detail));
 	}
 
 	public void addMessage(FacesMessage.Severity severity, String summary) {
