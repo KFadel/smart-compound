@@ -9,7 +9,6 @@
 
 	<meta charset="utf-8"></meta>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-	<title>Smart Compound | Admin Dashboard</title>
 	<meta
 		content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 		name="viewport"></meta>
@@ -40,7 +39,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
-		<title><ui:insert name="title"></ui:insert>  </title>
+	<title><ui:insert name="title"></ui:insert></title>
 	<ui:insert name="customHead"></ui:insert>
 </h:head>
 <h:body styleClass="hold-transition skin-blue sidebar-mini">
@@ -60,9 +59,19 @@
 			</div>
 
 			<div id="content">
-				<ui:insert name="content">
-					<ui:include src="content.xhtml" />
-				</ui:insert>
+				<div class="content-wrapper">
+					<!-- Content Header (Page header) -->
+					<section class="content-header">
+					<h1>
+						<ui:insert name="contentTitle"></ui:insert>
+					</h1>
+					</section>
+
+					<!-- Main content -->
+					<section class="content"> <ui:insert name="content">
+					</ui:insert>  </section>
+				</div>
+
 			</div>
 
 			<div id="footer">
