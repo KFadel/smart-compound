@@ -16,7 +16,7 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class Group  extends BaseEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column (name="group_name")
 	private String groupName;

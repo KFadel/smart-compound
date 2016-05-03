@@ -19,17 +19,17 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class Order extends BaseEntity implements Serializable {
 
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
 	private Lookup channelLookupId;
 	@ManyToOne
-	@JoinColumn(name = "service_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "service_id", referencedColumnName = "recid")
 	private Service serviceId;
 
 	@Column(name = "service_name")
@@ -45,14 +45,14 @@ public class Order extends BaseEntity implements Serializable {
 	private String status;
 
 	@ManyToOne
-	@JoinColumn(name = "created_by", referencedColumnName = "rec_id")
+	@JoinColumn(name = "created_by", referencedColumnName = "recid")
 	private Employee createdBy;
 
 	@Column(name = "acceptance_date")
 	private Date acceptanceDate;
 
 	@ManyToOne
-	@JoinColumn(name = "accepted_by", referencedColumnName = "rec_id")
+	@JoinColumn(name = "accepted_by", referencedColumnName = "recid")
 	private Employee acceptedBy;
 
 	@Column(name = "channel")
@@ -71,11 +71,11 @@ public class Order extends BaseEntity implements Serializable {
 	private String serviceLocationDesc;
 
 	@ManyToOne
-	@JoinColumn(name = "facility_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "facility_id", referencedColumnName = "recid")
 	private Facility facility;
 
 	@ManyToOne
-	@JoinColumn(name = "tenant_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "tenant_id", referencedColumnName = "recid")
 	private Tenant tenantId;
 
 	public Compound getCompoundId() {

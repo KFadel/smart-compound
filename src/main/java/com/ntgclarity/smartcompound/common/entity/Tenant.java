@@ -19,12 +19,12 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class Tenant extends BaseEntity implements Serializable {
 
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 
 	@Column(name = "salutation")
@@ -87,10 +87,10 @@ public class Tenant extends BaseEntity implements Serializable {
 	@Column(name = "job")
 	private String job;
 	@ManyToOne
-	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "recid")
 	private Lookup salutationLookupId;
 	@ManyToOne
-	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "recid")
 	private Lookup genderLookupId;
 	public String getSalutation() {
 		return salutation;

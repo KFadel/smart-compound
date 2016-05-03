@@ -18,15 +18,15 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class ServiceUsageRate extends BaseEntity implements Serializable {
 
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@ManyToOne
-	@JoinColumn(name = "service_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "service_id", referencedColumnName = "recid")
 	private Service serviceId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column(name = "service_name")
 	private String serviceName;

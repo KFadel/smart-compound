@@ -19,7 +19,7 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class Service extends BaseEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column(name="service_name")
 	private String serviceName;
@@ -46,10 +46,10 @@ public class Service extends BaseEntity implements Serializable{
 	@Column(name="measuring_unit")
 	private String measuringUnit;
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@ManyToOne
-	@JoinColumn(name = "measuring_unit_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "measuring_unit_lookup_id", referencedColumnName = "recid")
 	private Lookup measuringUnitLookupId;
 	@Override
 	public Long getId() {

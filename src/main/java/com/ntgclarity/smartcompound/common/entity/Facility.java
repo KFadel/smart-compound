@@ -25,7 +25,7 @@ public class Facility extends BaseEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column(name="building_number")
 	private Long buildingNumber;
@@ -54,14 +54,14 @@ public class Facility extends BaseEntity implements Serializable{
 	@Column(name="description")
 	private String description;
 	@ManyToOne
-	@JoinColumn(name ="tenant_id" , referencedColumnName="rec_id")
+	@JoinColumn(name ="tenant_id" , referencedColumnName="recid")
 	private Tenant tenantId;
 	
 	@ManyToOne
-	@JoinColumn(name ="compound_id" , referencedColumnName="rec_id")
+	@JoinColumn(name ="compound_id" , referencedColumnName="recid")
 	private Compound compoundId;
 	@ManyToOne
-	@JoinColumn(name ="facility_lookup_id" , referencedColumnName="rec_id")
+	@JoinColumn(name ="facility_lookup_id" , referencedColumnName="recid")
 	private Lookup facilityLookupId;
 	@Override
 	public Long getId() {

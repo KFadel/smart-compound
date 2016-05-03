@@ -25,11 +25,11 @@ public class TicketHistory extends BaseEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 
 	@Column(name = "ticket_id")
@@ -47,10 +47,10 @@ public class TicketHistory extends BaseEntity implements Serializable {
 	@Column(name = "current_status")
 	private String currentStatus;
 	@ManyToOne
-	@JoinColumn(name = "action_by", referencedColumnName = "rec_id")
+	@JoinColumn(name = "action_by", referencedColumnName = "recid")
 	private Employee actionBy;
 	@ManyToOne
-	@JoinColumn(name = "opened_by", referencedColumnName = "rec_id")
+	@JoinColumn(name = "opened_by", referencedColumnName = "recid")
 	private Employee openedBy;
 	@Column(name = "is_completed")
 	private Integer isCompleted;

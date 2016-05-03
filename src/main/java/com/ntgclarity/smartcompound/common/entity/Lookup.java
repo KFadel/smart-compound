@@ -18,12 +18,12 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 public class Lookup  extends BaseEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column (name="lookup_name")
 	private String lookupName;
 	@ManyToOne
-	@JoinColumn(name = "type_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "type_id", referencedColumnName = "recid")
 	private LookupType type_id;
 	@Column(name="type_name")
 	private String typeName;
