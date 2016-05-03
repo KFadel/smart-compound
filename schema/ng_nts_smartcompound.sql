@@ -196,7 +196,7 @@ ALTER TABLE "ng_nts_facilities" ADD CONSTRAINT "fk_ng_nts_facilities__facility_l
 
 ALTER TABLE "ng_nts_facilities" ADD CONSTRAINT "fk_ng_nts_facilities__tenant_id" FOREIGN KEY ("tenant_id") REFERENCES "ng_nts_tenants" ("recid");
 
-CREATE TABLE "Ng_nts_tenant_facilities" (
+CREATE TABLE "ng_nts_tenant_facilities" (
   "recid" SERIAL PRIMARY KEY,
   "is_leased" INTEGER  ,
   "leasing_or_ownership_start_date" DATE  ,
@@ -206,17 +206,17 @@ CREATE TABLE "Ng_nts_tenant_facilities" (
   "facility_id" INTEGER  
 );
 
-CREATE INDEX "idx_ng_nts_tenant_facilities__compound_id" ON "Ng_nts_tenant_facilities" ("compound_id");
+CREATE INDEX "idx_ng_nts_tenant_facilities__compound_id" ON "ng_nts_tenant_facilities" ("compound_id");
 
-CREATE INDEX "idx_ng_nts_tenant_facilities__facility_id" ON "Ng_nts_tenant_facilities" ("facility_id");
+CREATE INDEX "idx_ng_nts_tenant_facilities__facility_id" ON "ng_nts_tenant_facilities" ("facility_id");
 
-CREATE INDEX "idx_ng_nts_tenant_facilities__tenant_id" ON "Ng_nts_tenant_facilities" ("tenant_id");
+CREATE INDEX "idx_ng_nts_tenant_facilities__tenant_id" ON "ng_nts_tenant_facilities" ("tenant_id");
 
-ALTER TABLE "Ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__compound_id" FOREIGN KEY ("compound_id") REFERENCES "ng_nts_compounds" ("recid");
+ALTER TABLE "ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__compound_id" FOREIGN KEY ("compound_id") REFERENCES "ng_nts_compounds" ("recid");
 
-ALTER TABLE "Ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__facility_id" FOREIGN KEY ("facility_id") REFERENCES "ng_nts_facilities" ("recid");
+ALTER TABLE "ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__facility_id" FOREIGN KEY ("facility_id") REFERENCES "ng_nts_facilities" ("recid");
 
-ALTER TABLE "Ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__tenant_id" FOREIGN KEY ("tenant_id") REFERENCES "ng_nts_tenants" ("recid");
+ALTER TABLE "ng_nts_tenant_facilities" ADD CONSTRAINT "fk_ng_nts_tenant_facilities__tenant_id" FOREIGN KEY ("tenant_id") REFERENCES "ng_nts_tenants" ("recid");
 
 CREATE TABLE "ng_nts_orders" (
   "recid" SERIAL PRIMARY KEY,
