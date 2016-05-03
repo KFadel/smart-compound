@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
 
-@Entity
+//@Entity
 @Table(name = "BILL")
 public class Bill extends BaseEntity implements Serializable {
 	/**

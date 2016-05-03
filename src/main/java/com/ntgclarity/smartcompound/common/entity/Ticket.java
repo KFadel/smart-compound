@@ -18,14 +18,14 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_tickets")
 public class Ticket extends BaseEntity implements Serializable {
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@ManyToOne
-	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
 	private Lookup channelLookupId;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column(name = "ticket_subject")
 	private String ticketSubject;
@@ -42,17 +42,17 @@ public class Ticket extends BaseEntity implements Serializable {
 	private Date openDate;
 
 	@ManyToOne
-	@JoinColumn(name = "service_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "service_id", referencedColumnName = "recid")
 	private Service serviceId;
 	@Column(name = "service_name")
 	private String serviceName;
 
 	@ManyToOne
-	@JoinColumn(name = "related_tenant_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "related_tenant_id", referencedColumnName = "recid")
 	private Tenant relatedTenantId;
 
 	@ManyToOne
-	@JoinColumn(name = "opened_by", referencedColumnName = "rec_id")
+	@JoinColumn(name = "opened_by", referencedColumnName = "recid")
 	private Employee openedBy;
 
 	@Column(name = "description")
@@ -62,7 +62,7 @@ public class Ticket extends BaseEntity implements Serializable {
 	private Integer severity;
 
 	@ManyToOne
-	@JoinColumn(name = "facility_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "facility_id", referencedColumnName = "recid")
 	private Facility facilityId;
 
 	@Column(name = "channel")

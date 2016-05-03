@@ -26,7 +26,7 @@ public class Employee extends BaseEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 	@Column(name = "salutation")
 	private String salutaion;
@@ -69,19 +69,19 @@ public class Employee extends BaseEntity implements Serializable {
 	private String mobileNumber2;
 
 	@ManyToOne
-	@JoinColumn(name = "compound_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@ManyToOne
-	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "recid")
 	private Lookup salutationLookupId;
 	@ManyToOne
-	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "recid")
 	private Lookup genderLookupId;
 	@ManyToOne
-	@JoinColumn(name = "status_lookup_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "status_lookup_id", referencedColumnName = "recid")
 	private Lookup statusLookupId;
 	@ManyToOne
-	@JoinColumn(name = "group_id", referencedColumnName = "rec_id")
+	@JoinColumn(name = "group_id", referencedColumnName = "recid")
 	private Group groupId;
 
 

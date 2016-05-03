@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
 
-@Entity
+//@Entity
 @Table(name = "EMPLOYEE")
 public class BillDetails extends BaseEntity implements Serializable{
 
