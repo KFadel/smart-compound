@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
 
 //@Entity
-@Table(name = "BILL")
+//@Table(name = "BILL")
 public class Bill extends BaseEntity implements Serializable {
 	/**
 	 * 
