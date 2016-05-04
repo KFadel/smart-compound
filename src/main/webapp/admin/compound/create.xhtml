@@ -24,7 +24,7 @@
 				</b:column>
 				<b:column medium-screen="4">
 					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_NAME_REQUIRED}" />
+						requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_NAME_REQUIRED}"  value="#{compoundBean.compound.compoundName}"/>
 				</b:column>
 			</b:row>
 			<b:row>
@@ -32,9 +32,9 @@
 					<h:outputText value="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_COUNTRY}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%" required="true" requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_COUNTRY_REQUIRED}">
+					<b:selectOneMenu style="width:100%" required="true" requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_COUNTRY_REQUIRED}" value="">
 						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_COUNTRY_EGYPT}" />
+					<!-- <f:selectItem itemLabel="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_COUNTRY_EGYPT}" />  -->
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
@@ -55,13 +55,13 @@
 				</b:column>
 				<b:column medium-screen="4">
 					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_OWNER_NAME_REQUIRED}" />
+						requiredMessage="#{msgs.SMART_COMPOUND_COMPOUND_PAGE_OWNER_NAME_REQUIRED}" value="#{compoundBean.compound.ownerName}" />
 				</b:column>
 			</b:row>
 
 			<b:row>
 				<b:column span="2" offset="2">
-					<b:commandButton value="Submit" look="success" style="width:100%" />
+					<b:commandButton value="Submit" look="success" style="width:100%" action="#{compoundBean.insertCompound()}" />
 				</b:column>
 				<b:column span="2">
 					<b:commandButton value="Cancel" look="warning" style="width:100%" />
