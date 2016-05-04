@@ -62,12 +62,12 @@
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_ASSIGNED_TO_GROUP}">
-					<h:outputText value="#{ticket.assignedGroupId}" />
+					<h:outputText value="#{ticket.assignedGroupId.groupName}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_FACILITY_ID}">
-					<h:outputText value="#{ticket.facilityId}" />
+					<h:outputText value="#{ticket.facilityId.buildingNumber} #{ticket.facilityId.street}" />
 				</p:column>
 
 				<p:column

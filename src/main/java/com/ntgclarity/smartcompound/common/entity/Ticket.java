@@ -86,7 +86,8 @@ public class Ticket extends BaseEntity implements Serializable {
 	@Column(name = "channel")
 	private String channel;
 
-	@Column(name = "assigned_group_id")
+	@ManyToOne
+	@JoinColumn(name = "assigned_group_id", referencedColumnName="recid")
 	private Group assignedGroupId;
 
 	@Column(name = "rate")
