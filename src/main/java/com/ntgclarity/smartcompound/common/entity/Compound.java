@@ -22,7 +22,7 @@ public class Compound extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "rec_id")
+	@Column(name = "recid")
 	private Long id;
 
 	@Column(name = "compound_name")
