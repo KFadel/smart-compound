@@ -11,98 +11,98 @@
 	<ui:define name="contentTitle">#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_TITLE}</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
-			<p:dataTable var="car" rows="10" paginator="true"
+			<p:dataTable var="order" rows="10" paginator="true" value="#{orderBean.lazyOrderModel}" 
 				resizableColumns="true" draggableColumns="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"  selection="#{orderBean.selectedOrder}" id="orderTable"  lazy="true">
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_TENANT_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.tenantId}" />
 				</p:column>
 
-				<p:column headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ACTION}">
-					<h:outputText value="" />
-				</p:column>
+				<!-- <p:column headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ACTION}">
+					<h:outputText value="#{order.}" />
+				</p:column> -->
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_SERVICE_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.serviceId}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_SERVICE_NAME}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.serviceName}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ORDER_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_CREATION_DATE}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.requestDate}" />
 				</p:column>
 
 				<p:column headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_STATUS}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.status}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_CREATED_BY}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.createdBy.firstName}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ACCEPTANCE_DATE}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.acceptanceDate}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ACCEPTED_BY}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.acceptedBy.firstName}" />
 				</p:column>
 
 				<p:column headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_NOTES}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.notes}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_CHANNEL}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.channel}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_LOCATION}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.serviceLocationDesc}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_FACILITY_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.facility}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_CONTRACT_TERM}">
-					<h:outputText value="" />
+					<h:outputText value="#{order.channel}" />
 				</p:column>
 
-				<p:column
+				<!--  <p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_METER_ID}">
-					<h:outputText value="" />
-				</p:column>
+					<h:outputText value="#{order}" />
+				</p:column> -->
 
-				<p:column
+			<!-- 	<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_METER_LAST_READING}">
-					<h:outputText value="" />
-				</p:column>
+					<h:outputText value="#{order}" />
+				</p:column> -->
 
-				<p:column
+			<!-- 	<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_METER_LAST_READING_DATE}">
 					<h:outputText value="" />
-				</p:column>
+				</p:column> -->
 
-				<p:column
+			<!-- 	<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ONE_TIME_FEE_BILLED}">
 					<h:outputText value="" />
 				</p:column>
@@ -110,7 +110,7 @@
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_ONE_TIME_FEE_BILLED_DATE}">
 					<h:outputText value="" />
-				</p:column>
+				</p:column> -->
 			</p:dataTable>
 		</h:form>
 	</ui:define>

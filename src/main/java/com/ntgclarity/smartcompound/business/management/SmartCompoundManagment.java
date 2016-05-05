@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 
 @Service
@@ -21,5 +22,10 @@ public interface SmartCompoundManagment {
 
 	List<Ticket> loadTickets(int first, int pageSize, String sortField,
 			boolean b, Map<String, Object> filters);
+
+	List<Order> loadOrders(int first, int pageSize, String sortField,
+			boolean b, Map<String, Object> filters);
+
+	int getNumOfOrdersRows(Map<String, Object> filters);
 
 }
