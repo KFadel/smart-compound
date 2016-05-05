@@ -13,6 +13,7 @@ import com.ntgclarity.smartcompound.business.service.OrderService;
 import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 
 @Service
@@ -39,7 +40,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 		return employeeService.getEmployee(id);
 	}
 
-	/**
+	
 
 
 
