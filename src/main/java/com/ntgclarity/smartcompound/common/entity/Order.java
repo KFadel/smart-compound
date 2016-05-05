@@ -52,7 +52,7 @@ public class Order extends BaseEntity implements Serializable {
 	@JoinColumn(name = "created_by", referencedColumnName = "recid")
 	private Employee createdBy;
 
-	@Column(name = "acceptance_date")
+	@Column(name = "acceptence_date")
 	private Date acceptanceDate;
 
 	@ManyToOne
