@@ -1,6 +1,13 @@
 package com.ntgclarity.smartcompound.common.entity;
 
 import java.io.Serializable;
+
+
+
+
+//import java.util.Date;
+
+//import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,22 +24,32 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_tickets")
 public class Ticket extends BaseEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
+	
 	@ManyToOne
 	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
 	private Lookup channelLookupId;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "recid")
 	private Long id;
+	
 	@Column(name = "ticket_subject")
 	private String ticketSubject;
+	
 	@Column(name = "problem_date")
 	private Date problemDate;
+	
 	@Column(name = "last_status")
 	private String lastStatus;
+	
 	@Column(name = "feedback")
 	private String feedback;
 	// @Column(name="ticket_id")
@@ -44,6 +61,7 @@ public class Ticket extends BaseEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "service_id", referencedColumnName = "recid")
 	private Service serviceId;
+	
 	@Column(name = "service_name")
 	private String serviceName;
 
@@ -68,11 +86,13 @@ public class Ticket extends BaseEntity implements Serializable {
 	@Column(name = "channel")
 	private String channel;
 
-	@Column(name = "assigned_group_id")
+	@ManyToOne
+	@JoinColumn(name = "assigned_group_id", referencedColumnName="recid")
 	private Group assignedGroupId;
 
 	@Column(name = "rate")
 	private String rate;
+	
 	@Column(name = "group_name")
 	private String groupName;
 

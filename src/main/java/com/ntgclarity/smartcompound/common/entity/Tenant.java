@@ -18,6 +18,11 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_tenants")
 public class Tenant extends BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4952759092341764940L;
+
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
@@ -75,9 +80,6 @@ public class Tenant extends BaseEntity implements Serializable {
 	private String country;
 	@Column(name = "whatsapp")
 	private String whatsapp;
-
-	@Column(name = "state")
-	private String state;
 
 	@Column(name = "city")
 	private String city;
@@ -162,14 +164,6 @@ public class Tenant extends BaseEntity implements Serializable {
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
 	}
 
 	public String getCity() {
@@ -317,7 +311,7 @@ public class Tenant extends BaseEntity implements Serializable {
 				+ email + ", phoneNumber1=" + phoneNumber1 + ", phoneNumber2="
 				+ phoneNumber2 + ", mobileNumber1=" + mobileNumber1
 				+ ", mobileNumber2=" + mobileNumber2 + ", country=" + country
-				+ ", whatsapp=" + whatsapp + ", state=" + state + ", city="
+				+ ", whatsapp=" + whatsapp +  ", city="
 				+ city + ", facebook=" + facebook + ", job=" + job + "]";
 	}
 
