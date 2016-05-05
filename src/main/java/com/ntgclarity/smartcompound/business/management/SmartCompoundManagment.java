@@ -14,8 +14,8 @@ public interface SmartCompoundManagment {
 
 	Employee getEmployee(Long id);
 	
-	public void updateCompound(Compound compound);
-	
 	public void insertCompound(Compound compound);
+	
+	//public void updateCompound(Compound compound);
 
 }

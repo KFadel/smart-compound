@@ -44,12 +44,12 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment{
 		
 	}
 	
-	@Override
-	public void updateCompound(Compound compound){
-		
-		compoundService.updateCompound(compound);
-		
-	}
+//	@Override
+//	public void updateCompound(Compound compound){
+//		
+//		compoundService.updateCompound(compound);
+//		
+//	}
 
 
 	
