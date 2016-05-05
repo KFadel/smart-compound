@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -18,11 +19,16 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_orders")
 public class Order extends BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6489027984427925289L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ng_nts_orders_recid_seq")
+	@SequenceGenerator(name="ng_nts_orders_recid_seq", sequenceName="ng_nts_orders_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	@ManyToOne
@@ -48,7 +54,7 @@ public class Order extends BaseEntity implements Serializable {
 	@JoinColumn(name = "created_by", referencedColumnName = "recid")
 	private Employee createdBy;
 
-	@Column(name = "acceptance_date")
+	@Column(name = "acceptence_date")
 	private Date acceptanceDate;
 
 	@ManyToOne

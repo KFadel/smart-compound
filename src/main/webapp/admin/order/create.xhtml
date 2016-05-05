@@ -22,9 +22,19 @@
 					<b:messages id="message" />
 				</b:column>
 			</b:row>
+			
 			<b:row>
 				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_ORDER_ID}" />
+					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_TENANT_NAME}" />
+				</b:column>
+				<b:column medium-screen="4">
+					<b:inputText required="true" 
+						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column medium-screen="2">
+					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_FACILITY_NAME}" />
 				</b:column>
 				<b:column medium-screen="4">
 					<b:selectOneMenu style="width:100%">
@@ -32,47 +42,20 @@
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_TENANT_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_FACILITY_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
+			
 			<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
+					<!-- <b:selectOneMenu style="width:100%">
 						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
+					</b:selectOneMenu> -->
+					<p:autoComplete completeMethod="#{orderBean.initiateServices}" value="#{orderBean.createdOrder.serviceId}"
+								var="service" itemLabel="#{service.serviceName}" itemValue="#{service}" converter="#{serviceConverter}"></p:autoComplete>
 				</b:column>
 			</b:row>
-			<b:row>
+			<!-- <b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CREATED_BY}" />
 				</b:column>
@@ -80,16 +63,16 @@
 					<b:inputText required="true"
 						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_CREATED_BY_REQUIRED_MESSAGE} " />
 				</b:column>
-			</b:row>
+			</b:row> -->
 			<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}"/>
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputTextarea />
+					<b:inputTextarea value="#{orderBean.createdOrder.serviceLocationDesc}" />
 				</b:column>
 			</b:row>
-			<b:row>
+		<!-- 	<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CONTRACT_TERM}" />
 				</b:column>
@@ -97,8 +80,8 @@
 					<b:inputText required="true"
 						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_CONTRACT_TERM_REQUIRED_MESSAGE}" />
 				</b:column>
-			</b:row>
-			<b:row>
+			</b:row> -->
+			<!-- <b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_ID}" />
 				</b:column>
@@ -141,18 +124,18 @@
 				<b:column medium-screen="4">
 					<b:datepicker/> 
 				</b:column>
-			</b:row>
+			</b:row> -->
 			<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputTextarea />
+					<b:inputTextarea value="#{orderBean.createdOrder.notes}"/>
 				</b:column>
 			</b:row>
 			<b:row>
 				<b:column span="2" offset="2">
-					<b:commandButton value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}" look="success" style="width:100%" />
+					<b:commandButton actionListener="#{orderBean.insertOrder}" value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}" look="success" style="width:100%" />
 				</b:column>
 				<b:column span="2">
 					<b:commandButton value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}" look="warning" style="width:100%" />

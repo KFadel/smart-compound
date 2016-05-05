@@ -17,6 +17,13 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_services")
 public class Service extends BaseEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "recid")
@@ -37,10 +44,10 @@ public class Service extends BaseEntity implements Serializable{
 	private Integer nrc;
 	@Column(name="mrc")
 	private Integer mrc;
-	@Column(name="intallation_price")
+	@Column(name="installation_price") 
 	private Double installationPrice;
-	@Column(name="is_prepared")
-	private Integer isPrepared;
+	@Column(name="is_prepaid")
+	private Integer isPrepaid;
 	@Column(name="creation_date")
 	private Date creationDate;
 	@Column(name="measuring_unit")
@@ -134,12 +141,12 @@ public class Service extends BaseEntity implements Serializable{
 		this.installationPrice = installationPrice;
 	}
 
-	public Integer getIsPrepared() {
-		return isPrepared;
+	public Integer getIsPrepaid() {
+		return isPrepaid;
 	}
 
-	public void setIsPrepared(Integer isPrepared) {
-		this.isPrepared = isPrepared;
+	public void setIsPrepaid(Integer isPrepared) {
+		this.isPrepaid = isPrepared;
 	}
 
 	public Date getCreationDate() {
@@ -181,7 +188,7 @@ public class Service extends BaseEntity implements Serializable{
 				+ ", severity=" + severity + ", flatOrUsage=" + flatOrUsage
 				+ ", estimatedDeliveryDays=" + estimatedDeliveryDays + ", nrc="
 				+ nrc + ", mrc=" + mrc + ", installationPrice="
-				+ installationPrice + ", isPrepared=" + isPrepared
+				+ installationPrice + ", isPrepared=" + isPrepaid
 				+ ", creationDate=" + creationDate + ", measuringUnit="
 				+ measuringUnit + ", compoundId=" + compoundId + "]";
 	}

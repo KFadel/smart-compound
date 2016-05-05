@@ -3,6 +3,7 @@ package com.ntgclarity.smartcompound.dataaccess.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Service;
 
 public interface ServiceDAO {
@@ -18,5 +19,8 @@ public interface ServiceDAO {
 			boolean ascending, Map<String, Object> filters);
 
 	int getNumOfServicesRows(Map<String, Object> filters);
+
+	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
+			Compound compound);
 
 }

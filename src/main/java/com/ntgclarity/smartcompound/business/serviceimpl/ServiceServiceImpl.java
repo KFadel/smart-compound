@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.business.service.ServiceService;
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
 
 @Service
@@ -56,6 +57,12 @@ public class ServiceServiceImpl implements ServiceService {
 	public int getNumOfServicesRows(Map<String, Object> filters) {
 	
 		return  serviceDAO.getNumOfServicesRows(filters);
+	}
+
+	@Override
+	public List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
+			Compound compound) {
+		return serviceDAO.getCompoundServices(compound);
 	}
 
 
