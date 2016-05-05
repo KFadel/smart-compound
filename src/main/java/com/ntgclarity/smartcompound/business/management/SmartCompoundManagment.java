@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
@@ -15,6 +16,10 @@ public interface SmartCompoundManagment {
 	List<Employee> getAllEmployees();
 
 	Employee getEmployee(Long id);
+	
+	public void insertCompound(Compound compound);
+	
+	//public void updateCompound(Compound compound);
 
 	
 
