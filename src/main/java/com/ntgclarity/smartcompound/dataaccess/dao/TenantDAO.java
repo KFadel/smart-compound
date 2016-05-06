@@ -3,13 +3,14 @@ package com.ntgclarity.smartcompound.dataaccess.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 
 /**Author: Heba**/
 
 public interface TenantDAO {
 
-	List<Tenant> getAllTenants();
+	List<Tenant> getAllTenants(Compound comp);
 
 	Tenant getTenant(Long id);
 

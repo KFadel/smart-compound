@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Service;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
@@ -12,8 +13,7 @@ import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
 @Repository
 public class ServiceDAOImpl extends BaseDAO implements ServiceDAO {
 
-	@Override
-	public List<Service> getAllServices() {
+	public List<Service> getAllServices(Compound comp) {
 
 		return (List<Service>) super.getAll(Service.class);
 	}

@@ -16,94 +16,15 @@
 		<h2>#{msgs.SMART_COMPOUND_TICKET_PAGE_TITLE}</h2>
 	</center>
 	<h:form>
+	<p:inputText value="#{ticketBean.ticket.channel}"></p:inputText>
 		<b:container layout="fluid">
 			<b:row>
 				<b:column medium-screen="12">
 					<b:messages id="message" />
 				</b:column>
 			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_TICKET_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_TICKET_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_TENANT_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_TICKET_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_FACILITY_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_TICKET_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_SERVICE}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_TICKET_PAGE_SELECT_ONE}" />
-						<f:selectItem itemLabel="Water" />
-						<f:selectItem itemLabel="Electrical" />
-						<f:selectItem itemLabel="Reserve playground" />
-						<f:selectItem itemLabel="Other" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_SEVERITY}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_TICKET_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_CATEGORY}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="Select One" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_TICKET_PAGE_CALLER_TICKET_DESCRIPTION}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputTextarea required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_TICKET_PAGE_CALLER_TICKET_DESCRIPTION_REQUIRED_MESSAGE} " />
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column span="2" offset="2">
-					<b:commandButton value="#{msgs.SMART_COMPOUND_TICKET_PAGE_SUBMIT_BUTTON}" look="success" style="width:100%" />
-				</b:column>
-				<b:column span="2">
-					<b:commandButton value="#{msgs.SMART_COMPOUND_TICKET_PAGE_CANCEL_BUTTON}" look="warning" style="width:100%" />
-				</b:column>
-			</b:row>
 
+		
 		</b:container>
 	</h:form>
 

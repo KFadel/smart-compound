@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
@@ -15,8 +16,9 @@ import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
 public class FacilityDAOImpl extends BaseDAO implements FacilityDAO {
 
 	@Override
-	public List<Facility> getAllFacilities() {
-
+	public List<Facility> getAllFacilities(Compound comp) {
+		
+		System.out.println("facilities size in thedao"+super.getAll(Facility.class).size());
 		return (List<Facility>) super.getAll(Facility.class);
 	}
 

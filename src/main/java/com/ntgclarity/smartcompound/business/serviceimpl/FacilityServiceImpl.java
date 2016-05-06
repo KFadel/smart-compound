@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.business.service.FacilityService;
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
 
@@ -21,8 +22,8 @@ public class FacilityServiceImpl implements FacilityService {
 	private FacilityDAO facilityDAO;
 	
 	@Override
-	public List<Facility> getAllFacilities() {
-		return facilityDAO.getAllFacilities();
+	public List<Facility> getAllFacilities(Compound comp) {
+		return facilityDAO.getAllFacilities(comp);
 	}
 
 	@Override

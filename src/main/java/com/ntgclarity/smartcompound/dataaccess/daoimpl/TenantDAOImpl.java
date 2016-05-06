@@ -3,8 +3,10 @@ package com.ntgclarity.smartcompound.dataaccess.daoimpl;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
@@ -15,9 +17,10 @@ import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
 public class TenantDAOImpl extends BaseDAO implements TenantDAO {
 
 	@Override
-	public List<Tenant> getAllTenants() {
+	public List<Tenant> getAllTenants(Compound comp) {
 
-		return (List<Tenant>) super.getAll(Tenant.class);
+	Query  query=getCurrentSession().createQuery("select o from Tenant o where o.compoundId");
+	return null;
 	}
 
 	@Override

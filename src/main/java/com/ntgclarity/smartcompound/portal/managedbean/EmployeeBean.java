@@ -76,6 +76,9 @@ public class EmployeeBean extends BaseBean implements Serializable {
 	public void setSelectedEmployee(Employee selectedEmployee) {
 		this.selectedEmployee = selectedEmployee;
 	}
+	
+
+
 
 	
 }
