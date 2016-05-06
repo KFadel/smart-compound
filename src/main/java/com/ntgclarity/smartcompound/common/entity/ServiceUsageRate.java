@@ -17,6 +17,10 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_service_usage_rates")
 public class ServiceUsageRate extends BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -379438260367340798L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;

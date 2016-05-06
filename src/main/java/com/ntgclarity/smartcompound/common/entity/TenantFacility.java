@@ -17,6 +17,10 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_tenants_facilities")
 public class TenantFacility extends BaseEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8080684629958627888L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "recid")

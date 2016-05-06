@@ -21,16 +21,17 @@ public class Compound extends BaseEntity implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="ng_nts_compounds_recid_seq")
+	@SequenceGenerator(name="ng_nts_compounds_recid_seq", sequenceName="ng_nts_compounds_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 
 	@Column(name = "compound_name")
 	private String compoundName;
 	@Column(name = "longtude")
-	private String longtude;
+	private Double longtude;
 	@Column(name = "lattitude")
-	private String lattitude;
+	private Double lattitude;
 	@Column(name = "country")
 	private String country;
 	@Column(name = "city")
@@ -57,19 +58,19 @@ public class Compound extends BaseEntity implements Serializable {
 		this.compoundName = compoundName;
 	}
 
-	public String getLongtude() {
+	public Double getLongtude() {
 		return longtude;
 	}
 
-	public void setLongtude(String longtude) {
+	public void setLongtude(Double longtude) {
 		this.longtude = longtude;
 	}
 
-	public String getLattitude() {
+	public Double getLattitude() {
 		return lattitude;
 	}
 
-	public void setLattitude(String lattitude) {
+	public void setLattitude(Double lattitude) {
 		this.lattitude = lattitude;
 	}
 

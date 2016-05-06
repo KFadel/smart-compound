@@ -3,11 +3,13 @@ package com.ntgclarity.smartcompound.ws.applicationcontext;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import com.ntgclarity.smartcompound.ws.controller.EmployeeController;
   
 
+@ApplicationPath("/ws")
 public class WsApplicationContext extends Application{
 
 	@Override

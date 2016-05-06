@@ -18,6 +18,10 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_orders")
 public class Order extends BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6489027984427925289L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compoundId;
@@ -48,7 +52,7 @@ public class Order extends BaseEntity implements Serializable {
 	@JoinColumn(name = "created_by", referencedColumnName = "recid")
 	private Employee createdBy;
 
-	@Column(name = "acceptance_date")
+	@Column(name = "acceptence_date")
 	private Date acceptanceDate;
 
 	@ManyToOne

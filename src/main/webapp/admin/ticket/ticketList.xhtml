@@ -11,73 +11,72 @@
 	<ui:define name="contentTitle"> #{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TITLE}</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
-			<p:dataTable var="car" rows="10" paginator="true"
-				resizableColumns="true" draggableColumns="true"
+			<p:dataTable var="ticket" value="#{ticketBean.lazyTicketModel}" rows="10" paginator="true" 
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15">
+				rowsPerPageTemplate="5,10,15" dynamic="true"  selectionMode="single" selection="#{ticketBean.selectedTicket}" id="ticketTable" lazy="true">
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TICKET_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_OPEN_DATE}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.openDate}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_STATUS}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.lastStatus}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_SERVICE}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.serviceId.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TENANT_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.relatedTenantId.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_OPEN_BY}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.openedBy.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_CHANNEL}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.channel}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_CALLER_TICKET_DESCRIPTION}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.description}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_SEVERITY}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.severity}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_ASSIGNED_TO_GROUP}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.assignedGroupId.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_FACILITY_ID}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.facilityId.id}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_CATEGORY}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.groupName}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_PROBLEM_DATE}">
-					<h:outputText value="" />
+					<h:outputText value="#{ticket.problemDate}" />
 				</p:column>
 
 			</p:dataTable>
