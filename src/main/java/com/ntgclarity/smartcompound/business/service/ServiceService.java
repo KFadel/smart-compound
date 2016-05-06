@@ -3,6 +3,7 @@ package com.ntgclarity.smartcompound.business.service;
 import java.util.List;
 import java.util.Map;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Service;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
@@ -19,5 +20,8 @@ public interface ServiceService {
 			boolean ascending, Map<String, Object> filters) throws SmartCompoundException;
 
 	int getNumOfServicesRows(Map<String, Object> filters) throws SmartCompoundException;
+
+	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
+			Compound compound);
 
 }

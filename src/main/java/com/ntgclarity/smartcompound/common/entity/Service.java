@@ -56,7 +56,7 @@ public class Service extends BaseEntity implements Serializable{
 	private String measuringUnit;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@ManyToOne
 	@JoinColumn(name = "measuring_unit_lookup_id", referencedColumnName = "recid")
 	private Lookup measuringUnitLookupId;
@@ -167,20 +167,20 @@ public class Service extends BaseEntity implements Serializable{
 		this.measuringUnit = measuringUnit;
 	}
 
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
 	public Lookup getMeasuringUnitLookupId() {
 		return measuringUnitLookupId;
 	}
 
 	public void setMeasuringUnitLookupId(Lookup measuringUnitLookupId) {
 		this.measuringUnitLookupId = measuringUnitLookupId;
+	}
+
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
 	}
 
 	@Override
@@ -192,7 +192,7 @@ public class Service extends BaseEntity implements Serializable{
 				+ nrc + ", mrc=" + mrc + ", installationPrice="
 				+ installationPrice + ", isPrepared=" + isPrepaid
 				+ ", creationDate=" + creationDate + ", measuringUnit="
-				+ measuringUnit + ", compoundId=" + compoundId + "]";
+				+ measuringUnit + ", compound=" + compound + "]";
 	}
 	
 

@@ -28,24 +28,25 @@ public class Lookup  extends BaseEntity implements Serializable{
 	private String lookupName;
 	@ManyToOne
 	@JoinColumn(name = "type_id", referencedColumnName = "recid")
-	private LookupType type_id;
+	private LookupType lookupType;
 	@Column(name="type_name")
 	private String typeName;
 	
+	
+	public LookupType getLookupType() {
+		return lookupType;
+	}
+
+	public void setLookupType(LookupType lookupType) {
+		this.lookupType = lookupType;
+	}
+
 	public String getLookupName() {
 		return lookupName;
 	}
 
 	public void setLookupName(String lookupName) {
 		this.lookupName = lookupName;
-	}
-
-	public LookupType getType_id() {
-		return type_id;
-	}
-
-	public void setType_id(LookupType type_id) {
-		this.type_id = type_id;
 	}
 
 	public String getTypeName() {
@@ -70,8 +71,8 @@ public class Lookup  extends BaseEntity implements Serializable{
 
 	@Override
 	public String toString() {
-		return "LookUp [id=" + id + ", lookupName=" + lookupName + ", type_id="
-				+ type_id + ", typeName=" + typeName + "]";
+		return "LookUp [id=" + id + ", lookupName=" + lookupName + ", lookupType="
+				+ lookupType + ", typeName=" + typeName + "]";
 	}
 	
 

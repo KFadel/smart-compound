@@ -40,4 +40,10 @@ public class Group  extends BaseEntity implements Serializable{
 		this.groupName = groupName;
 	}
 	
+	@Override
+	public String toString() {
+		return "Group [id=" + id + ", groupName=" + groupName + "]";
+	}
+	
+	
 }

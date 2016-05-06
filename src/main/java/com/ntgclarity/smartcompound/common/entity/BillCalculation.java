@@ -24,9 +24,9 @@ public class BillCalculation extends BaseEntity implements Serializable {
 	@Column(name = "recid")
 	private Long id;
 	@Column(name = "service_id")
-	private Long serviceId;
+	private Long service;
 	@Column(name = "order_id")
-	private Long orderId;
+	private Long order;
 	@Column(name = "calculation_date")
 	private Date calculationDate;
 	@Column(name = "calculation_month_and_year")
@@ -64,22 +64,6 @@ public class BillCalculation extends BaseEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 
-	}
-
-	public Long getServiceId() {
-		return serviceId;
-	}
-
-	public void setServiceId(Long serviceId) {
-		this.serviceId = serviceId;
-	}
-
-	public Long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
 	}
 
 	public Date getCalculationDate() {
@@ -182,6 +166,23 @@ public class BillCalculation extends BaseEntity implements Serializable {
 		return serialVersionUID;
 	}
 
+
+	public Long getService() {
+		return service;
+	}
+
+	public void setService(Long service) {
+		this.service = service;
+	}
+
+	public Long getOrder() {
+		return order;
+	}
+
+	public void setOrder(Long order) {
+		this.order = order;
+	}
+
 	public Compound getCompound() {
 		return compound;
 	}
@@ -192,8 +193,8 @@ public class BillCalculation extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "BillCalculation [id=" + id + ", serviceId=" + serviceId
-				+ ", orderId=" + orderId + ", calculationDate="
+		return "BillCalculation [id=" + id + ", service=" + service
+				+ ", order=" + order + ", calculationDate="
 				+ calculationDate + ", calculationMonthAndYear="
 				+ calculationMonthAndYear + ", previousMeterReading="
 				+ previousMeterReading + ", currentMeterReading="

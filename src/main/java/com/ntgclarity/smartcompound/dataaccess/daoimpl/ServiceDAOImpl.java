@@ -3,8 +3,10 @@ package com.ntgclarity.smartcompound.dataaccess.daoimpl;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Service;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
@@ -52,6 +54,11 @@ public class ServiceDAOImpl extends BaseDAO implements ServiceDAO {
 	public int getNumOfServicesRows(Map<String, Object> filters) {
 		
 		return super.getNumOfRows(Service.class,filters);
+	}
+
+	@Override
+	public List<Service> getCompoundServices(Compound compound) {
+		return (List<Service>) super.getAllByCompound(Service.class, compound);
 	}
 
 }
