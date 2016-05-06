@@ -2,88 +2,81 @@ package com.ntgclarity.smartcompound.portal.managedbean;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 import org.primefaces.model.SortOrder;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import java.util.Map;
 import org.primefaces.model.LazyDataModel;
 
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.portal.base.BaseBean;
 
-/**AUTHOR: HEBA**/
-
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class TicketBean extends BaseBean implements Serializable {
-
-	@ManagedProperty(value = "#{smartCompoundManagmentImpl}")
-	private SmartCompoundManagment smartCompoundManagment;
-
-	private Ticket selectedTicket;
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	@ManagedProperty(value = "#{smartCompoundManagmentImpl}")
+	private SmartCompoundManagment smartCompoundManagment;
+	private Ticket selectedTicket;
 	private LazyDataModel<Ticket> lazyTicketModel;
 
-	public Ticket initiateNewTicket(){
-		selectedTicket = new Ticket();
-		return selectedTicket;
-	}
-	
 	@PostConstruct
 	public void init() {
 		initiateNewTicket();
-		loadData();
+		LoadData();
+
 	}
 
-	public void loadData() {
-	    lazyTicketModel = new LazyDataModel<Ticket>() {
-	    	private List<Ticket> result ;
-			
-
+	private void LoadData() {
+		lazyTicketModel = new LazyDataModel<Ticket>() {
+			/**
+			 * 
+			 */
 			private static final long serialVersionUID = 1L;
+			private List<Ticket> result;
 
-			
-		    @Override
-		    public Ticket getRowData(String rowKey) {
-		        for(Ticket Ticket : result) {
-		            if(Ticket.getId().equals(rowKey))
-		                return Ticket;
-		        }
-		 
-		        return null;
-		    }
-		 
-		    @Override
-		    public Object getRowKey(Ticket Ticket) {
-		        return Ticket.getId();
-		    }
-			
-			@Override    
-	        public List<Ticket> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,Object> filters) {
-				
-	        	
-				result= getSmartCompoundManagment().loadTickets(first,pageSize,sortField,sortOrder==SortOrder.ASCENDING,filters);
-				this.setRowCount(getSmartCompoundManagment().getNumOfTicketsRows(filters));
-				
+			@Override
+			public Ticket getRowData(String rowKey) {
+				for (Ticket ticket : result) {
+					if (ticket.getId().equals(rowKey))
+						return ticket;
+				}
+
+				return null;
+			}
+
+			@Override
+			public Object getRowKey(Ticket ticket) {
+				return ticket.getId();
+			}
+
+			@Override
+			public List<Ticket> load(int first, int pageSize,
+					String sortField, SortOrder sortOrder,
+					Map<String, Object> filters) {
+
+				result = getSmartCompoundManagment().loadTickets(first,
+						pageSize, sortField, sortOrder == SortOrder.ASCENDING,
+						filters);
+				this.setRowCount(getSmartCompoundManagment()
+						.getNumOfTicketsRows(filters));
+
 				return result;
-	        }
-	    };
+			}
 
-	
-	}
-	public LazyDataModel<Ticket> getLazyTicketModel() {
-		return lazyTicketModel;
+		};
+
 	}
 
-	public void setLazyTicketModel(LazyDataModel<Ticket> lazyTicketModel) {
-		this.lazyTicketModel = lazyTicketModel;
+	private void initiateNewTicket() {
+		selectedTicket = new Ticket();
+
 	}
 
 	public SmartCompoundManagment getSmartCompoundManagment() {
@@ -101,6 +94,14 @@ public class TicketBean extends BaseBean implements Serializable {
 
 	public void setSelectedTicket(Ticket selectedTicket) {
 		this.selectedTicket = selectedTicket;
+	}
+
+	public LazyDataModel<Ticket> getLazyTicketModel() {
+		return lazyTicketModel;
+	}
+
+	public void setLazyTicketModel(LazyDataModel<Ticket> lazyTicketModel) {
+		this.lazyTicketModel = lazyTicketModel;
 	}
 
 }

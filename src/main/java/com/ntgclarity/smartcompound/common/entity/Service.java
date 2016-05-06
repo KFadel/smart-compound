@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -25,7 +26,8 @@ public class Service extends BaseEntity implements Serializable{
 	 * 
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="ng_nts_services_recid_seq")
+	@SequenceGenerator(name="ng_nts_services_recid_seq", sequenceName="ng_nts_services_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	@Column(name="service_name")
@@ -54,7 +56,7 @@ public class Service extends BaseEntity implements Serializable{
 	private String measuringUnit;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@ManyToOne
 	@JoinColumn(name = "measuring_unit_lookup_id", referencedColumnName = "recid")
 	private Lookup measuringUnitLookupId;
@@ -165,20 +167,20 @@ public class Service extends BaseEntity implements Serializable{
 		this.measuringUnit = measuringUnit;
 	}
 
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
 	public Lookup getMeasuringUnitLookupId() {
 		return measuringUnitLookupId;
 	}
 
 	public void setMeasuringUnitLookupId(Lookup measuringUnitLookupId) {
 		this.measuringUnitLookupId = measuringUnitLookupId;
+	}
+
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
 	}
 
 	@Override
@@ -190,7 +192,7 @@ public class Service extends BaseEntity implements Serializable{
 				+ nrc + ", mrc=" + mrc + ", installationPrice="
 				+ installationPrice + ", isPrepared=" + isPrepaid
 				+ ", creationDate=" + creationDate + ", measuringUnit="
-				+ measuringUnit + ", compoundId=" + compoundId + "]";
+				+ measuringUnit + ", compound=" + compound + "]";
 	}
 	
 

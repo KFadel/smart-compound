@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.business.service.ServiceService;
+import com.ntgclarity.smartcompound.common.entity.Compound;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
 
 @Service
@@ -37,7 +39,7 @@ public class ServiceServiceImpl implements ServiceService {
 	 
 	  **/
 	@Override
-	public com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) {	
+	public com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException{	
 		return serviceDAO.insertService(service);
 	}
 	@Override
@@ -56,6 +58,12 @@ public class ServiceServiceImpl implements ServiceService {
 	public int getNumOfServicesRows(Map<String, Object> filters) {
 	
 		return  serviceDAO.getNumOfServicesRows(filters);
+	}
+
+	@Override
+	public List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
+			Compound compound) {
+		return serviceDAO.getCompoundServices(compound);
 	}
 
 

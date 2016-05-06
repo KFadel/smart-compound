@@ -23,10 +23,10 @@ public class ServiceUsageRate extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = -379438260367340798L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@ManyToOne
 	@JoinColumn(name = "service_id", referencedColumnName = "recid")
-	private Service serviceId;
+	private Service service;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,22 +51,6 @@ public class ServiceUsageRate extends BaseEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 
-	}
-
-	public Compound getCompound() {
-		return compoundId;
-	}
-
-	public void setCompound(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
-	public Service getServiceId() {
-		return serviceId;
-	}
-
-	public void setServiceId(Service serviceId) {
-		this.serviceId = serviceId;
 	}
 
 	public String getServiceName() {
@@ -101,10 +85,27 @@ public class ServiceUsageRate extends BaseEntity implements Serializable {
 		this.unitPrice = unitPrice;
 	}
 
+	
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
 	@Override
 	public String toString() {
-		return "ServiceUsageRate [compound=" + compoundId + ", serviceId="
-				+ serviceId + ", id=" + id + ", serviceName=" + serviceName
+		return "ServiceUsageRate [compound=" + compound + ", service="
+				+ service + ", id=" + id + ", serviceName=" + serviceName
 				+ ", usageAmmountFrom=" + usageAmmountFrom
 				+ ", usageAmmountTo=" + usageAmmountTo + ", unitPrice="
 				+ unitPrice + "]";

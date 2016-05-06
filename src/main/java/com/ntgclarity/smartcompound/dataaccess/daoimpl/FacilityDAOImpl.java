@@ -3,8 +3,10 @@ package com.ntgclarity.smartcompound.dataaccess.daoimpl;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
@@ -54,6 +56,13 @@ public class FacilityDAOImpl extends BaseDAO implements FacilityDAO {
 	public int getNumOfFacilitiesRows(Map<String, Object> filters) {
 		
 		return super.getNumOfRows(Facility.class,filters);
+	}
+
+	@Override
+	public List<Facility> getCompoundFacilites(Compound compound) {
+		Query query = getCurrentSession().createQuery("select x from Facility x where x.compoundId =:compoundId");
+		query.setParameter("compoundId", compound);
+		return query.list();
 	}
 
 }
