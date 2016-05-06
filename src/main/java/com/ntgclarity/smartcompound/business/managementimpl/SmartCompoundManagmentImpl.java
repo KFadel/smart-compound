@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
 import com.ntgclarity.smartcompound.business.service.CompoundService;
 import com.ntgclarity.smartcompound.business.service.EmployeeService;
+import com.ntgclarity.smartcompound.business.service.ServiceService;
 import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 @Service
 public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
@@ -66,5 +68,16 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 		// return null;
 
 	}
+
+	/*added by Hend*/
+	
+	@Autowired
+	private ServiceService serviceService;
+	
+	@Override
+	public com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException {
+		return serviceService.insertService(service);
+	}
+	/*end oh Hend's part*/
 
 }

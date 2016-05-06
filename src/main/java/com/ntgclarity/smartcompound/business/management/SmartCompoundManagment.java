@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 @Service
 public interface SmartCompoundManagment {
@@ -20,7 +21,9 @@ public interface SmartCompoundManagment {
 	
 	//public void updateCompound(Compound compound);
 
-	
+	/*added by Hend*/
+	com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException ;
+	/*end oh Hend's part*/
 
 	int getNumOfTicketsRows(Map<String, Object> filters);
 

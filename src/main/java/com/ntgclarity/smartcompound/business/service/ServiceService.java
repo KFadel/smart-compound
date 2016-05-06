@@ -4,19 +4,20 @@ import java.util.List;
 import java.util.Map;
 
 import com.ntgclarity.smartcompound.common.entity.Service;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 public interface ServiceService {
 
-	List<Service> getAllServices();
+	List<Service> getAllServices() throws SmartCompoundException;
 
-	Service getService(Long id);
+	Service getService(Long id) throws SmartCompoundException;
 
-	Service insertService(Service service);
+	Service insertService(Service service) throws SmartCompoundException;
 
-	Service updateService(Service service);
+	Service updateService(Service service) throws SmartCompoundException;
 	List<Service> loadServices(int first, int pageSize, String sortField,
-			boolean ascending, Map<String, Object> filters);
+			boolean ascending, Map<String, Object> filters) throws SmartCompoundException;
 
-	int getNumOfServicesRows(Map<String, Object> filters);
+	int getNumOfServicesRows(Map<String, Object> filters) throws SmartCompoundException;
 
 }
