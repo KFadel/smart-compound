@@ -43,9 +43,6 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	private FacilityService facilityService;
 
 	@Autowired
-	private ServiceService serviceService;
-
-	@Autowired
 	private TenantService tenantService;
 
 	@Override
@@ -127,7 +124,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	}
 
 	@Override
-	public com.ntgclarity.smartcompound.common.entity.Service getService(Long id) {
+	public com.ntgclarity.smartcompound.common.entity.Service getService(Long id){
 		return serviceService.getService(id);
 	}
 

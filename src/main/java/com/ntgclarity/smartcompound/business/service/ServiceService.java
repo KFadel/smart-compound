@@ -11,7 +11,7 @@ public interface ServiceService {
 
 	List<Service> getAllServices() throws SmartCompoundException;
 
-	Service getService(Long id) throws SmartCompoundException;
+	Service getService(Long id);
 
 	Service insertService(Service service) throws SmartCompoundException;
 
