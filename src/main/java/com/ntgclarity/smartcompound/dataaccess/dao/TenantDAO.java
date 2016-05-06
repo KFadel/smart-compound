@@ -23,4 +23,6 @@ public interface TenantDAO {
 
 	int getNumOfTenantsRows(Map<String, Object> filters);
 
+	List<Tenant> getCompoundTenants(Compound compound);
+
 }

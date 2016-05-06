@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.portal.base.BaseBean;
 
 @ManagedBean
@@ -33,15 +34,15 @@ public class EmployeeBean extends BaseBean implements Serializable {
 	private List<Employee> allEmployees;
 
 	@PostConstruct
-	public void init() {
+	public void init()throws SmartCompoundException {
 		loadAllEmployees(); 
 	}
 
-	public void loadAllEmployees() {
+	public void loadAllEmployees() throws SmartCompoundException{
 		allEmployees = smartCompoundManagment.getAllEmployees();
 	}
 
-	public void testMethod() {
+	public void testMethod() throws SmartCompoundException {
 
 		loadAllEmployees();
 	}

@@ -1,6 +1,13 @@
 package com.ntgclarity.smartcompound.common.entity;
 
 import java.io.Serializable;
+
+
+
+
+//import java.util.Date;
+
+//import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -17,22 +25,34 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_tickets")
 public class Ticket extends BaseEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
+	
 	@ManyToOne
 	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
-	private Lookup channelLookupId;
+	private Lookup channelLookup;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ng_nts_tickets_recid_seq")
+	@SequenceGenerator(name="ng_nts_tickets_recid_seq", sequenceName="ng_nts_tickets_recid_seq")
 	@Column(name = "recid")
 	private Long id;
+	
 	@Column(name = "ticket_subject")
 	private String ticketSubject;
+	
 	@Column(name = "problem_date")
 	private Date problemDate;
+	
 	@Column(name = "last_status")
 	private String lastStatus;
+	
 	@Column(name = "feedback")
 	private String feedback;
 	// @Column(name="ticket_id")
@@ -43,13 +63,14 @@ public class Ticket extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "service_id", referencedColumnName = "recid")
-	private Service serviceId;
+	private Service service;
+	
 	@Column(name = "service_name")
 	private String serviceName;
 
 	@ManyToOne
 	@JoinColumn(name = "related_tenant_id", referencedColumnName = "recid")
-	private Tenant relatedTenantId;
+	private Tenant relatedTenant;
 
 	@ManyToOne
 	@JoinColumn(name = "opened_by", referencedColumnName = "recid")
@@ -63,26 +84,29 @@ public class Ticket extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "facility_id", referencedColumnName = "recid")
-	private Facility facilityId;
+	private Facility facility;
 
 	@Column(name = "channel")
 	private String channel;
 
-	@Column(name = "assigned_group_id")
-	private Group assignedGroupId;
+	@ManyToOne
+	@JoinColumn(name = "assigned_group_id", referencedColumnName="recid")
+	private Group assignedGroup;
 
 	@Column(name = "rate")
-	private String rate;
+	private double rate;
+	
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
 	@Column(name = "group_name")
 	private String groupName;
 
-	public Facility getFacilityId() {
-		return facilityId;
-	}
-
-	public void setFacilityId(Facility facilityId) {
-		this.facilityId = facilityId;
-	}
 
 	public String getChannel() {
 		return channel;
@@ -103,21 +127,6 @@ public class Ticket extends BaseEntity implements Serializable {
 
 	}
 
-	public Compound getCompound() {
-		return compoundId;
-	}
-
-	public void setCompound(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
 
 	public String getTicketSubject() {
 		return ticketSubject;
@@ -159,28 +168,12 @@ public class Ticket extends BaseEntity implements Serializable {
 		this.openDate = openDate;
 	}
 
-	public Service getServiceId() {
-		return serviceId;
-	}
-
-	public void setServiceId(Service serviceId) {
-		this.serviceId = serviceId;
-	}
-
 	public String getServiceName() {
 		return serviceName;
 	}
 
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
-	}
-
-	public Tenant getRelatedTenantId() {
-		return relatedTenantId;
-	}
-
-	public void setRelatedTenantId(Tenant relatedTenantId) {
-		this.relatedTenantId = relatedTenantId;
 	}
 
 	public Employee getOpenedBy() {
@@ -207,29 +200,8 @@ public class Ticket extends BaseEntity implements Serializable {
 		this.severity = severity;
 	}
 
-	public Group getAssignedGroupId() {
-		return assignedGroupId;
-	}
 
-	public void setAssignedGroupId(Group assignedGroupId) {
-		this.assignedGroupId = assignedGroupId;
-	}
 
-	public String getRate() {
-		return rate;
-	}
-
-	public void setRate(String rate) {
-		this.rate = rate;
-	}
-
-	public Lookup getChannelLookupId() {
-		return channelLookupId;
-	}
-
-	public void setChannelLookupId(Lookup channelLookupId) {
-		this.channelLookupId = channelLookupId;
-	}
 
 	public String getGroupName() {
 		return groupName;
@@ -238,22 +210,69 @@ public class Ticket extends BaseEntity implements Serializable {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
+	
+
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
+
+	public Lookup getChannelLookup() {
+		return channelLookup;
+	}
+
+	public void setChannelLookup(Lookup channelLookup) {
+		this.channelLookup = channelLookup;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
+	public Tenant getRelatedTenant() {
+		return relatedTenant;
+	}
+
+	public void setRelatedTenant(Tenant relatedTenant) {
+		this.relatedTenant = relatedTenant;
+	}
+
+	public Facility getFacility() {
+		return facility;
+	}
+
+	public void setFacility(Facility facility) {
+		this.facility = facility;
+	}
+
+	public Group getAssignedGroup() {
+		return assignedGroup;
+	}
+
+	public void setAssignedGroup(Group assignedGroup) {
+		this.assignedGroup = assignedGroup;
+	}
 
 	@Override
 	public String toString() {
-		return "Ticket [compoundId=" + compoundId + ", channelLookupId="
-				+ channelLookupId + ", id=" + id + ", ticketSubject="
+		return "Ticket [compound=" + compound + ", channelLookup="
+				+ channelLookup + ", id=" + id + ", ticketSubject="
 				+ ticketSubject + ", problemDate=" + problemDate
 				+ ", lastStatus=" + lastStatus + ", feedback=" + feedback
-				+ ", openDate=" + openDate + ", serviceId=" + serviceId
-				+ ", serviceName=" + serviceName + ", relatedTenantId="
-				+ relatedTenantId + ", openedBy=" + openedBy + ", description="
-				+ description + ", severity=" + severity + ", facilityId="
-				+ facilityId + ", channel=" + channel + ", assignedGroupId="
-				+ assignedGroupId + ", rate=" + rate + ", groupName="
+				+ ", openDate=" + openDate + ", service=" + service
+				+ ", serviceName=" + serviceName + ", relatedTenant="
+				+ relatedTenant + ", openedBy=" + openedBy + ", description="
+				+ description + ", severity=" + severity + ", facility="
+				+ facility + ", channel=" + channel + ", assignedGroup="
+				+ assignedGroup + ", rate=" + rate + ", groupName="
 				+ groupName + "]";
 	}
-
-
 
 }

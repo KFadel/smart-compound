@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
 
 //@Entity
-@Table(name = "EMPLOYEE")
+//@Table(name = "biil_details")
 public class BillDetails extends BaseEntity implements Serializable{
 
 	/**
@@ -23,7 +23,7 @@ public class BillDetails extends BaseEntity implements Serializable{
 	@Column(name = "recid")
 	private Long id;
 	@Column(name="service_id")
-	private Long serviceId;
+	private Long service;
 	@Column (name="nrc")
 	private Double nrc;
 	@Column(name="mrc")
@@ -46,14 +46,6 @@ public class BillDetails extends BaseEntity implements Serializable{
 		
 	}
 
-	public Long getServiceId() {
-		return serviceId;
-	}
-
-	public void setServiceId(Long serviceId) {
-		this.serviceId = serviceId;
-	}
-
 	public Double getNrc() {
 		return nrc;
 	}
@@ -64,6 +56,22 @@ public class BillDetails extends BaseEntity implements Serializable{
 
 	public Double getMrc() {
 		return mrc;
+	}
+
+	public Long getService() {
+		return service;
+	}
+
+	public void setService(Long service) {
+		this.service = service;
+	}
+
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
 	}
 
 	public void setMrc(Double mrc) {
@@ -90,17 +98,10 @@ public class BillDetails extends BaseEntity implements Serializable{
 		return serialVersionUID;
 	}
 
-	public Compound getCompound() {
-		return compound;
-	}
-
-	public void setCompound(Compound compound) {
-		this.compound = compound;
-	}
 
 	@Override
 	public String toString() {
-		return "BillDetails [id=" + id + ", serviceId=" + serviceId + ", nrc="
+		return "BillDetails [id=" + id + ", service=" + service + ", nrc="
 				+ nrc + ", mrc=" + mrc + ", installation=" + installation
 				+ ", totalAmount=" + totalAmount + ", compound=" + compound
 				+ "]";

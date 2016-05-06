@@ -28,7 +28,8 @@ public abstract class BaseDAO {
 	}
 
 	public Object saveOrUpdate(Object entity) {
-		getCurrentSession().persist(entity);
+		getCurrentSession().saveOrUpdate(entity);
+		System.out.println("ticket inserted successfully");
 		return entity;
 	}
 
@@ -66,7 +67,16 @@ public abstract class BaseDAO {
 
 		Query query = getCurrentSession().createQuery(
 				"select count(x) from " + cls.getCanonicalName() + " x ");
-		int result = (int) query.uniqueResult();
+		int result =( (Long) query.uniqueResult()).intValue();
+		return result;
+	}
+	
+	public List getAllByCompound(Class cls,Compound compound) {
+		// query statement (SELECT x FROM className x WHEERE x.compound =:compound)  (x Alias)
+		Query query = getCurrentSession().createQuery(
+				"from " + cls.getCanonicalName()+" x where x.compound =:compound");
+		query.setParameter("compound", compound);
+		List result = query.list();
 		return result;
 	}
 }

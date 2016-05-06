@@ -20,4 +20,7 @@ public interface ServiceDAO {
 
 	int getNumOfServicesRows(Map<String, Object> filters);
 
+	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
+			Compound compound);
+
 }

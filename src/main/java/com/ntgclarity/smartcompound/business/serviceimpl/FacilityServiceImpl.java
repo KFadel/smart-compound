@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ntgclarity.smartcompound.business.service.FacilityService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
 
 
@@ -27,7 +28,7 @@ public class FacilityServiceImpl implements FacilityService {
 	}
 
 	@Override
-	public Facility getFacility(Long id) {
+	public Facility getFacility(Long id)throws SmartCompoundException {
 		if(id !=null)
 		{
 			return facilityDAO.getFacility(id);
@@ -41,12 +42,12 @@ public class FacilityServiceImpl implements FacilityService {
 	 
 	  **/
 	@Override
-	public Facility insertFacility(Facility facility) {
+	public Facility insertFacility(Facility facility)throws SmartCompoundException {
 		
 		return facilityDAO.insertFacility(facility);
 	}
 	@Override
-	public Facility updateFacility(Facility facility) {
+	public Facility updateFacility(Facility facility) throws SmartCompoundException {
 		// TODO Auto-generated method stub
 		return facilityDAO.updateFacility(facility);
 		
@@ -54,14 +55,19 @@ public class FacilityServiceImpl implements FacilityService {
 
 	@Override
 	public List<Facility> loadFacilities(int first, int pageSize,
-			String sortField, boolean ascending, Map<String, Object> filters) {
+			String sortField, boolean ascending, Map<String, Object> filters) throws SmartCompoundException {
 		return facilityDAO.loadFacilities(first,pageSize,sortField,ascending,filters);
 	}
 
 	@Override
-	public int getNumOfFacilitiesRows(Map<String, Object> filters) {
+	public int getNumOfFacilitiesRows(Map<String, Object> filters) throws SmartCompoundException {
 	
 		return  facilityDAO.getNumOfFacilitiesRows(filters);
+	}
+
+	@Override
+	public List<Facility> getCompoundFacilites(Compound compound) throws SmartCompoundException {
+		return facilityDAO.getCompoundFacilites(compound);
 	}
 
 

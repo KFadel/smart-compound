@@ -23,4 +23,6 @@ public interface FacilityDAO {
 
 	int getNumOfFacilitiesRows(Map<String, Object> filters);
 
+	List<Facility> getCompoundFacilites(Compound compound);
+
 }

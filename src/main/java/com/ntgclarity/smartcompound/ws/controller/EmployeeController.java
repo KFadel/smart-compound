@@ -8,6 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 @Path("/employeeController")
 public class EmployeeController extends AbstractController {
@@ -17,7 +18,12 @@ public class EmployeeController extends AbstractController {
 	@Path("/getAllEmployees")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Employee> getAllEmployees() {
-		return getSmartCompoundManagement().getAllEmployees();
+		try {
+			return getSmartCompoundManagement().getAllEmployees();
+		} catch (SmartCompoundException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

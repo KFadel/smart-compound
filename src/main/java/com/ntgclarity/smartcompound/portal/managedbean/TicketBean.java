@@ -4,14 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import org.primefaces.model.SortOrder;
+import org.primefaces.model.LazyDataModel;
 
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
 import com.ntgclarity.smartcompound.common.entity.*;
-
 import com.ntgclarity.smartcompound.portal.base.BaseBean;
 
 @ManagedBean
@@ -20,11 +22,25 @@ public class TicketBean extends BaseBean implements Serializable {
 
 	@ManagedProperty(value = "#{smartCompoundManagmentImpl}")
 	private SmartCompoundManagment smartCompoundManagment;
+	
+	
+	private Ticket selectedTicket;
+	private LazyDataModel<Ticket> lazyTicketModel;
+	
+	public LazyDataModel<Ticket> getLazyTicketModel() {
+		return lazyTicketModel;
+	}
+
+	public void setLazyTicketModel(LazyDataModel<Ticket> lazyTicketModel) {
+		this.lazyTicketModel = lazyTicketModel;
+	}
+
 	private List<Tenant> tenants;
+	
 	private List<Facility> facilites;
 	private List<Service> services;
 
-	private Ticket ticket;
+
 	private Compound compound ;
 	public Compound getCompound() {
 		return compound;
@@ -46,17 +62,21 @@ public class TicketBean extends BaseBean implements Serializable {
 		services = new ArrayList<>();
 	}
 
-	public Ticket getTicket() {
-		return ticket;
-	}
+	
 
 	public void initiateNewTicket() {
-		ticket = new Ticket();
+		selectedTicket = new Ticket();
 	}
 
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	
+	public Ticket getSelectedTicket() {
+		return selectedTicket;
 	}
+
+	public void setSelectedTicket(Ticket selectedTicket) {
+		this.selectedTicket = selectedTicket;
+	}
+
 	public List<Tenant> getTenants() {
 		return tenants;
 	}
@@ -91,14 +111,14 @@ public class TicketBean extends BaseBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		initiateNewTicket();
-		initiateListOfTenant();
+		
 		initiateListOfService();
 		initiateListOfFacility();
 		tenants=getAllTenants(compound);
 		services=getAllServices(compound);
 		facilites=getAllFacilities(compound);
-		System.out.println("services size in the bean"+services.size());
-	
+		
+		LoadData();
 		loadAllTickets();
 	}
 
@@ -112,7 +132,7 @@ public class TicketBean extends BaseBean implements Serializable {
 	}
 
 	public void printTicket() {
-		System.out.println(ticket);
+		System.out.println(selectedTicket);
 	}
 
 	public List<Ticket> getAllTickets() {
@@ -133,7 +153,8 @@ public class TicketBean extends BaseBean implements Serializable {
 	}
 
 	public Ticket insertTicket() {
-		return getSmartCompoundManagment().insertTicket(ticket);
+	
+		return getSmartCompoundManagment().insertTicket(selectedTicket);
 
 	}
 
@@ -146,8 +167,48 @@ public class TicketBean extends BaseBean implements Serializable {
 
 	}
 	public  List<Facility> getAllFacilities(Compound comp) {
-		System.out.println("facilities size in the bean"+getSmartCompoundManagment().getAllFacilities(comp).size());
 		return getSmartCompoundManagment().getAllFacilities(comp);
+
+	}
+
+	private void LoadData() {
+		lazyTicketModel = new LazyDataModel<Ticket>() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			private List<Ticket> result;
+
+			@Override
+			public Ticket getRowData(String rowKey) {
+				for (Ticket ticket : result) {
+					if (ticket.getId().equals(rowKey))
+						return ticket;
+				}
+
+				return null;
+			}
+
+			@Override
+			public Object getRowKey(Ticket ticket) {
+				return ticket.getId();
+			}
+
+			@Override
+			public List<Ticket> load(int first, int pageSize,
+					String sortField, SortOrder sortOrder,
+					Map<String, Object> filters) {
+
+				result = getSmartCompoundManagment().loadTickets(first,
+						pageSize, sortField, sortOrder == SortOrder.ASCENDING,
+						filters);
+				this.setRowCount(getSmartCompoundManagment()
+						.getNumOfTicketsRows(filters));
+
+				return result;
+			}
+
+		};
 
 	}
 	

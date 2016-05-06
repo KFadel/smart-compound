@@ -64,5 +64,10 @@ public class TenantServiceImpl implements TenantService {
 		return  tenantDAO.getNumOfTenantsRows(filters);
 	}
 
+	@Override
+	public List<Tenant> getCompoundTenants(Compound compound) {
+		return tenantDAO.getCompoundTenants(compound);
+	}
+
 
 }
