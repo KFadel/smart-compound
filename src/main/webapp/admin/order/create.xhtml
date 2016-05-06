@@ -1,149 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
-<h:head>
-	<title>#{msgs.SMART_COMPOUND_ORDER_PAGE}</title>
-	<h:outputStylesheet library="css" name="smart-compound-style.css" />
-	<h:outputScript library="js" name="smart-compound-scripts.js" />
-</h:head>
-<h:body>
-	<center>
-		<h2>#{msgs.SMART_COMPOUND_ORDER_PAGE_TITLE}</h2>
-	</center>
-	<h:form>
-		<b:container layout="fluid">
-			<b:row>
-				<b:column medium-screen="12">
-					<b:messages id="message" />
-				</b:column>
-			</b:row>
-			
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_TENANT_NAME}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputText required="true" 
-						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_FACILITY_NAME}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
-			
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<!-- <b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_ORDER_PAGE_SELECT_ONE}" />
-					</b:selectOneMenu> -->
-					<p:autoComplete completeMethod="#{orderBean.initiateServices}" value="#{orderBean.createdOrder.serviceId}"
-								var="service" itemLabel="#{service.serviceName}" itemValue="#{service}" converter="#{serviceConverter}"></p:autoComplete>
-				</b:column>
-			</b:row>
-			<!-- <b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CREATED_BY}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_CREATED_BY_REQUIRED_MESSAGE} " />
-				</b:column>
-			</b:row> -->
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}"/>
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputTextarea value="#{orderBean.createdOrder.serviceLocationDesc}" />
-				</b:column>
-			</b:row>
-		<!-- 	<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CONTRACT_TERM}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_CONTRACT_TERM_REQUIRED_MESSAGE}" />
-				</b:column>
-			</b:row> -->
-			<!-- <b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_ID}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_ID_REQUIRED_MESSAGE}" />
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_LAST_READING}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_LAST_READING_REQUIRED_MESSAGE}" />
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_LAST_READING_DATE}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:datepicker /> 
-				</b:column>
-			</b:row>
 
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_ONE_TIME_FEE_BILLED}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectBooleanCheckbox />
-				</b:column>
-			</b:row>
+	<p:dialog id="createOrderDialog" widgetVar="createOrderDialog"
+		modal="true" resizable="false" closeOnEscape="true">
 
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_ONE_TIME_FEE_BILLED_DATE}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:datepicker/> 
-				</b:column>
-			</b:row> -->
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:inputTextarea value="#{orderBean.createdOrder.notes}"/>
-				</b:column>
-			</b:row>
-			<b:row>
-				<b:column span="2" offset="2">
-					<b:commandButton actionListener="#{orderBean.insertOrder}" value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}" look="success" style="width:100%" />
-				</b:column>
-				<b:column span="2">
-					<b:commandButton value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}" look="warning" style="width:100%" />
-				</b:column>
-			</b:row>
+		<h:form id="createOrderForm">
+			<p:panelGrid>
+				<b:row>
+					<b:column>
+						<b:messages id="message" />
+					</b:column>
+				</b:row>
 
-		</b:container>
-	</h:form>
+				<b:row>
+					<b:column>
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_TENANT_NAME}" />
+					</b:column>
+					<b:column>
+						<p:autoComplete completeMethod="#{orderBean.completeTenant}"
+							value="#{orderBean.selectedOrder.tenant}" var="tenant"
+							itemLabel="#{tenant.username}" itemValue="#{tenant}"
+							converter="#{tenantConverter}"></p:autoComplete>
+					</b:column>
+				</b:row>
+				<b:row>
+					<b:column>
+						<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
+					</b:column>
+					<b:column>
+						<p:inputText required="true"
+							value="#{orderBean.selectedOrder.notes}"
+							requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
+					</b:column>
+				</b:row>
 
-</h:body>
-</html>
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
+					</b:column>
+					<b:column medium-screen="4">
+						<p:autoComplete completeMethod="#{orderBean.completeServices}"
+							value="#{orderBean.selectedOrder.service}" var="service"
+							itemLabel="#{service.serviceName}" itemValue="#{service}"
+							converter="#{serviceConverter}"></p:autoComplete>
+					</b:column>
+				</b:row>
+
+
+				<p:commandButton actionListener="#{orderBean.insertOrder}"
+					update=":orderListForm" oncomplete="PF('createOrderDialog').hide()"
+					value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}"
+					look="success" style="width:100%" />
+			</p:panelGrid>
+		</h:form>
+
+
+	</p:dialog>
+
+
+</ui:composition>

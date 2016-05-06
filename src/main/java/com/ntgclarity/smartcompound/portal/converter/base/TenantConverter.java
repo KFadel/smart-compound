@@ -6,13 +6,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import com.ntgclarity.smartcompound.common.entity.Service;
+import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.utils.Utils;
 
 
 @ManagedBean
 @ApplicationScoped
-public class ServiceConverter extends BaseConverter implements Converter {
+public class TenantConverter extends BaseConverter implements Converter {
 
 	
 	
@@ -22,8 +22,8 @@ public class ServiceConverter extends BaseConverter implements Converter {
 		
 		if(Utils.isNotEmpty(str) && Utils.isNumericValue(str))
 		{
-			Service service =getSmartCompoundManagment().getService(new Long(str));
-			return service;
+			Tenant tenant =getSmartCompoundManagment().getTenant(new Long(str));
+			return tenant;
 		}
 		return null;
 		
@@ -33,13 +33,13 @@ public class ServiceConverter extends BaseConverter implements Converter {
 	public String getAsString(FacesContext arg0, UIComponent arg1, Object object) {
 		if(object!=null)
 		{
-			if(object instanceof Service)
+			if(object instanceof Tenant)
 			{
-				Long id = ((Service)object).getId();
+				Long id = ((Tenant)object).getId();
 				return id+"";
 			}else
 			{
-				throw new IllegalStateException("object is not instaoce of Services ");
+				throw new IllegalStateException("object is not instaoce of Tenant ");
 			}
 		}
 		return "";

@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="editOrderDialog" widgetVar="editOrderDialog" modal="true"
+		resizable="false" closeOnEscape="true">
+		<h:form id="editOrderForm">
+
+			<p:panelGrid>
+				
+				<b:row>
+					<b:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
+					</b:column>
+					<b:column medium-screen="4">
+						<p:autoComplete completeMethod="#{orderBean.completeServices}"
+							value="#{orderBean.selectedOrder.service}" var="service"
+							itemLabel="#{service.serviceName}" itemValue="#{service}"
+							converter="#{serviceConverter}"></p:autoComplete>
+					</b:column>
+				</b:row>
+			
+				<p:row>
+					<p:column>
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
+					</p:column>
+					<p:column>
+						<p:inputText required="true"
+							value="#{orderBean.selectedOrder.notes}"
+							requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column >
+						<p:commandButton actionListener="#{orderBean.insertOrder}"
+							update=":orderListForm" oncomplete="PF('editOrderDialog').hide()"
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}"
+							 style="width:100%" />
+					</p:column>
+					<p:column >
+						<p:commandButton
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}"
+							 />
+					</p:column>
+				</p:row>
+				
+			</p:panelGrid>
+		</h:form>
+
+
+	</p:dialog>
+
+
+</ui:composition>

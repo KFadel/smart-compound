@@ -58,9 +58,7 @@ public class ServiceDAOImpl extends BaseDAO implements ServiceDAO {
 
 	@Override
 	public List<Service> getCompoundServices(Compound compound) {
-		Query query = getCurrentSession().createQuery("select x from Service x where x.compoundId =:compoundId");
-		query.setParameter("compoundId", compound);
-		return query.list();
+		return (List<Service>) super.getAllByCompound(Service.class, compound);
 	}
 
 }

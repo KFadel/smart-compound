@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -70,27 +70,59 @@ public class Employee extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@ManyToOne
 	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "recid")
-	private Lookup salutationLookupId;
+	private Lookup salutationLookup;
 	@ManyToOne
 	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "recid")
-	private Lookup genderLookupId;
+	private Lookup genderLookup;
 	@ManyToOne
 	@JoinColumn(name = "status_lookup_id", referencedColumnName = "recid")
-	private Lookup statusLookupId;
+	private Lookup statusLookup;
 	@ManyToOne
 	@JoinColumn(name = "group_id", referencedColumnName = "recid")
-	private Group groupId;
+	private Group group;
 
-
-	public Lookup getGenderLookupId() {
-		return genderLookupId;
+	
+	public Compound getCompound() {
+		return compound;
 	}
 
-	public void setGenderLookupId(Lookup genderLookupId) {
-		this.genderLookupId = genderLookupId;
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
+
+	public Lookup getSalutationLookup() {
+		return salutationLookup;
+	}
+
+	public void setSalutationLookup(Lookup salutationLookup) {
+		this.salutationLookup = salutationLookup;
+	}
+
+	public Lookup getGenderLookup() {
+		return genderLookup;
+	}
+
+	public void setGenderLookup(Lookup genderLookup) {
+		this.genderLookup = genderLookup;
+	}
+
+	public Lookup getStatusLookup() {
+		return statusLookup;
+	}
+
+	public void setStatusLookup(Lookup statusLookup) {
+		this.statusLookup = statusLookup;
+	}
+
+	public Group getGroup() {
+		return group;
+	}
+
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 
 	public Long getId() {
@@ -255,38 +287,6 @@ public class Employee extends BaseEntity implements Serializable {
 
 	public void setMobileNumber2(String mobileNumber2) {
 		this.mobileNumber2 = mobileNumber2;
-	}
-
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
-	public Lookup getSalutationLookupId() {
-		return salutationLookupId;
-	}
-
-	public void setSalutationLookupId(Lookup salutationLookupId) {
-		this.salutationLookupId = salutationLookupId;
-	}
-
-	public Lookup getStatusLookupId() {
-		return statusLookupId;
-	}
-
-	public void setStatusLookupId(Lookup statusLookupId) {
-		this.statusLookupId = statusLookupId;
-	}
-
-	public Group getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(Group groupId) {
-		this.groupId = groupId;
 	}
 
 	@Override

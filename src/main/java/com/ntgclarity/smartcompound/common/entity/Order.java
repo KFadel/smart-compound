@@ -25,7 +25,7 @@ public class Order extends BaseEntity implements Serializable {
 	private static final long serialVersionUID = -6489027984427925289L;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ng_nts_orders_recid_seq")
 	@SequenceGenerator(name="ng_nts_orders_recid_seq", sequenceName="ng_nts_orders_recid_seq")
@@ -33,10 +33,10 @@ public class Order extends BaseEntity implements Serializable {
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
-	private Lookup channelLookupId;
+	private Lookup channelLookup;
 	@ManyToOne
 	@JoinColumn(name = "service_id", referencedColumnName = "recid")
-	private Service serviceId;
+	private Service service;
 
 	@Column(name = "service_name")
 	private String serviceName;
@@ -82,22 +82,40 @@ public class Order extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "tenant_id", referencedColumnName = "recid")
-	private Tenant tenantId;
+	private Tenant tenant;
 
-	public Compound getCompoundId() {
-		return compoundId;
+	
+	
+	public Compound getCompound() {
+		return compound;
 	}
 
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
+	public void setCompound(Compound compound) {
+		this.compound = compound;
 	}
 
-	public Service getServiceId() {
-		return serviceId;
+	public Lookup getChannelLookup() {
+		return channelLookup;
 	}
 
-	public void setServiceId(Service serviceId) {
-		this.serviceId = serviceId;
+	public void setChannelLookup(Lookup channelLookup) {
+		this.channelLookup = channelLookup;
+	}
+
+	public Service getService() {
+		return service;
+	}
+
+	public void setService(Service service) {
+		this.service = service;
+	}
+
+	public Tenant getTenant() {
+		return tenant;
+	}
+
+	public void setTenant(Tenant tenant) {
+		this.tenant = tenant;
 	}
 
 	public String getServiceName() {
@@ -164,14 +182,6 @@ public class Order extends BaseEntity implements Serializable {
 		this.serviceLocationlattitude = serviceLocationlattitude;
 	}
 
-	public Tenant getTenantId() {
-		return tenantId;
-	}
-
-	public void setTenantId(Tenant tenantId) {
-		this.tenantId = tenantId;
-	}
-
 	public Date getAcceptanceDate() {
 		return acceptanceDate;
 	}
@@ -210,26 +220,18 @@ public class Order extends BaseEntity implements Serializable {
 
 	}
 
-	public Lookup getChannelLookupId() {
-		return channelLookupId;
-	}
-
-	public void setChannelLookupId(Lookup channelLookupId) {
-		this.channelLookupId = channelLookupId;
-	}
-
 	@Override
 	public String toString() {
-		return "Order [compoundId=" + compoundId + ", id=" + id
-				+ ", serviceId=" + serviceId + ", serviceName=" + serviceName
+		return "Order [compound=" + compound + ", id=" + id
+				+ ", service=" + service + ", serviceName=" + serviceName
 				+ ", requestDate=" + requestDate + ", status=" + status
 				+ ", createdBy=" + createdBy + ", acceptanceDate="
 				+ acceptanceDate + ", acceptedBy=" + acceptedBy + ", channel="
 				+ channel + ", notes=" + notes + ", serviceLocationlongtude="
 				+ serviceLocationlongtude + ", serviceLocationlattitude="
 				+ serviceLocationlattitude + ", serviceLocationDesc="
-				+ serviceLocationDesc + ", facilityId=" + facility
-				+ ", tenantId=" + tenantId + "]";
+				+ serviceLocationDesc + ", facility=" + facility
+				+ ", tenant=" + tenant + "]";
 	}
 
 	public Facility getFacility() {

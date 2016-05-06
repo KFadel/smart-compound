@@ -55,14 +55,14 @@ public class Facility extends BaseEntity implements Serializable{
 	private String description;
 	@ManyToOne
 	@JoinColumn(name ="tenant_id" , referencedColumnName="recid")
-	private Tenant tenantId;
+	private Tenant tenant;
 	
 	@ManyToOne
 	@JoinColumn(name ="compound_id" , referencedColumnName="recid")
-	private Compound compoundId;
+	private Compound compound;
 	@ManyToOne
 	@JoinColumn(name ="facility_lookup_id" , referencedColumnName="recid")
-	private Lookup facilityLookupId;
+	private Lookup facilityLookup;
 	@Override
 	public Long getId() {
 		return id;
@@ -175,22 +175,6 @@ public class Facility extends BaseEntity implements Serializable{
 		this.description = description;
 	}
 
-	public Tenant getTenantId() {
-		return tenantId;
-	}
-
-	public void setTenantId(Tenant tenantId) {
-		this.tenantId = tenantId;
-	}
-
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -198,13 +182,30 @@ public class Facility extends BaseEntity implements Serializable{
 	public void setBlock(String block) {
 		this.block = block;
 	}
+	
 
-	public Lookup getFacilityLookupId() {
-		return facilityLookupId;
+	public Tenant getTenant() {
+		return tenant;
 	}
 
-	public void setFacilityLookupId(Lookup facilityLookupId) {
-		this.facilityLookupId = facilityLookupId;
+	public void setTenant(Tenant tenant) {
+		this.tenant = tenant;
+	}
+
+	public Compound getCompound() {
+		return compound;
+	}
+
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
+
+	public Lookup getFacilityLookup() {
+		return facilityLookup;
+	}
+
+	public void setFacilityLookup(Lookup facilityLookup) {
+		this.facilityLookup = facilityLookup;
 	}
 
 	@Override
@@ -216,7 +217,7 @@ public class Facility extends BaseEntity implements Serializable{
 				+ ", pictureUrl=" + pictureUrl + ", longtude=" + longtude
 				+ ", lattitude=" + lattitude + ", street=" + street
 				+ ", status=" + status + ", description=" + description
-				+ ", tenantId=" + tenantId + ", compoundId=" + compoundId+"]";
+				+ ", tenant=" + tenant + ", compound=" + compound+"]";
 				 
 	}
 

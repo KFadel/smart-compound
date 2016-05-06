@@ -14,6 +14,13 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_groups")
 public class Group  extends BaseEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "recid")
@@ -32,5 +39,11 @@ public class Group  extends BaseEntity implements Serializable{
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
+	
+	@Override
+	public String toString() {
+		return "Group [id=" + id + ", groupName=" + groupName + "]";
+	}
+	
 	
 }

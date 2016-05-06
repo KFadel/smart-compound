@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
@@ -54,6 +55,11 @@ public class TenantDAOImpl extends BaseDAO implements TenantDAO {
 	public int getNumOfTenantsRows(Map<String, Object> filters) {
 		
 		return super.getNumOfRows(Tenant.class,filters);
+	}
+
+	@Override
+	public List<Tenant> getCompoundTenants(Compound compound) {
+		return (List<Tenant>) super.getAllByCompound(Tenant.class, compound);
 	}
 
 }
