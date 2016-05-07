@@ -29,6 +29,7 @@ public abstract class BaseDAO {
 
 	public Object saveOrUpdate(Object entity) {
 		getCurrentSession().saveOrUpdate(entity);
+		System.out.println("ticket inserted successfully");
 		return entity;
 	}
 
@@ -43,7 +44,6 @@ public abstract class BaseDAO {
 		return getCurrentSession().get(clazz, id);
 	}
 
-	// What does filters represent?
 	public List load(Class cls, int first, int pageSize, String sortField,
 			Boolean ascending, Map<String, Object> filters) {
 		Query query;

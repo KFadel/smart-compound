@@ -8,16 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Service;
+import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.ServiceDAO;
 
 @Repository
 public class ServiceDAOImpl extends BaseDAO implements ServiceDAO {
 
-	@Override
-	public List<Service> getAllServices() {
-
-		return (List<Service>) super.getAll(Service.class);
+	public List<Service> getAllServices(Compound comp) {
+		Query  query=getCurrentSession().createQuery("select o from Service o where o.compound.id=1");
+		List<Service> result = query.list();
+		return result;
 	}
 
 	@Override

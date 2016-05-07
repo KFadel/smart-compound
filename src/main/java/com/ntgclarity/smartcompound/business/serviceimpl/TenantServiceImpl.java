@@ -21,8 +21,8 @@ public class TenantServiceImpl implements TenantService {
 	private TenantDAO tenantDAO;
 	
 	@Override
-	public List<Tenant> getAllTenants() {
-		return tenantDAO.getAllTenants();
+	public List<Tenant> getAllTenants(Compound comp) {
+		return tenantDAO.getAllTenants(comp);
 	}
 
 	@Override

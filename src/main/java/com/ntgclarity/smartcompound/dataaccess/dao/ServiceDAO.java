@@ -8,7 +8,7 @@ import com.ntgclarity.smartcompound.common.entity.Service;
 
 public interface ServiceDAO {
 
-	List<Service> getAllServices();
+	List<Service> getAllServices(Compound comp);
 
 	Service getService(Long id);
 

@@ -13,6 +13,7 @@ import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
+import com.ntgclarity.smartcompound.common.constatnt.MessagesKeys;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.portal.base.BaseBean;
@@ -35,9 +36,10 @@ public class EmployeeBean extends BaseBean implements Serializable {
 	private LazyDataModel<Employee> lazyEmployeeModel;
 
 	@PostConstruct
-	public void init()throws SmartCompoundException {
+	public void init()throws SmartCompoundException {	
 //		loadAllEmployees(); 
 		initiateNewEmployee();
+		initiateEmployee();
 		LoadData();
 	}
 	
@@ -130,9 +132,21 @@ public class EmployeeBean extends BaseBean implements Serializable {
 		return lazyEmployeeModel;
 	}
 
+
+
+	/**START HEBA'S WORK**/	
+	public Employee initiateEmployee(){
+		selectedEmployee = new Employee();
+		return selectedEmployee;
+	}
 	public void setLazyEmployeeModel(LazyDataModel<Employee> lazyEmployeeModel) {
 		this.lazyEmployeeModel = lazyEmployeeModel;
 	}
 
 	
+	public void insertEmployee(){
+		smartCompoundManagment.insertEmployee(selectedEmployee);
+		addInfoMessage(MessagesKeys.SMART_COMPOUND_EMPLOYEE_PAGE_EMPLOYEE_INSERTION_MESSAGE);
+	}	
+	/**END HEBA'S WORK**/
 }

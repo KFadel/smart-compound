@@ -29,6 +29,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		}
 		return null;
 	}
+	
+	/**START HEBA'S WORK**/
+	public Employee insertEmployee(Employee employee){
+		return employeeDAO.insertEmployee(employee);
+	}
+	/**END HEBA'S WORK**/
 
 	@Override
 	public List<Employee> loadOrders(int first, int pageSize, String sortField,

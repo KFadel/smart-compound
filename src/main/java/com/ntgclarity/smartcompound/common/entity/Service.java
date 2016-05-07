@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -25,7 +26,8 @@ public class Service extends BaseEntity implements Serializable{
 	 * 
 	 */
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="ng_nts_services_recid_seq")
+	@SequenceGenerator(name="ng_nts_services_recid_seq", sequenceName="ng_nts_services_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	@Column(name="service_name")

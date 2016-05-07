@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
+import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
 
@@ -17,9 +18,10 @@ import com.ntgclarity.smartcompound.dataaccess.dao.FacilityDAO;
 public class FacilityDAOImpl extends BaseDAO implements FacilityDAO {
 
 	@Override
-	public List<Facility> getAllFacilities() {
-
-		return (List<Facility>) super.getAll(Facility.class);
+	public List<Facility> getAllFacilities(Compound comp) {
+		Query  query=getCurrentSession().createQuery("select o from Facility o where o.compound.id=1");
+		List<Facility> result = query.list();
+		return result;
 	}
 
 	@Override

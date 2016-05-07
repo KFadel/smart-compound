@@ -24,17 +24,33 @@
 				</b:column>
 				<b:column medium-screen="4">
 					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_SERVICE_PAGE_NAME_REQUIRED}" />
+						requiredMessage="#{msgs.SMART_COMPOUND_SERVICE_PAGE_NAME_REQUIRED}"
+						value="#{serviceBean.createdService.serviceName}" />
 				</b:column>
 			</b:row>
-
+			<b:row>
+				<b:column medium-screen="2">
+					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_COMPOUND}" />
+				</b:column>
+				<b:column medium-screen="4">
+					<b:selectOneMenu style="width:100%"
+						value="#{serviceBean.createdService.compound}">
+						<f:selectItem itemValue="" itemLabel="Select Compound"
+							itemDisabled="true" />
+						<f:selectItems value="#{serviceBean.compounds}"
+							var="compound" itemValue="#{compound}"
+							itemLabel="#{compound.compoundName}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
 			<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_SEVERITY}" />
 				</b:column>
 				<b:column medium-screen="4">
 					<b:inputText required="true"
-						requiredMessage="#{msgs.SMART_COMPOUND_SERVICE_PAGE_SEVERITY_REQUIRED}" />
+						requiredMessage="#{msgs.SMART_COMPOUND_SERVICE_PAGE_SEVERITY_REQUIRED}"
+						value="#{serviceBean.createdService.severity}" />
 				</b:column>
 			</b:row>
 
@@ -44,7 +60,8 @@
 						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_DATE_CREATED}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:datepicker />
+					<b:datepicker
+						value="#{serviceBean.createdService.creationDate}" />
 				</b:column>
 			</b:row>
 
@@ -54,11 +71,14 @@
 						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_FLAT_OR_USAGE}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_FLAT}" />
+					<b:selectOneMenu style="width:100%"
+						value="#{serviceBean.createdService.flatOrUsage}">
+						<f:selectItem itemLabel="Select One" itemDisabled="true" />
+						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_FLAT}"
+							value="flat" />
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_USAGE}" />
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_USAGE}"
+							value="usage" />
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
@@ -67,27 +87,31 @@
 					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_IS_ACTIVE}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="Select One" />
+					<b:selectOneMenu style="width:100%"
+						value="#{serviceBean.isActive}">
+						<f:selectItem itemLabel="Select One" itemDisabled="true" />
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_ACTIVE}" />
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_ACTIVE}" itemValue="1" />
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_NOT_ACTIVE}" />
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_NOT_ACTIVE}"
+							itemValue="0" />
 					</b:selectOneMenu>
 				</b:column>
-			</b:row>
+			</b:row> 
 
-			<b:row>
+		<b:row>
 				<b:column medium-screen="2">
 					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_PRE_POST}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
+					<b:selectOneMenu style="width:100%"
+						value="#{serviceBean.postPre}">
 						<f:selectItem itemLabel="Select One" />
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_PREPAID}" />
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_PREPAID}" itemValue="1" />
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_POSTPAID}" />
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_POSTPAID}"
+							itemValue="0" />
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
@@ -98,27 +122,14 @@
 						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_UNIT_OF_MEASURE}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
+					<b:selectOneMenu style="width:100%"
+						value="#{serviceBean.createdService.measuringUnit}">
 						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_TIME}" />
+						<!--  <f:selectItem itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_TIME}" value="time"/>
 						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_LITTER}" />
-					</b:selectOneMenu>
-				</b:column>
-			</b:row>
+							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_LITTER}" value="litre"/> -->
+						<f:selectItems value="#{serviceBean.measuringUnits}" var="un" itemLabel="#{un.lookupName}"/>
 
-
-			<b:row>
-				<b:column medium-screen="2">
-					<h:outputText
-						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_FLAT_OR_USAGE}" />
-				</b:column>
-				<b:column medium-screen="4">
-					<b:selectOneMenu style="width:100%">
-						<f:selectItem itemLabel="Select One" />
-						<f:selectItem itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_FLAT}" />
-						<f:selectItem
-							itemLabel="#{msgs.SMART_COMPOUND_SERVICE_PAGE_USAGE}" />
 					</b:selectOneMenu>
 				</b:column>
 			</b:row>
@@ -127,7 +138,7 @@
 					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_NRC}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputText />
+					<b:inputText value="#{serviceBean.createdService.nrc}" />
 				</b:column>
 			</b:row>
 			<b:row>
@@ -135,18 +146,29 @@
 					<h:outputText value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_MRC}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputText />
+					<b:inputText value="#{serviceBean.createdService.mrc}" />
 				</b:column>
 
 			</b:row>
+			<b:row>
+				<b:column medium-screen="2">
+					<h:outputText
+						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_ESTIMATED_DELIVERY_DAYS}" />
+				</b:column>
+				<b:column medium-screen="4">
+					<b:inputText
+						value="#{serviceBean.createdService.estimatedDeliveryDays}" />
+				</b:column>
 
+			</b:row> 
 			<b:row>
 				<b:column medium-screen="2">
 					<h:outputText
 						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_INSTALLATION_PRICE}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputText />
+					<b:inputText
+						value="#{serviceBean.createdService.installationPrice}" />
 				</b:column>
 
 			</b:row>
@@ -158,13 +180,15 @@
 						value="#{msgs.SMART_COMPOUND_SERVICE_PAGE_DESCRIPTION}" />
 				</b:column>
 				<b:column medium-screen="4">
-					<b:inputTextarea />
+					<b:inputTextarea
+						value="#{serviceBean.createdService.description}" />
 				</b:column>
 			</b:row>
 
 			<b:row>
 				<b:column span="2" offset="2">
-					<b:commandButton value="Submit" look="success" style="width:100%" />
+					<b:commandButton value="Submit" look="success" style="width:100%"
+						actionListener="#{serviceBean.insertService}" />
 				</b:column>
 				<b:column span="2">
 					<b:commandButton value="Cancel" look="warning" style="width:100%" />
