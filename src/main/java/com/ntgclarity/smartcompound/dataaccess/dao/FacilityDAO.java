@@ -10,7 +10,7 @@ import com.ntgclarity.smartcompound.common.entity.Facility;
 
 public interface FacilityDAO {
 
-	List<Facility> getAllFacilities();
+	List<Facility> getAllFacilities(Compound comp);
 
 	Facility getFacility(Long id);
 

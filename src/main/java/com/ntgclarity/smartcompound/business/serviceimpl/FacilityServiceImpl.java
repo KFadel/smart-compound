@@ -23,8 +23,8 @@ public class FacilityServiceImpl implements FacilityService {
 	private FacilityDAO facilityDAO;
 	
 	@Override
-	public List<Facility> getAllFacilities()throws SmartCompoundException {
-		return facilityDAO.getAllFacilities();
+	public List<Facility> getAllFacilities(Compound comp) {
+		return facilityDAO.getAllFacilities(comp);
 	}
 
 	@Override

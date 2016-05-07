@@ -9,24 +9,23 @@
 		<h:form id="editOrderForm">
 
 			<p:panelGrid>
-				
-				<b:row>
-					<b:column medium-screen="2">
+
+				<p:row>
+					<p:column medium-screen="2">
 						<h:outputText
 							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
-					</b:column>
-					<b:column medium-screen="4">
+					</p:column>
+					<p:column medium-screen="4">
 						<p:autoComplete completeMethod="#{orderBean.completeServices}"
 							value="#{orderBean.selectedOrder.service}" var="service"
 							itemLabel="#{service.serviceName}" itemValue="#{service}"
 							converter="#{serviceConverter}"></p:autoComplete>
-					</b:column>
-				</b:row>
-			
+					</p:column>
+				</p:row>
+
 				<p:row>
 					<p:column>
-						<h:outputText
-							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
+						<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
 					</p:column>
 					<p:column>
 						<p:inputText required="true"
@@ -35,19 +34,29 @@
 					</p:column>
 				</p:row>
 				<p:row>
-					<p:column >
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />
+					</p:column>
+					<p:column medium-screen="4">
+						<p:inputTextarea
+							value="#{orderBean.selectedOrder.serviceLocationDesc}" />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
 						<p:commandButton actionListener="#{orderBean.insertOrder}"
 							update=":orderListForm" oncomplete="PF('editOrderDialog').hide()"
 							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}"
-							 style="width:100%" />
+							style="width:100%" />
 					</p:column>
-					<p:column >
+					<p:column>
 						<p:commandButton
-							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}"
-							 />
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}" />
 					</p:column>
 				</p:row>
-				
+
 			</p:panelGrid>
 		</h:form>
 

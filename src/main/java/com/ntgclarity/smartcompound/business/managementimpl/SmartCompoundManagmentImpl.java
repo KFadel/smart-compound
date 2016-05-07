@@ -15,18 +15,24 @@ import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.business.service.FacilityService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.business.service.ServiceService;
+import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
+import com.ntgclarity.smartcompound.business.service.*;
+import com.ntgclarity.smartcompound.common.entity.*;
+import com.ntgclarity.smartcompound.common.entity.Ticket;
+
 
 @Service
 public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
 	@Autowired
 	private TicketService ticketService;
 
@@ -41,6 +47,9 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 	@Autowired
 	private TenantService tenantService;
+
+	@Autowired
+	private ServiceService serviceService;
 
 	@Override
 	public List<Employee> getAllEmployees() throws SmartCompoundException {
@@ -81,11 +90,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	}
 	
 
-	/*added by Hend*/
-	
-	@Autowired
-	private ServiceService serviceService;
-	
+
 	@Override
 	public com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException {
 		return serviceService.insertService(service);
@@ -146,6 +151,80 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 			int first, int pageSize, String sortField, boolean b,
 			Map<String, Object> filters) {
 		return serviceService.loadServices(first, pageSize, sortField, b, filters);
+	}
+
+
+//	@Override
+//	public List<Ticket> getAllTickets() {
+//		// TODO Auto-generated method stub
+//		return ticketService.loadTickets(first, pageSize, sortField, ascending, filters);
+//	}
+
+
+	@Override
+	public Ticket insertTicket(Ticket ticket) {
+		// TODO Auto-generated method stub
+		return ticketService.insertTicket(ticket) ;
+	}
+
+
+	@Override
+	public Ticket getTicket(Long long1) {
+	
+		return null;
+	}
+
+
+	@Override
+	public List<Tenant> getAllTenants(Compound comp) {
+		System.out.println("result size in management"+tenantService.getAllTenants(comp));
+		return tenantService.getAllTenants(comp);
+	}
+
+
+	@Override
+	public List<com.ntgclarity.smartcompound.common.entity.Service> getAllServices(Compound comp) {
+		// TODO Auto-generated method stub
+		return serviceService.getAllServices(comp);
+	}
+
+
+	@Override
+	public List<Facility> getAllFacilities(Compound comp) {
+		// TODO Auto-generated method stub
+		return facilityService.getAllFacilities(comp);
+	}
+
+	@Override
+	public Facility getFacility(Long id) {
+
+			try {
+				return facilityService.getFacility(id);
+			} catch (SmartCompoundException e) {
+				
+				e.printStackTrace();
+				return null ;
+			}
+	}
+
+
+	/**START HEBA'S WORK**/
+	
+	public Employee insertEmployee(Employee employee){
+		return employeeService.insertEmployee(employee);
+	}
+	
+	/**END HEBA'S WORK**/
+	@Override
+	public List<Employee> loadEmployees(int first, int pageSize, String sortField,
+			boolean ascending, Map<String, Object> filters) {
+		return employeeService.loadOrders(first, pageSize, sortField, ascending,
+				filters);
+	}
+
+	@Override
+	public int getNumOfEmployeesRows(Map<String, Object> filters) {
+		return employeeService.getNumOfOrdersRows(filters);
 	}
 
 }
