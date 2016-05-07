@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.entity.Lookup;
+import com.ntgclarity.smartcompound.common.entity.LookupType;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
@@ -29,6 +31,12 @@ public interface SmartCompoundManagment {
 
 	/*added by Hend*/
 	com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException ;
+	
+	List<com.ntgclarity.smartcompound.common.entity.Service> loadServices(
+			int first, int pageSize, String sortField, boolean b,
+			Map<String, Object> filters);
+	
+	int getNumOfServicesRows(Map<String, Object> filters);
 	/*end oh Hend's part*/
 
 	Order insertOrder(Order order) throws SmartCompoundException;
@@ -80,5 +88,7 @@ public interface SmartCompoundManagment {
 			boolean b, Map<String, Object> filters);
 
 	int getNumOfEmployeesRows(Map<String, Object> filters);
+
+	List<Lookup> getLookups(LookupType lookupType);
 
 }
