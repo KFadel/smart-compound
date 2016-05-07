@@ -32,6 +32,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
 	@Autowired
 	private TicketService ticketService;
 
@@ -47,9 +48,6 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	@Autowired
 	private TenantService tenantService;
 
-	
-	@Autowired
-	private TicketService ticketService;
 	
 	@Override
 	public List<Employee> getAllEmployees() throws SmartCompoundException {
@@ -146,22 +144,10 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 
 	/**START HEBA'S WORK**/
-	@Override
-	public Ticket getTicket(Long id) {
-		return ticketService.getTicket(id);
+	
+	public Employee insertEmployee(Employee employee){
+		return employeeService.insertEmployee(employee);
 	}
 	
-
-	@Override
-	public List<Ticket> loadTickets(int first, int pageSize, String sortField,
-			boolean b, Map<String, Object> filters) {
-		return ticketService.loadTickets(first, pageSize, sortField, b, filters);
-	}
-
-
-	@Override
-	public int getNumOfTicketsRows(Map<String, Object> filters) {
-		return ticketService.getNumOfTicketsRows(filters);
-	}
 	/**END HEBA'S WORK**/
 }

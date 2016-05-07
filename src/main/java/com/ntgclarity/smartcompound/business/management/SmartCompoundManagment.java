@@ -53,11 +53,7 @@ public interface SmartCompoundManagment {
 	Tenant getTenant(Long id);
 
 	/**START HEBA'S WORK**/
-	Ticket getTicket(Long id);
-	
-	List<Ticket> loadTickets(int first, int pageSize, String sortField,
-			boolean b, Map<String, Object> filters);
-
-	int getNumOfTicketsRows(Map<String, Object> filters);
+	public Employee insertEmployee(Employee employee);
 	/**END HEBA'S WORK**/
+
 }

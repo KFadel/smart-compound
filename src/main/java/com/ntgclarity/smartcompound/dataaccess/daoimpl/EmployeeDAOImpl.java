@@ -21,5 +21,11 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	public Employee getEmployee(Long id) {
 		return  (Employee) super.get(Employee.class , id);
 	}
+	
+	/**START HEBA'S WORK**/
+	public Employee insertEmployee(Employee employee){
+		return (Employee) super.saveOrUpdate(employee);
+	}
+	/**END HEBA'S WORK**/
 
 }

@@ -9,5 +9,9 @@ public interface EmployeeDAO {
 	List<Employee> getAllEmployees();
 
 	Employee getEmployee(Long id);
+	
+	/**START HEBA'S WORK**/
+	Employee insertEmployee(Employee employee);
+	/**END HEBA'S WORK**/
 
 }
