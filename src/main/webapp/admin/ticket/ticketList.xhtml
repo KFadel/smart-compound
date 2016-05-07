@@ -11,15 +11,19 @@
 	<ui:define name="contentTitle"> #{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TITLE}</ui:define>
 	<ui:define name="content">
 		<h:form id="form">
-			<p:dataTable var="ticket" rows="10" paginator="true" value="#{ticketBean.lazyTicketModel}" 
-				resizableColumns="true" draggableColumns="true"
+			<p:dataTable var="ticket" rows="10" paginator="true"
+				value="#{ticketBean.lazyTicketModel}" resizableColumns="true"
+				draggableColumns="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"  selection="#{ticketBean.selectedTicket}" id="ticketTable"  lazy="true">
+				rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+				selection="#{ticketBean.selectedTicket}" id="ticketTable"
+				lazy="true">
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TICKET_ID}">
-					<h:outputText value="#{ticket.id}"  />
+					<h:outputText value="#{ticket.id}" />
 				</p:column>
-
+			
+						
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_OPEN_DATE}">
 					<h:outputText value="#{ticket.openDate}" />
@@ -67,19 +71,20 @@
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_FACILITY_ID}">
-					<h:outputText value="#{ticket.facility.buildingNumber} #{ticket.facility.street}" />
+					<h:outputText
+						value="#{ticket.facilityId.buildingNumber} #{ticket.facilityId.street}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_CATEGORY}">
-					<h:outputText value="#{ticket.feedback}"/>
+					<h:outputText value="#{ticket.feedback}" />
 				</p:column>
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_PROBLEM_DATE}">
 					<h:outputText value="#{ticket.problemDate}" />
 				</p:column>
-
+				
 			</p:dataTable>
 
 		</h:form>

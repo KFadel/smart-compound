@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -39,7 +40,9 @@ public class Ticket extends BaseEntity implements Serializable {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ng_nts_tickets_recid_seq")
+	@SequenceGenerator(name="ng_nts_tickets_recid_seq", sequenceName="ng_nts_tickets_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	
@@ -94,8 +97,16 @@ public class Ticket extends BaseEntity implements Serializable {
 	private Group assignedGroup;
 
 	@Column(name = "rate")
-	private String rate;
+	private double rate;
 	
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
 	@Column(name = "group_name")
 	private String groupName;
 
@@ -192,13 +203,7 @@ public class Ticket extends BaseEntity implements Serializable {
 		this.severity = severity;
 	}
 
-	public String getRate() {
-		return rate;
-	}
 
-	public void setRate(String rate) {
-		this.rate = rate;
-	}
 
 
 	public String getGroupName() {

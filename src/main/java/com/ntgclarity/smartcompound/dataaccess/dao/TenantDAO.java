@@ -10,7 +10,7 @@ import com.ntgclarity.smartcompound.common.entity.Tenant;
 
 public interface TenantDAO {
 
-	List<Tenant> getAllTenants();
+	List<Tenant> getAllTenants(Compound comp);
 
 	Tenant getTenant(Long id);
 

@@ -11,7 +11,7 @@ import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 public interface FacilityService {
 
-	List<Facility> getAllFacilities()throws SmartCompoundException;
+	List<Facility> getAllFacilities(Compound comp);
 
 	Facility getFacility(Long id)throws SmartCompoundException;
 

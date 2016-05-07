@@ -29,6 +29,7 @@ public abstract class BaseDAO {
 
 	public Object saveOrUpdate(Object entity) {
 		getCurrentSession().saveOrUpdate(entity);
+		System.out.println("ticket inserted successfully");
 		return entity;
 	}
 

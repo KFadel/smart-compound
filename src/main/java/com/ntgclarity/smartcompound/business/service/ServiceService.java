@@ -9,7 +9,7 @@ import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
 public interface ServiceService {
 
-	List<Service> getAllServices() throws SmartCompoundException;
+	List<Service> getAllServices(Compound comp);
 
 	Service getService(Long id);
 

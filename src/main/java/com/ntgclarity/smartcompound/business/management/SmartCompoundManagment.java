@@ -14,6 +14,9 @@ import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
+import com.ntgclarity.smartcompound.common.entity.Facility;
+import com.ntgclarity.smartcompound.common.entity.Tenant;
+import com.ntgclarity.smartcompound.common.entity.Ticket;
 
 @Service
 public interface SmartCompoundManagment {
@@ -51,6 +54,23 @@ public interface SmartCompoundManagment {
 	List<Tenant> getCompoundTenants(Compound compound);
 
 	Tenant getTenant(Long id);
+
+//	List<Ticket> getAllTickets();
+
+	Ticket insertTicket(Ticket ticket);
+
+	Ticket getTicket(Long long1);
+
+	List<Tenant> getAllTenants(Compound comp);
+
+	List<com.ntgclarity.smartcompound.common.entity.Service> getAllServices(
+			Compound comp);
+
+	List<Facility> getAllFacilities(Compound comp);
+
+	Facility getFacility(Long long1);
+
+
 
 	/**START HEBA'S WORK**/
 	public Employee insertEmployee(Employee employee);
