@@ -38,13 +38,8 @@ public class EmployeeBean extends BaseBean implements Serializable {
 	@PostConstruct
 	public void init()throws SmartCompoundException {	
 //		loadAllEmployees(); 
-		initiateNewEmployee();
 		initiateEmployee();
 		LoadData();
-	}
-	
-	public void initiateNewEmployee() {
-		selectedEmployee = new Employee();
 	}
 
 	private void LoadData() {
@@ -135,9 +130,9 @@ public class EmployeeBean extends BaseBean implements Serializable {
 
 
 	/**START HEBA'S WORK**/	
-	public Employee initiateEmployee(){
+	public void initiateEmployee(){
 		selectedEmployee = new Employee();
-		return selectedEmployee;
+//		return selectedEmployee;
 	}
 	public void setLazyEmployeeModel(LazyDataModel<Employee> lazyEmployeeModel) {
 		this.lazyEmployeeModel = lazyEmployeeModel;

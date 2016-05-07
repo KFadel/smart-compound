@@ -33,12 +33,12 @@ public class EmployeeDAOImpl extends BaseDAO implements EmployeeDAO {
 	@Override
 	public List<Employee> loadOrders(int first, int pageSize, String sortField,
 			boolean ascending, Map<String, Object> filters) {
-		return super.load(Order.class,first,pageSize,sortField,ascending,filters);
+		return super.load(Employee.class,first,pageSize,sortField,ascending,filters);
 	}
 
 	@Override
 	public int getNumOfOrdersRows(Map<String, Object> filters) {
-		return super.getNumOfRows(Order.class,filters);
+		return super.getNumOfRows(Employee.class,filters);
 	}
 
 }

@@ -9,58 +9,58 @@
 
 		<h:form id="createOrderForm">
 			<p:panelGrid>
-				<b:row>
-					<b:column>
+				<p:row>
+					<p:column>
 						<b:messages id="message" />
-					</b:column>
-				</b:row>
+					</p:column>
+				</p:row>
 
-				<b:row>
-					<b:column>
+				<p:row>
+					<p:column>
 						<h:outputText
 							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_TENANT_NAME}" />
-					</b:column>
-					<b:column>
+					</p:column>
+					<p:column>
 						<p:autoComplete completeMethod="#{orderBean.completeTenant}"
 							value="#{orderBean.selectedOrder.tenant}" var="tenant"
 							itemLabel="#{tenant.username}" itemValue="#{tenant}"
 							converter="#{tenantConverter}"></p:autoComplete>
-					</b:column>
-				</b:row>
-				<b:row>
-					<b:column>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
 						<h:outputText value="#{msgs.SMART_COMPOUND_ORDER_PAGE_NOTES}" />
-					</b:column>
-					<b:column>
+					</p:column>
+					<p:column>
 						<p:inputText required="true"
 							value="#{orderBean.selectedOrder.notes}"
 							requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
-					</b:column>
-				</b:row>
+					</p:column>
+				</p:row>
 
-				<b:row>
-					<b:column medium-screen="2">
+				<p:row>
+					<p:column medium-screen="2">
 						<h:outputText
 							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_NAME}" />
-					</b:column>
-					<b:column medium-screen="4">
+					</p:column>
+					<p:column medium-screen="4">
 						<p:autoComplete completeMethod="#{orderBean.completeServices}"
 							value="#{orderBean.selectedOrder.service}" var="service"
 							itemLabel="#{service.serviceName}" itemValue="#{service}"
 							converter="#{serviceConverter}"></p:autoComplete>
-					</b:column>
-				</b:row>
+					</p:column>
+				</p:row>
 				
-				<b:row>    
-     					<b:column medium-screen="2">    
+				<p:row>    
+     					<p:column medium-screen="2">    
      						<h:outputText    
      							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />    
-     					</b:column>    
-     					<b:column medium-screen="4">    
-     						<b:inputTextarea    
+     					</p:column>    
+     					<p:column medium-screen="4">    
+     						<p:inputTextarea    
      							value="#{orderBean.selectedOrder.serviceLocationDesc}" />    
-     					</b:column>    
-     				</b:row> 
+     					</p:column>    
+     				</p:row> 
 
 
 				<p:commandButton actionListener="#{orderBean.insertOrder}"
