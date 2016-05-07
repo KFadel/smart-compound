@@ -51,22 +51,39 @@
 					</p:column>
 				</p:row>
 				
-				<p:row>    
-     					<p:column medium-screen="2">    
-     						<h:outputText    
-     							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />    
-     					</p:column>    
-     					<p:column medium-screen="4">    
-     						<p:inputTextarea    
-     							value="#{orderBean.selectedOrder.serviceLocationDesc}" />    
-     					</p:column>    
-     				</p:row> 
+				<p:row>
+					<p:column>
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_Facility_NUMBER}" />
+					</p:column>
+					<p:column>
+						<p:autoComplete completeMethod="#{orderBean.completeFacilities}"
+							value="#{orderBean.selectedOrder.facility}" var="facility"
+							itemLabel="#{facility.buildingNumber} #{facility.floorNumber} #{facility.facilityNumber}" 
+							itemValue="#{facility}" converter="#{facilityConverter}"></p:autoComplete>
+					</p:column>
+				</p:row>
 
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />
+					</p:column>
+					<p:column medium-screen="4">
+						<p:inputTextarea
+							value="#{orderBean.selectedOrder.serviceLocationDesc}" />
+					</p:column>
+				</p:row>
 
-				<p:commandButton actionListener="#{orderBean.insertOrder}"
-					update=":orderListForm" oncomplete="PF('createOrderDialog').hide()"
-					value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}"
-					look="success" style="width:100%" />
+				<p:row>
+					<p:column medium-screen="2">
+						<p:commandButton actionListener="#{orderBean.insertOrder}"
+							update=":orderListForm"
+							oncomplete="PF('createOrderDialog').hide()"
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SUBMIT_BUTTON}"
+							look="success" style="width:100%" />
+					</p:column>
+				</p:row>
 			</p:panelGrid>
 		</h:form>
 

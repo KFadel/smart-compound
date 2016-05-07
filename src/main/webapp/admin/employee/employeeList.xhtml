@@ -18,6 +18,11 @@
 			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_USERNAME}">
 				<h:outputText value="#{employee.username}" />
 			</p:column>
+			
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD}">
+				<h:outputText value="#{employee.password}" />
+			</p:column>
 
 			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_FIRSTNAME}">
 				<h:outputText value="#{employee.firstName}" />
@@ -39,6 +44,11 @@
 			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_ADDRESS}">
 				<h:outputText value="#{employee.address}" />
 			</p:column>
+			
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE}">
+				<h:outputText value="#{employee.identificationType}" />
+			</p:column>
 
 			<p:column
 				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_NUMBER}">
@@ -59,9 +69,6 @@
 				<h:outputText value="#{employee.mobileNumber2}" />
 			</p:column>
 
-			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD}">
-				<h:outputText value="#{employee.password}" />
-			</p:column>
 
 			<p:column
 				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_1}">
@@ -72,6 +79,13 @@
 				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_2}">
 				<h:outputText value="#{employee.phoneNumber2}" />
 			</p:column>
+			
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_HIRE_DATE}">
+				<h:outputText value="#{employee.hireDate}" />
+			</p:column>
+			
+			
 		</p:dataTable>
 		<p:commandButton
 			value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_CREATE_EMPLOYEE}"

@@ -62,8 +62,14 @@ public class TenantDAOImpl extends BaseDAO implements TenantDAO {
 	}
 
 	@Override
-	public List<Tenant> getCompoundTenants(Compound compound) {
-		return (List<Tenant>) super.getAllByCompound(Tenant.class, compound);
+	public List<Tenant> getCompoundTenants(Compound compound,String searchParam) {
+//		return (List<Tenant>) super.getAllByCompound(Tenant.class, compound);
+		Query query = getCurrentSession().createQuery(
+				"from " + Tenant.class.getCanonicalName()
+						+ " x where x.compound =:compound AND x.username LIKE :username");
+		query.setParameter("compound", compound);
+		query.setParameter("username", "%" + searchParam + "%");
+		return  query.list();
 	}
 
 }

@@ -22,6 +22,6 @@ public interface ServiceService {
 	int getNumOfServicesRows(Map<String, Object> filters) throws SmartCompoundException;
 
 	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound);
+			Compound compound,String query);
 
 }

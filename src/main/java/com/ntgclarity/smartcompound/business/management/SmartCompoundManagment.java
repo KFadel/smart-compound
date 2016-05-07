@@ -33,7 +33,7 @@ public interface SmartCompoundManagment {
 
 	Order insertOrder(Order order) throws SmartCompoundException;
 
-	List<Facility> getCompoundFacilites(Compound compound)
+	List<Facility> getCompoundFacilites(Compound compound,String searchParam)
 			throws SmartCompoundException;
 
 	int getNumOfTicketsRows(Map<String, Object> filters);
@@ -47,11 +47,11 @@ public interface SmartCompoundManagment {
 	int getNumOfOrdersRows(Map<String, Object> filters);
 
 	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound);
+			Compound compound,String searchParam);
 
 	com.ntgclarity.smartcompound.common.entity.Service getService(Long id);
 
-	List<Tenant> getCompoundTenants(Compound compound);
+	List<Tenant> getCompoundTenants(Compound compound,String searchParam);
 
 	Tenant getTenant(Long id);
 

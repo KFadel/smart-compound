@@ -43,6 +43,32 @@
 							value="#{orderBean.selectedOrder.serviceLocationDesc}" />
 					</p:column>
 				</p:row>
+				
+				<p:row>
+					<p:column>
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_FACILITY_NUMBER}" />
+					</p:column>
+					<p:column>
+						<p:autoComplete completeMethod="#{orderBean.completeFacilities}"
+							value="#{orderBean.selectedOrder.facility}" var="facility"
+							itemLabel="#{facility.buildingNumber} #{facility.floorNumber} #{facility.facilityNumber}" 
+							itemValue="#{facility}" converter="#{facilityConverter}"></p:autoComplete>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_ACCEPTANCE_DATE}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:calendar id="popup" required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_ACCEPTANCE_DATE_REQUIRED}"
+							value="#{orderBean.selectedOrder.acceptanceDate}" />
+					</p:column>
+				</p:row>
 
 				<p:row>
 					<p:column>
@@ -56,6 +82,8 @@
 							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_CANCEL_BUTTON}" />
 					</p:column>
 				</p:row>
+				
+				
 
 			</p:panelGrid>
 		</h:form>
