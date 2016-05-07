@@ -34,6 +34,17 @@
 							requiredMessage="#{msgs.SMART_COMPOUND_ORDER_PAGE_METER_NAME_REQUIRED_MESSAGE} " />
 					</p:column>
 				</p:row>
+				<b:row>    
+     					<b:column medium-screen="2">    
+     						<h:outputText    
+     							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />    
+     					</b:column>    
+     					<b:column medium-screen="4">    
+     						<b:inputTextarea    
+     							value="#{orderBean.selectedOrder.serviceLocationDesc}" />    
+     					</b:column>    
+     				</b:row> 
+				
 				<p:row>
 					<p:column >
 						<p:commandButton actionListener="#{orderBean.insertOrder}"

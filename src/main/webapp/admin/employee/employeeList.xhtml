@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	
+
+	<h:form id="employeeListForm">
+	
+		<p:dataTable var="employee" rows="10" paginator="true"
+			value="#{employeeBean.lazyEmployeeModel}" resizableColumns="true"
+			draggableColumns="true" rowKey="#{employee.id}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+			selection="#{employeeBean.selectedEmployee}" id="employeeTable"
+			lazy="true">
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_USERNAME}">
+				<h:outputText value="#{employee.username}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_FIRSTNAME}">
+				<h:outputText value="#{employee.firstName}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MIDDLENAME}">
+				<h:outputText value="#{employee.middleName}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_LASTNAME}">
+				<h:outputText value="#{employee.lastName}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_EMAIL}">
+				<h:outputText value="#{employee.email}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_ADDRESS}">
+				<h:outputText value="#{employee.address}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_STATUS}">
+				<h:outputText value="#{employee.status}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATIONNUMBER}">
+				<h:outputText value="#{employee.identificationNumber}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_JOB}">
+				<h:outputText value="#{employee.job}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILENUMBER1}">
+				<h:outputText value="#{employee.mobileNumber1}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILENUMBER2}">
+				<h:outputText value="#{employee.mobileNumber2}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD}">
+				<h:outputText value="#{employee.password}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONENUMBER1}">
+				<h:outputText value="#{employee.phoneNumber1}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONENUMBER2}">
+				<h:outputText value="#{employee.phoneNumber2}" />
+			</p:column>
+		
+				<p:commandButton
+					value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_CREATE_NEW_EMPLOYEE}"
+					actionListener="#{employeeBean.initiateNewEmployee}"
+					></p:commandButton>
+
+				<p:commandButton
+					value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_EDIT_SELECTED_EMPLOYEE}"
+					></p:commandButton>
+			
+	</h:form>
+</ui:composition>

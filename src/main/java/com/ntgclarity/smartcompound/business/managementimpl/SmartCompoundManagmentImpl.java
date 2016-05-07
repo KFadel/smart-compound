@@ -131,4 +131,16 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 		return tenantService.getTenant(id);
 	}
 
+	@Override
+	public List<Employee> loadEmployees(int first, int pageSize, String sortField,
+			boolean ascending, Map<String, Object> filters) {
+		return employeeService.loadOrders(first, pageSize, sortField, ascending,
+				filters);
+	}
+
+	@Override
+	public int getNumOfEmployeesRows(Map<String, Object> filters) {
+		return employeeService.getNumOfOrdersRows(filters);
+	}
+
 }

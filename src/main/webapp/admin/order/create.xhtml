@@ -50,6 +50,17 @@
 							converter="#{serviceConverter}"></p:autoComplete>
 					</b:column>
 				</b:row>
+				
+				<b:row>    
+     					<b:column medium-screen="2">    
+     						<h:outputText    
+     							value="#{msgs.SMART_COMPOUND_ORDER_PAGE_SERVICE_LOCATION_DESCRIPTION}" />    
+     					</b:column>    
+     					<b:column medium-screen="4">    
+     						<b:inputTextarea    
+     							value="#{orderBean.selectedOrder.serviceLocationDesc}" />    
+     					</b:column>    
+     				</b:row> 
 
 
 				<p:commandButton actionListener="#{orderBean.insertOrder}"

@@ -11,6 +11,11 @@ public interface EmployeeService {
 
 	Employee getEmployee(Long id);
 
+	List<Employee> loadOrders(int first, int pageSize, String sortField,
+			boolean ascending, Map<String, Object> filters);
+
+	int getNumOfOrdersRows(Map<String, Object> filters);
+
 	
 
 }

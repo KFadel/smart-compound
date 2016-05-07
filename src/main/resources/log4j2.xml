@@ -53,9 +53,7 @@
 		</RollingFile>
 
 
-		<JDBC name="databaseAppender" tableName="journaldev.logging">
-			<!-- <DataSource jndiName="java:/comp/env/jdbc/JournalDevDB" /> <BurstFilter 
-				level="TRACE" rate="20" maxBurst="2"/> -->
+	<!-- 	<JDBC name="databaseAppender" tableName="journaldev.logging">
 			<ConnectionFactory class="com.journaldev.ConnectionFactory"
 				method="getDatabaseConnection" />
 			<Column name="EVENT_DATE" isEventTimestamp="true" />
@@ -63,7 +61,7 @@
 			<Column name="LOGGER" pattern="%logger" />
 			<Column name="MSG" pattern="%message" />
 			<Column name="THROWABLE" pattern="%ex{full}" />
-		</JDBC>
+		</JDBC> -->
 	</appenders>
 	<!--Then the definition of logger, only the definition of logger and the 
 		introduction of the appender, the appender will take effect -->

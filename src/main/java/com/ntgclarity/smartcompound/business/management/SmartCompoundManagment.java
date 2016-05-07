@@ -49,4 +49,9 @@ public interface SmartCompoundManagment {
 
 	Tenant getTenant(Long id);
 
+	List<Employee> loadEmployees(int first, int pageSize, String sortField,
+			boolean b, Map<String, Object> filters);
+
+	int getNumOfEmployeesRows(Map<String, Object> filters);
+
 }
