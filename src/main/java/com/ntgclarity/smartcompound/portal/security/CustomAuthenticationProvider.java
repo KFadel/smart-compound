@@ -24,6 +24,7 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
 			UsernamePasswordAuthenticationToken authentication)
 			throws AuthenticationException {
+		//password==authentication.getPrincipal().toString();
 		System.out.println("well additional authetication run successfully");
 	}
   
