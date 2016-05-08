@@ -13,17 +13,15 @@ import com.ntgclarity.smartcompound.business.service.OrderService;
 import com.ntgclarity.smartcompound.business.service.TenantService;
 import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.business.service.FacilityService;
-import com.ntgclarity.smartcompound.business.service.OrderService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.business.service.ServiceService;
-import com.ntgclarity.smartcompound.common.entity.Compound;
+import com.ntgclarity.smartcompound.business.service.TicketService;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.SystemConfiguration;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Facility;
-import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 import com.ntgclarity.smartcompound.business.service.*;
 import com.ntgclarity.smartcompound.common.entity.*;
@@ -34,6 +32,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
 	@Autowired
 	private TicketService ticketService;
 
@@ -92,11 +91,17 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 		// return null;
 
 	}
+	
 
 
 	@Override
 	public com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException {
 		return serviceService.insertService(service);
+	}
+	
+	@Override
+	public int getNumOfServicesRows(Map<String, Object> filters) {
+		return serviceService.getNumOfServicesRows(filters);
 	}
 	/*end oh Hend's part*/
 	@Override
@@ -118,15 +123,15 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	}
 
 	@Override
-	public List<Facility> getCompoundFacilites(Compound compound)
+	public List<Facility> getCompoundFacilites(Compound compound,String searchParam)
 			throws SmartCompoundException {
-		return facilityService.getCompoundFacilites(compound);
+		return facilityService.getCompoundFacilites(compound,searchParam);
 	}
 
 	@Override
 	public List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound) {
-		return serviceService.getCompoundServices(compound);
+			Compound compound,String searchParam) {
+		return serviceService.getCompoundServices(compound,searchParam);
 	}
 
 	@Override
@@ -135,13 +140,20 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	}
 
 	@Override
-	public List<Tenant> getCompoundTenants(Compound compound) {
-		return tenantService.getCompoundTenants(compound);
+	public List<Tenant> getCompoundTenants(Compound compound,String searchParam) {
+		return tenantService.getCompoundTenants(compound,searchParam);
 	}
 
 	@Override
 	public Tenant getTenant(Long id) {
 		return tenantService.getTenant(id);
+	}
+
+	@Override
+	public List<com.ntgclarity.smartcompound.common.entity.Service> loadServices(
+			int first, int pageSize, String sortField, boolean b,
+			Map<String, Object> filters) {
+		return serviceService.loadServices(first, pageSize, sortField, b, filters);
 	}
 
 
@@ -228,5 +240,25 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 		
 	}
 	
+
+
+	/**START HEBA'S WORK**/
+	
+	public Employee insertEmployee(Employee employee){
+		return employeeService.insertEmployee(employee);
+	}
+	
+	/**END HEBA'S WORK**/
+	@Override
+	public List<Employee> loadEmployees(int first, int pageSize, String sortField,
+			boolean ascending, Map<String, Object> filters) {
+		return employeeService.loadOrders(first, pageSize, sortField, ascending,
+				filters);
+	}
+
+	@Override
+	public int getNumOfEmployeesRows(Map<String, Object> filters) {
+		return employeeService.getNumOfOrdersRows(filters);
+	}
 
 }

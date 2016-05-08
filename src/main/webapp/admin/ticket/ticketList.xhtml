@@ -41,7 +41,7 @@
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_TENANT_ID}">
-					<h:outputText value="#{ticket.relatedTenantId}" />
+					<h:outputText value="#{ticket.relatedTenant}" />
 				</p:column>
 
 				<p:column
@@ -66,7 +66,7 @@
 
 				<p:column
 					headerText="#{msgs.SMART_COMPOUND_TICKET_LIST_PAGE_ASSIGNED_TO_GROUP}">
-					<h:outputText value="#{ticket.assignedGroupId.groupName}" />
+					<h:outputText value="#{ticket.assignedGroup.groupName}" />
 				</p:column>
 
 				<p:column

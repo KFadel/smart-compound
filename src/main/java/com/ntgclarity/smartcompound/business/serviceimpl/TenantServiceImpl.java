@@ -65,8 +65,8 @@ public class TenantServiceImpl implements TenantService {
 	}
 
 	@Override
-	public List<Tenant> getCompoundTenants(Compound compound) {
-		return tenantDAO.getCompoundTenants(compound);
+	public List<Tenant> getCompoundTenants(Compound compound,String query) {
+		return tenantDAO.getCompoundTenants(compound,query);
 	}
 
 

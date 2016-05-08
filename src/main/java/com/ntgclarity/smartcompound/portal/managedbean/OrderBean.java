@@ -9,9 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import org.primefaces.model.SortOrder;
 
+import org.primefaces.model.SortOrder;
 import org.primefaces.model.LazyDataModel;
+
 import java.util.Map;
 
 import com.ntgclarity.smartcompound.common.entity.*;
@@ -87,56 +88,22 @@ public class OrderBean extends BaseBean implements Serializable{
 	
 	public void initiateNewOrder() {
 		selectedOrder = new Order();
-		selectedOrder.setChannel("Portal");
-//		selectedOrder.setCreatedBy(); // session
-//		selectedOrder.setCompound(); //session
-		selectedOrder.setRequestDate(new Date());
-//		selectedOrder.setServiceLocationlattitude();
-//		selectedOrder.setServiceLocationlongtude();
-//		selectedOrder.setStatus("");  // need lookup
 	}
 	
 		
-//	public List<Facility> initiateFacilities(String query) throws SmartCompoundException {
-//		Compound compound = new Compound();
-//		compound.setId((long) 1);
-//		facilities = smartCompoundManagment.getCompoundFacilites(compound);
-//		List<Facility> filteredFacilities = new ArrayList<Facility>();
-//        
-//        for (int i = 0; i < facilities.size(); i++) {
-//        	Facility facility  = facilities.get(i);
-//            if(facility.getBuildingNumber().toString().startsWith(query)) {  // test
-//                filteredFacilities.add(facility);
-//            }
-//        }
-//         
-//        return filteredFacilities;
-//	}
+	public List<Facility> completeFacilities(String searchParam) throws SmartCompoundException {
+		Compound compound = new Compound();
+		compound.setId(1L);
+		facilities = smartCompoundManagment.getCompoundFacilites(compound,searchParam.trim());
+        return facilities;
+	}
 
-//	public List<String> completeTenantName(String query) {
-//		Compound compound = new Compound();
-//		compound.setId(1L);
-//        tenants = smartCompoundManagment.getCompoundTenants(compound);
-//        List<String> tenantsUsername = new ArrayList<String>();
-//        for(int i = 0; i < tenants.size(); i++) {
-//        	tenantsUsername.add(tenants.get(i).getUsername());
-//        }
-//        return tenantsUsername;
-//    }
 	
 	public List<Tenant> completeTenant(String query) {
 		Compound compound = new Compound();
 		compound.setId(1L);
-		tenants = smartCompoundManagment.getCompoundTenants(compound);
-		List<Tenant> filteredTenant = new ArrayList<Tenant>();
-        
-        for (int i = 0; i < tenants.size(); i++) {
-        	Tenant tenant  = tenants.get(i);
-            if(tenant.getUsername().toLowerCase().startsWith(query)) {  // test
-            	filteredTenant.add(tenant);
-            }
-        }
-        return filteredTenant;
+		tenants = smartCompoundManagment.getCompoundTenants(compound,query);
+        return tenants;
 	}
 
 	
@@ -144,21 +111,20 @@ public class OrderBean extends BaseBean implements Serializable{
 	public List<Service> completeServices(String query) {
 		Compound compound = new Compound();
 		compound.setId(1L);
-		services = smartCompoundManagment.getCompoundServices(compound);
-		List<Service> filteredServices = new ArrayList<Service>();
-        
-        for (int i = 0; i < services.size(); i++) {
-        	Service service  = services.get(i);
-            if(service.getServiceName().toLowerCase().startsWith(query)) {  // test
-            	filteredServices.add(service);
-            }
-        }
-        return filteredServices;
+		services = smartCompoundManagment.getCompoundServices(compound,query);
+        return services;
 	}
 	
 
 
 	public void insertOrder() throws SmartCompoundException{
+		selectedOrder.setChannel("Portal");
+//		selectedOrder.setCreatedBy(); // session
+//		selectedOrder.setCompound(); //session
+		selectedOrder.setRequestDate(new Date());
+//		selectedOrder.setServiceLocationlattitude();
+//		selectedOrder.setServiceLocationlongtude();
+//		selectedOrder.setStatus("");  // need lookup
 		smartCompoundManagment.insertOrder(selectedOrder);
 	}
 

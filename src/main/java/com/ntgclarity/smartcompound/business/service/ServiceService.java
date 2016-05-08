@@ -17,11 +17,11 @@ public interface ServiceService {
 
 	Service updateService(Service service) throws SmartCompoundException;
 	List<Service> loadServices(int first, int pageSize, String sortField,
-			boolean ascending, Map<String, Object> filters) throws SmartCompoundException;
+			boolean ascending, Map<String, Object> filters);
 
-	int getNumOfServicesRows(Map<String, Object> filters) throws SmartCompoundException;
+	int getNumOfServicesRows(Map<String, Object> filters);
 
 	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound);
+			Compound compound,String query);
 
 }

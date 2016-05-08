@@ -110,11 +110,11 @@
 		</p:dataTable>
 
 		<p:commandButton value="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_CREATE_NEW_ORDER}"
-			actionListener="#{orderBean.initiateNewOrder()}"
+			actionListener="#{orderBean.initiateNewOrder}"
 			update=":createOrderForm" oncomplete="PF('createOrderDialog').show()"></p:commandButton>
 
-		<p:commandButton value="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_EDIT_SELECTED_ORDER}"
-			
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_ORDER_LIST_PAGE_EDIT_SELECTED_ORDER}"
 			update=":editOrderForm" oncomplete="PF('editOrderDialog').show()"></p:commandButton>
 
 

@@ -66,8 +66,8 @@ public class FacilityServiceImpl implements FacilityService {
 	}
 
 	@Override
-	public List<Facility> getCompoundFacilites(Compound compound) throws SmartCompoundException {
-		return facilityDAO.getCompoundFacilites(compound);
+	public List<Facility> getCompoundFacilites(Compound compound,String searchParam) throws SmartCompoundException {
+		return facilityDAO.getCompoundFacilites(compound,searchParam);
 	}
 
 
