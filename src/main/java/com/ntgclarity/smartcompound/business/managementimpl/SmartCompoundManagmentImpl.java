@@ -19,6 +19,7 @@ import com.ntgclarity.smartcompound.business.service.ServiceService;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Order;
+import com.ntgclarity.smartcompound.common.entity.SystemConfiguration;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Facility;
@@ -50,7 +51,10 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 
 	@Autowired
 	private ServiceService serviceService;
-
+	
+	@Autowired
+	private SystemConfigurationService systemConfigurationService;
+	
 	@Override
 	public List<Employee> getAllEmployees() throws SmartCompoundException {
 		return employeeService.getAllEmployees();
@@ -62,9 +66,9 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	}
 
 	@Override
-	public void insertCompound(Compound compound) {
+	public Compound insertCompound(Compound compound) {
 
-		compoundService.insertCompound(compound);
+		return compoundService.insertCompound(compound);
 
 	}
 
@@ -193,5 +197,36 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 				return null ;
 			}
 	}
+	
+	@Override
+	public List<SystemConfiguration> getAllSystemConfigurations() {
+		return systemConfigurationService.getAllSystemConfigurations();
+	}
+
+	@Override
+	public SystemConfiguration getSystemConfiguration(Long id) {
+		return systemConfigurationService.getSystemConfiguration(id);
+	}
+
+	@Override
+	public SystemConfiguration insertSystemConfiguration(SystemConfiguration systemConfiguration) {
+
+		return systemConfigurationService.insertSystemConfiguration(systemConfiguration);
+
+	}
+
+	@Override
+	public int getNumOfSystemConfigurationsRows(Map<String, Object> filters) {
+		return systemConfigurationService.getNumOfSystemConfigurationsRows(filters);
+	}
+
+	@Override
+	public List<SystemConfiguration> loadSystemConfigurations(int first,
+			int pageSize, String sortField, boolean ascending,
+			Map<String, Object> filters) {
+		return systemConfigurationService.loadSystemConfigurations(first, pageSize, sortField, ascending, filters);
+		
+	}
+	
 
 }
