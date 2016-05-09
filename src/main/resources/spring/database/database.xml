@@ -34,13 +34,13 @@
 			</list>
 		</property>
 
-		<property name="hibernateProperties"> 
-			<props> 
-<!-- 				<prop key="hibernate.hbm2ddl.auto">validate</prop> -->
+		<property name="hibernateProperties">
+			<props>
+				<!-- <prop key="hibernate.hbm2ddl.auto">validate</prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
-		</property> 
+		</property>
 	</bean>
 
 

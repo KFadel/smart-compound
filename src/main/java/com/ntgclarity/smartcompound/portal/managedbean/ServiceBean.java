@@ -3,14 +3,17 @@ package com.ntgclarity.smartcompound.portal.managedbean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
+import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortOrder;
+
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
-import com.ntgclarity.smartcompound.common.constatnt.MessagesKeys;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Lookup;
 import com.ntgclarity.smartcompound.common.entity.LookupType;
@@ -32,24 +35,8 @@ public class ServiceBean extends BaseBean implements Serializable {
 	private Service createdService;
 	private List<Compound> compounds;
 	private List<Lookup> measuringUnits;
-	private String isActive="0",postPre="0";
-	
-
-	public String getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(String isActive) {
-		this.isActive = isActive;
-	}
-
-	public String getPostPre() {
-		return postPre;
-	}
-
-	public void setPostPre(String postPre) {
-		this.postPre = postPre;
-	}
+	private String isActive = "0", postPre = "0";
+	private LazyDataModel<Service> lazyServiceModel;
 
 	@PostConstruct
 	public void init() {
@@ -58,6 +45,7 @@ public class ServiceBean extends BaseBean implements Serializable {
 		measuringUnits = new ArrayList<>();
 		loadCompoundList();
 		loadMeasuringUnits();
+		LoadData();
 	}
 
 	public void loadMeasuringUnits() {
@@ -75,6 +63,39 @@ public class ServiceBean extends BaseBean implements Serializable {
 		compound1.setCompoundName("El Rehab Compound");
 		compound1.setId(1L);
 		compounds.add(compound1);
+	}
+
+	private void LoadData() {
+		lazyServiceModel = new LazyDataModel<Service>() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			private List<Service> result;
+
+			@Override
+			public Service getRowData(String rowKey) {
+				for (Service service : result) {
+					if (service.getId().toString().equals(rowKey))
+						return service;
+				}
+				return null;
+			}
+			@Override
+			public Object getRowKey(Service service) {
+				return service.getId();
+			}
+			@Override
+			public List<Service> load(int first, int pageSize,
+					String sortField, SortOrder sortOrder,
+					Map<String, Object> filters) {
+
+				result = getSmartCompoundManagment().loadServices(first,pageSize, sortField, sortOrder == SortOrder.ASCENDING,filters);
+				this.setRowCount(getSmartCompoundManagment().getNumOfServicesRows(filters));
+				return result;
+			}
+		};
 	}
 
 	public SmartCompoundManagment getSmartCompoundManagment() {
@@ -110,8 +131,31 @@ public class ServiceBean extends BaseBean implements Serializable {
 		this.measuringUnits = measuringUnits;
 	}
 
+	public LazyDataModel<Service> getLazyServiceModel() {
+		return lazyServiceModel;
+	}
+
+	public void setLazyServiceModel(LazyDataModel<Service> lazyServiceModel) {
+		this.lazyServiceModel = lazyServiceModel;
+	}
+
+	public String getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(String isActive) {
+		this.isActive = isActive;
+	}
+
+	public String getPostPre() {
+		return postPre;
+	}
+
+	public void setPostPre(String postPre) {
+		this.postPre = postPre;
+	}
+
 	public void insertService() throws SmartCompoundException {
-		System.out.println("====================>" + createdService);
 		createdService.setIsActive(Integer.parseInt(isActive));
 		createdService.setIsPrepaid(Integer.parseInt(postPre));
 		smartCompoundManagment.insertService(createdService);

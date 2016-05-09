@@ -19,7 +19,7 @@ public class CompoundBean extends BaseBean implements Serializable {
 	@ManagedProperty(value = "#{smartCompoundManagmentImpl}")
 	private SmartCompoundManagment smartCompoundManagment;
 	
-	private Compound compound;
+	private Compound selectedCompound;
 	
 	/**
 	 * 
@@ -29,7 +29,11 @@ public class CompoundBean extends BaseBean implements Serializable {
 	@PostConstruct
 	public void init(){
 		
-		compound=new Compound();
+		initNewCompound();
+	}
+	
+	public void initNewCompound(){
+		selectedCompound=new Compound();
 	}
 
 	public SmartCompoundManagment getSmartCompoundManagment() {
@@ -42,15 +46,15 @@ public class CompoundBean extends BaseBean implements Serializable {
 	}
 
 	public Compound getCompound() {
-		return compound;
+		return selectedCompound;
 	}
 
-	public void setCompound(Compound compound) {
-		this.compound = compound;
+	public void setCompound(Compound selectedCompound) {
+		this.selectedCompound = selectedCompound;
 	}
 	
 	public void insertCompound(){
-		smartCompoundManagment.insertCompound(compound);
+		smartCompoundManagment.insertCompound(selectedCompound);
 		addInfoMessage(MessagesKeys.SMART_COMPOUND_COMPOUND_PAGE_COMPOUND_INSERTION_MESSAGE);
 	}
 	

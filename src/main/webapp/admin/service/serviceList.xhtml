@@ -1,0 +1,95 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="serviceListForm">
+		<p:dataTable var="service" rows="10" paginator="true"
+			value="#{serviceBean.lazyServiceModel}" resizableColumns="true"
+			draggableColumns="true" rowKey="#{service.id}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+			selection="#{serviceBean.createdService}" id="serviceTable"
+			lazy="true">
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_COMPOUND}">
+				<h:outputText value="#{service.compound.compoundName}" />
+			</p:column>
+
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_NAME}">
+				<h:outputText value="#{service.serviceName}" />
+			</p:column>
+
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_INSTALLATION_PRICE}">
+				<h:outputText value="#{service.installationPrice}" />
+			</p:column>
+
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_IS_ACTIVE}">
+				<h:outputText value="#{service.isActive== '1' ? 'Active' : 'Not Active'}" />
+			</p:column>
+
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_ESTIMATED_DELIVERY_DAYS}">
+				<h:outputText value="#{service.estimatedDeliveryDays}" />
+			</p:column>
+
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_MRC}">
+				<h:outputText value="#{service.mrc}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_NRC}">
+				<h:outputText value="#{service.nrc}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_PRE_POST}">
+				<h:outputText value="#{service.isPrepaid== '1' ? 'Pre-paid' : 'Post-paid'}" />
+			</p:column>
+			
+			
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_FLAT_OR_USAGE}">
+				<h:outputText value="#{service.flatOrUsage}" />
+			</p:column>
+
+			
+			
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_DATE_CREATED}">
+				<h:outputText value="#{service.creationDate}" />
+			</p:column>
+
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_SEVERITY}">
+				<h:outputText value="#{service.severity}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_UNIT_OF_MEASURE}">
+				<h:outputText value="#{service.measuringUnit}" />
+			</p:column>
+
+		</p:dataTable>
+
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_SERVICE_LIST_PAGE_CREATE_NEW_SERVICE}"
+			actionListener="#{serviceBean.init()}" update=":createServiceForm"
+			oncomplete="PF('createServiceDialog').show()">
+		</p:commandButton>
+
+
+
+
+	</h:form>
+</ui:composition>

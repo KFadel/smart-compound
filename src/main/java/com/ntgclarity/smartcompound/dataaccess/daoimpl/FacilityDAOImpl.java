@@ -61,10 +61,15 @@ public class FacilityDAOImpl extends BaseDAO implements FacilityDAO {
 	}
 
 	@Override
-	public List<Facility> getCompoundFacilites(Compound compound) {
-		Query query = getCurrentSession().createQuery("select x from Facility x where x.compoundId =:compoundId");
-		query.setParameter("compoundId", compound);
-		return query.list();
+	public List<Facility> getCompoundFacilites(Compound compound,String searchParam) {
+		Query query = getCurrentSession().createQuery
+				("from "+Facility.class.getCanonicalName()
+						+" x where x.compound =:compound AND "
+						+ "CONCAT(STR(x.buildingNumber),STR(x.floorNumber),STR(x.facilityNumber))  LIKE :fullFacilityName");
+		query.setParameter("compound", compound);
+		query.setParameter("fullFacilityName", "%" + searchParam.trim() + "%");
+		List list = query.list();
+		return list;
 	}
 
 }

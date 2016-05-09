@@ -4,14 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
 	template="/WEB-INF/template/master.xhtml">
-	<ui:define name="title">#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE}</ui:define>
-	<ui:define name="contentTitle">#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_TITLE}</ui:define>
-
+	<ui:define name="title">#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_INDEX_PAGE}</ui:define>
+	<ui:define name="contentTitle">#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_INDEX_PAGE_TITLE}</ui:define>
 
 	<ui:define name="content">
+		<ui:include src="systemConfigurationList.xhtml"></ui:include>
 		<ui:include src="create.xhtml"></ui:include>
 		<ui:include src="edit.xhtml"></ui:include>
-		<ui:include src="employeeList.xhtml"></ui:include>
 	</ui:define>
-
 </ui:composition>

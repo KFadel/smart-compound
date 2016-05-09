@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Order;
+import com.ntgclarity.smartcompound.common.entity.SystemConfiguration;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
@@ -25,15 +25,21 @@ public interface SmartCompoundManagment {
 
 	Employee getEmployee(Long id);
 
-	public void insertCompound(Compound compound);
+	public Compound insertCompound(Compound compound);
 
 	/*added by Hend*/
 	com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException ;
+	
+	List<com.ntgclarity.smartcompound.common.entity.Service> loadServices(
+			int first, int pageSize, String sortField, boolean b,
+			Map<String, Object> filters);
+	
+	int getNumOfServicesRows(Map<String, Object> filters);
 	/*end oh Hend's part*/
 
 	Order insertOrder(Order order) throws SmartCompoundException;
 
-	List<Facility> getCompoundFacilites(Compound compound)
+	List<Facility> getCompoundFacilites(Compound compound,String searchParam)
 			throws SmartCompoundException;
 
 	int getNumOfTicketsRows(Map<String, Object> filters);
@@ -47,11 +53,11 @@ public interface SmartCompoundManagment {
 	int getNumOfOrdersRows(Map<String, Object> filters);
 
 	List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound);
+			Compound compound,String searchParam);
 
 	com.ntgclarity.smartcompound.common.entity.Service getService(Long id);
 
-	List<Tenant> getCompoundTenants(Compound compound);
+	List<Tenant> getCompoundTenants(Compound compound,String searchParam);
 
 	Tenant getTenant(Long id);
 
@@ -69,11 +75,28 @@ public interface SmartCompoundManagment {
 	List<Facility> getAllFacilities(Compound comp);
 
 	Facility getFacility(Long long1);
+	
+	
+	/*added by Mai*/
+	public List<SystemConfiguration> getAllSystemConfigurations();
+	
+	public SystemConfiguration getSystemConfiguration(Long id);
+	
+	public SystemConfiguration insertSystemConfiguration(SystemConfiguration systemConfiguration);
+	
+	public int getNumOfSystemConfigurationsRows(Map<String, Object> filters);
 
+	public List<SystemConfiguration> loadSystemConfigurations(int first, int pageSize,String sortField, boolean b, Map<String, Object> filters);
+	/*End of Mai's part */
 
 
 	/**START HEBA'S WORK**/
 	public Employee insertEmployee(Employee employee);
 	/**END HEBA'S WORK**/
+
+	List<Employee> loadEmployees(int first, int pageSize, String sortField,
+			boolean b, Map<String, Object> filters);
+
+	int getNumOfEmployeesRows(Map<String, Object> filters);
 
 }

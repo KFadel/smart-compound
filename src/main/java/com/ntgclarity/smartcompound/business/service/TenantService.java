@@ -23,6 +23,6 @@ public interface TenantService {
 
 	int getNumOfTenantsRows(Map<String, Object> filters);
 
-	List<Tenant> getCompoundTenants(Compound compound);
+	List<Tenant> getCompoundTenants(Compound compound,String query);
 
 }

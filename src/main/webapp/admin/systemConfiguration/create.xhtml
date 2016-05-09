@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="createSystemConfigurationDialog" 
+		widgetVar="createSystemConfigurationDialog" modal="true"
+		resizable="false" closeOnEscape="true" closable="false" header="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_CREATE_HEADER}">
+
+		<h:form id="createSystemConfigurationForm">
+			<p:panelGrid>
+
+				<p:row>
+					<p:column>
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_KEY}" />
+					</p:column>
+					<p:column>
+						<p:inputText required="true"
+							value="#{systemConfigurationBean.selectedSystemConfiguration.key}"
+							requiredMessage="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_KEY_REQUIRED_MESSAGE} " />
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_LIST_PAGE_VALUE}" />
+					</p:column>
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							value="#{systemConfigurationBean.selectedSystemConfiguration.value}"
+							requiredMessage="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_VALUE_REQUIRED_MESSAGE} " />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton
+							actionListener="#{systemConfigurationBean.insertSystemConfiguration()}"
+							update=":systemConfigurationListForm"
+							oncomplete="PF('createSystemConfigurationDialog').hide()"
+							value="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_SUBMIT_BUTTON}"
+							look="success" style="width:100%" />
+					</p:column>
+					<p:column>
+						<p:commandButton
+							value="#{msgs.SMART_COMPOUND_SYSTEM_CONFIGURATION_PAGE_CANCEL_BUTTON}"  onclick="PF('createSystemConfigurationDialog').hide()"/>
+
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+
+
+	</p:dialog>
+
+
+</ui:composition>
