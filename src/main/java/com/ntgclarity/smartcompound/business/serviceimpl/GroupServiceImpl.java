@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.business.service.GroupService;
 import com.ntgclarity.smartcompound.common.entity.Group;
+import com.ntgclarity.smartcompound.common.entity.MenuItem;
 import com.ntgclarity.smartcompound.dataaccess.dao.GroupDAO;
 
 @Service
@@ -60,6 +61,18 @@ public class GroupServiceImpl implements GroupService {
 	@Override
 	public int getNumOfGroupsRows(Map<String, Object> filters) {
 		return  groupDAO.getNumOfGroupsRows(filters);
+	}
+
+	@Override
+	public List<MenuItem> getGroupMenuItem(Group group) {
+		// TODO Auto-generated method stub
+		return groupDAO.getGroupMenuItem(group);
+	}
+
+	@Override
+	public void insertGroupMenuItem(Group group, List<MenuItem> items) {
+		// TODO Auto-generated method stub
+		groupDAO.insertGroupMenuItem(group, items);
 	}
 
 

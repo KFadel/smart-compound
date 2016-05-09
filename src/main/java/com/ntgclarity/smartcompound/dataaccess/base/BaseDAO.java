@@ -66,7 +66,7 @@ public abstract class BaseDAO {
 
 		Query query = getCurrentSession().createQuery(
 				"select count(x) from " + cls.getCanonicalName() + " x ");
-		int result = (int) query.uniqueResult();
+		int result = ((Long) query.uniqueResult()).intValue();
 		return result;
 	}
 }

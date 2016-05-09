@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="menuItemListForm">
+		<p:dataTable var="menuItem" rows="10" paginator="true"
+			value="#{menuItemBean.lazyMenuItemModel}" resizableColumns="true"
+			draggableColumns="true" rowKey="#{menuItem.id}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+			selection="#{menuItemBean.menuItem}" id="menuItemTable" lazy="true" >
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENUITEM_LIST_PAGE_MENUITEM_ID}">
+				<h:outputText value="#{menuItem.id}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENUITEM_LIST_PAGE_MENUITEM_NAME}">
+				<h:outputText value="#{menuItem.name}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_MENU}">
+				<h:outputText value="#{menuItem.menu.name}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENUITEM_LIST_PAGE_MENUITEM_STATUS}">
+				<h:outputText value="#{menuItem.status.lookupName}" />
+			</p:column>
+
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENUITEM_LIST_PAGE_MENUITEM_URL}">
+				<h:outputText value="#{menuItem.url}" />
+			</p:column>
+
+		</p:dataTable>
+
+
+
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_BUTTON}"
+			actionListener="#{menuItemBean.init()}"
+			oncomplete="PF('createMenuItemDialog').show()"></p:commandButton>
+
+
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_EDIT_BUTTON}"
+			update="editMenuItemForm"
+			oncomplete="PF('editMenuItemDialog').show()"></p:commandButton>
+
+
+
+	</h:form>
+</ui:composition>

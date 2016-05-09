@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.ntgclarity.smartcompound.common.base.BaseEntity;
@@ -15,7 +16,8 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_groups")
 public class Group  extends BaseEntity implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(generator = "my_gen")
+	@SequenceGenerator(name = "my_gen", sequenceName = "ng_nts_groups_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	@Column (name="group_name")

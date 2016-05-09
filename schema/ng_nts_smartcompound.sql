@@ -329,6 +329,92 @@ CREATE TABLE "ng_nts_tickets_histories" (
   "opened_by" INTEGER  
 );
 
+
+--
+-- Structure for table menu (OID = 41280) : 
+--
+SET search_path = public, pg_catalog;
+CREATE TABLE public.menu (
+    recid serial NOT NULL,
+    name text,
+    status_id integer
+)
+WITH (oids = false);
+--
+-- Structure for table menu_item (OID = 41296) : 
+--
+CREATE TABLE public.menu_item (
+    recid serial NOT NULL,
+    name text,
+    status_id integer,
+    url text,
+    menu_id integer
+)
+WITH (oids = false);
+--
+-- Structure for table menu_item_group (OID = 41315) : 
+--
+CREATE TABLE public.menu_item_group (
+    group_id integer NOT NULL,
+    menu_item_id integer NOT NULL
+)
+WITH (oids = false);
+--
+-- Definition for index menu_pkey (OID = 41287) : 
+--
+ALTER TABLE ONLY menu
+    ADD CONSTRAINT menu_pkey
+    PRIMARY KEY (recid);
+--
+-- Definition for index menu_fk (OID = 41289) : 
+--
+ALTER TABLE ONLY menu
+    ADD CONSTRAINT menu_fk
+    FOREIGN KEY (status_id) REFERENCES ng_nts_lookup(recid) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Definition for index menu_item_pkey (OID = 41303) : 
+--
+ALTER TABLE ONLY menu_item
+    ADD CONSTRAINT menu_item_pkey
+    PRIMARY KEY (recid);
+--
+-- Definition for index menu_item_fk (OID = 41305) : 
+--
+ALTER TABLE ONLY menu_item
+    ADD CONSTRAINT menu_item_fk
+    FOREIGN KEY (status_id) REFERENCES ng_nts_lookup(recid) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Definition for index menu_item_fk1 (OID = 41310) : 
+--
+ALTER TABLE ONLY menu_item
+    ADD CONSTRAINT menu_item_fk1
+    FOREIGN KEY (menu_id) REFERENCES menu(recid) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Definition for index pkc_name (OID = 41340) : 
+--
+ALTER TABLE ONLY menu_item_group
+    ADD CONSTRAINT pkc_name
+    PRIMARY KEY (group_id, menu_item_id);
+--
+-- Definition for index menu_item_group_fk (OID = 41342) : 
+--
+ALTER TABLE ONLY menu_item_group
+    ADD CONSTRAINT menu_item_group_fk
+    FOREIGN KEY (group_id) REFERENCES ng_nts_groups(recid) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Definition for index menu_item_group_fk1 (OID = 41347) : 
+--
+ALTER TABLE ONLY menu_item_group
+    ADD CONSTRAINT menu_item_group_fk1
+    FOREIGN KEY (menu_item_id) REFERENCES menu_item(recid) ON UPDATE CASCADE ON DELETE CASCADE;
+--
+-- Comments
+--
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+
+
 CREATE INDEX "idx_ng_nts_tickets_histories__action_by" ON "ng_nts_tickets_histories" ("action_by");
 
 CREATE INDEX "idx_ng_nts_tickets_histories__compound_id" ON "ng_nts_tickets_histories" ("compound_id");

@@ -1,0 +1,57 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="createMenuDialog" widgetVar="createMenuDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+
+		<h:form>
+		<b:container layout="fluid">
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value="#{msgs.SMART_COMPOUND_MENU_PAGE_MENU_NAME}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:inputText value="#{menuBean.menu.name}"></b:inputText>
+				</b:column>
+			</b:row>
+				<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value=" #{msgs.SMART_COMPOUND_MENU_PAGE_MENU_STATUS}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:selectOneMenu value="#{menuBean.menu.status}" >
+						<f:selectItem itemValue="" itemLabel="#{msgs.SMART_COMPOUND_MENU_PAGE_MENU_STATUS_LABEL}"
+							itemDisabled="true" />
+						<f:selectItems value="#{menuBean.allLookup}" var="status"
+							itemValue="#{status}" itemLabel="#{status.lookupName}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>	
+			<b:row>
+				<b:column medium-screen="12">
+					<b:commandButton value="#{msgs.SMART_COMPOUND_MENU_PAGE_MENU_BUTTON}" look="success"
+						actionListener="#{menuBean.addMenu()}"></b:commandButton>
+				</b:column>
+			</b:row>
+		</b:container>
+	</h:form>
+
+
+	</p:dialog>
+	
+
+
+</ui:composition>
+
+
+
+
+
+
+
+
+
+

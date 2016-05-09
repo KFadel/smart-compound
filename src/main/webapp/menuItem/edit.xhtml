@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="editMenuItemDialog" widgetVar="editMenuItemDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+
+		<h:form id="editMenuItemForm">
+		<b:container layout="fluid">
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_NAME}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:inputText value="#{menuItemBean.menuItem.name}"></b:inputText>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_URL}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:inputText value="#{menuItemBean.menuItem.url}"></b:inputText>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value=" #{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_STATUS}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:selectOneMenu value="#{menuItemBean.menuItem.status}">
+						<f:selectItem itemValue="" itemLabel="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_STATUS_LABEL}"
+							itemDisabled="true" />
+						<f:selectItems value="#{menuItemBean.allLookup}" var="status"
+							itemValue="#{status}" itemLabel="#{status.lookupName}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value=" #{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_MENU}" />
+				</b:column>
+				<b:column medium-screen="10">
+					<b:selectOneMenu value="#{menuItemBean.menuItem.menu}">
+						<f:selectItem itemValue="" itemLabel="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_MENU_LABEL}"
+							itemDisabled="true" />
+						<f:selectItems value="#{menuItemBean.allMenus}" var="menu"
+							itemValue="#{menu}" itemLabel="#{menu.name}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<b:column medium-screen="12">
+					<b:commandButton value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_EDIT_BUTTON}" look="success"
+						actionListener="#{menuItemBean.updateMenuItem()}"></b:commandButton>
+				</b:column>
+			</b:row>
+		</b:container>
+	</h:form>
+
+	</p:dialog>
+	
+	
+
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

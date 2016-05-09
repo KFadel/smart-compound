@@ -37,7 +37,7 @@ public class Service extends BaseEntity implements Serializable{
 	private Integer nrc;
 	@Column(name="mrc")
 	private Integer mrc;
-	@Column(name="intallation_price")
+	@Column(name="installation_price")
 	private Double installationPrice;
 	@Column(name="is_prepared")
 	private Integer isPrepared;
