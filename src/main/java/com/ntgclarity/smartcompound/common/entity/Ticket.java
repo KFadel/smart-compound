@@ -33,9 +33,11 @@ public class Ticket extends BaseEntity implements Serializable {
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
 	private Compound compound;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "channel_lookup_id", referencedColumnName = "recid")
 	private Lookup channelLookup;
+	
 	
 	@Id
 
@@ -64,6 +66,7 @@ public class Ticket extends BaseEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "service_id", referencedColumnName = "recid")
 	private Service service;
+	
 	
 	@Column(name = "service_name")
 	private String serviceName;

@@ -1,0 +1,212 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="createEmployeeDialog" widgetVar="createEmployeeDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+		<h:form id="createEmployeeForm">
+			<p:panelGrid>
+				<p:row>
+					<p:column medium-screen="12">
+						<p:messages id="message" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_USERNAME}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_USERNAME_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.username}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.password}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_FIRSTNAME}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_FIRSTNAME_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.firstName}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MIDDLENAME}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MIDDLENAME_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.middleName}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_LASTNAME}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_LASTNAME_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.lastName}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_EMAIL}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText value="#{employeeBean.selectedEmployee.email}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_JOB}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_JOB_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.job}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE}" />
+					</p:column>
+					<p:column medium-screen="4">
+						<b:selectOneMenu style="width:100%" required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.identificationType}">
+							<f:selectItem
+								itemLabel="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE_SELECT}" />
+							<f:selectItem
+								itemLabel="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE_ID}" />
+							<f:selectItem
+								itemLabel="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE_PASSPORT}" />
+						</b:selectOneMenu>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_NUMBER}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_NUMBER_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.identificationNumber}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_ADDRESS}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_ADDRESS_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.address}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_1}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_1_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.phoneNumber1}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_2}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText value="#{employeeBean.selectedEmployee.phoneNumber2}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILE_NUMBER_1}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILE_NUMBER_1_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.mobileNumber1}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILE_NUMBER_2}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:inputText
+							value="#{employeeBean.selectedEmployee.mobileNumber2}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column medium-screen="2">
+						<h:outputText
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_HIRE_DATE}" />
+					</p:column>
+
+					<p:column medium-screen="4">
+						<p:calendar id="popup" required="true"
+							requiredMessage="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_HIRE_DATE_REQUIRED}"
+							value="#{employeeBean.selectedEmployee.hireDate}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column span="2" offset="2">
+						<p:commandButton actionListener="#{employeeBean.insertEmployee}"
+							update=":employeeListForm"
+							oncomplete="PF('createEmployeeDialog').hide()"
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_SUBMIT_BUTTON}"
+							look="success" style="width:100%" />
+					</p:column>
+					<p:column span="2">
+						<p:commandButton
+							value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_CANCEL_BUTTON}"
+							look="warning" style="width:100%" />
+					</p:column>
+				</p:row>
+
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+</ui:composition>

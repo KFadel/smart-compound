@@ -63,8 +63,8 @@ public class ServiceServiceImpl implements ServiceService {
 
 	@Override
 	public List<com.ntgclarity.smartcompound.common.entity.Service> getCompoundServices(
-			Compound compound) {
-		return serviceDAO.getCompoundServices(compound);
+			Compound compound,String query) {
+		return serviceDAO.getCompoundServices(compound,query);
 	}
 
 

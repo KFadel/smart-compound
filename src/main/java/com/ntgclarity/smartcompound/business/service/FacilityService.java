@@ -7,23 +7,26 @@ import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 import com.ntgclarity.smartcompound.common.exception.SmartCompoundException;
 
-/**Author: Heba**/
+/** Author: Heba **/
 
 public interface FacilityService {
 
 	List<Facility> getAllFacilities(Compound comp);
 
-	Facility getFacility(Long id)throws SmartCompoundException;
+	Facility getFacility(Long id) throws SmartCompoundException;
 
-	Facility insertFacility(Facility facility)throws SmartCompoundException;
+	Facility insertFacility(Facility facility) throws SmartCompoundException;
 
-	Facility updateFacility(Facility facility)throws SmartCompoundException;
-	
+	Facility updateFacility(Facility facility) throws SmartCompoundException;
+
 	List<Facility> loadFacilities(int first, int pageSize, String sortField,
-			boolean ascending, Map<String, Object> filters)throws SmartCompoundException;
+			boolean ascending, Map<String, Object> filters)
+			throws SmartCompoundException;
 
-	int getNumOfFacilitiesRows(Map<String, Object> filters)throws SmartCompoundException;
+	int getNumOfFacilitiesRows(Map<String, Object> filters)
+			throws SmartCompoundException;
 
-	List<Facility> getCompoundFacilites(Compound compound) throws SmartCompoundException;
+	List<Facility> getCompoundFacilites(Compound compound, String searchParam)
+			throws SmartCompoundException;
 
 }

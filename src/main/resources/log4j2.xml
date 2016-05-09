@@ -32,7 +32,8 @@
 			%L %M - %msg%xEx%n"/> <SizeBasedTriggeringPolicy size="50MB"/> </RollingFile> -->
 		<RollingFile name="RollingFile" fileName="${baseDir}/app.log"
 			filePattern="${baseDir}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz">
-			<PatternLayout pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n" />
+			<PatternLayout
+				pattern="%d{yyyy-MM-dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%xEx%n" />
 			<Policies>
 				<TimeBasedTriggeringPolicy />
 				<SizeBasedTriggeringPolicy size="250 MB" />
@@ -53,9 +54,7 @@
 		</RollingFile>
 
 
-		<JDBC name="databaseAppender" tableName="journaldev.logging">
-			<!-- <DataSource jndiName="java:/comp/env/jdbc/JournalDevDB" /> <BurstFilter 
-				level="TRACE" rate="20" maxBurst="2"/> -->
+	<!-- 	<JDBC name="databaseAppender" tableName="journaldev.logging">
 			<ConnectionFactory class="com.journaldev.ConnectionFactory"
 				method="getDatabaseConnection" />
 			<Column name="EVENT_DATE" isEventTimestamp="true" />
@@ -63,7 +62,7 @@
 			<Column name="LOGGER" pattern="%logger" />
 			<Column name="MSG" pattern="%message" />
 			<Column name="THROWABLE" pattern="%ex{full}" />
-		</JDBC>
+		</JDBC> -->
 	</appenders>
 	<!--Then the definition of logger, only the definition of logger and the 
 		introduction of the appender, the appender will take effect -->

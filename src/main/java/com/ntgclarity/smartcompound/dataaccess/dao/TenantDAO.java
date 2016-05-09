@@ -6,7 +6,7 @@ import java.util.Map;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 
-/**Author: Heba**/
+/** Author: Heba **/
 
 public interface TenantDAO {
 
@@ -17,12 +17,12 @@ public interface TenantDAO {
 	Tenant insertTenant(Tenant tenant);
 
 	Tenant updateTenant(Tenant tenant);
-	
+
 	List<Tenant> loadTenants(int first, int pageSize, String sortField,
 			boolean ascending, Map<String, Object> filters);
 
 	int getNumOfTenantsRows(Map<String, Object> filters);
 
-	List<Tenant> getCompoundTenants(Compound compound);
+	List<Tenant> getCompoundTenants(Compound compound, String query);
 
 }
