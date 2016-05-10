@@ -30,10 +30,10 @@ public class TicketHistory extends BaseEntity implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 
 	@Column(name = "ticket_id")
-	private Long ticketId;
+	private Long ticket;
 
 	@Column(name = "action_date")
 	private Date actionDate;
@@ -55,12 +55,20 @@ public class TicketHistory extends BaseEntity implements Serializable {
 	@Column(name = "is_completed")
 	private Integer isCompleted;
 
-	public Long getTicketId() {
-		return ticketId;
+	public Compound getCompound() {
+		return compound;
 	}
 
-	public void setTicketId(Long ticketId) {
-		this.ticketId = ticketId;
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
+
+	public Long getTicket() {
+		return ticket;
+	}
+
+	public void setTicket(Long ticket) {
+		this.ticket = ticket;
 	}
 
 	public Date getActionDate() {
@@ -93,14 +101,6 @@ public class TicketHistory extends BaseEntity implements Serializable {
 
 	public void setCurrentStatus(String currentStatus) {
 		this.currentStatus = currentStatus;
-	}
-
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
 	}
 
 	public Employee getActionBy() {
@@ -141,8 +141,8 @@ public class TicketHistory extends BaseEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "TicketHistory [id=" + id + ", compoundId=" + compoundId
-				+ ", ticketId=" + ticketId + ", actionDate=" + actionDate
+		return "TicketHistory [id=" + id + ", compound=" + compound
+				+ ", ticket=" + ticket + ", actionDate=" + actionDate
 				+ ", comment=" + comment + ", previousStatus=" + previousStatus
 				+ ", currentStatus=" + currentStatus + ", actionBy=" + actionBy
 				+ ", openedBy=" + openedBy + ", isCompleted=" + isCompleted

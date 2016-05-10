@@ -18,9 +18,14 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Table(name = "ng_nts_tenants")
 public class Tenant extends BaseEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4952759092341764940L;
+
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,9 +81,6 @@ public class Tenant extends BaseEntity implements Serializable {
 	@Column(name = "whatsapp")
 	private String whatsapp;
 
-	@Column(name = "state")
-	private String state;
-
 	@Column(name = "city")
 	private String city;
 
@@ -88,10 +90,10 @@ public class Tenant extends BaseEntity implements Serializable {
 	private String job;
 	@ManyToOne
 	@JoinColumn(name = "salutation_lookup_id", referencedColumnName = "recid")
-	private Lookup salutationLookupId;
+	private Lookup salutationLookup;
 	@ManyToOne
 	@JoinColumn(name = "gender_lookup_id", referencedColumnName = "recid")
-	private Lookup genderLookupId;
+	private Lookup genderLookup;
 	public String getSalutation() {
 		return salutation;
 	}
@@ -164,14 +166,6 @@ public class Tenant extends BaseEntity implements Serializable {
 		this.country = country;
 	}
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
 	public String getCity() {
 		return city;
 	}
@@ -197,14 +191,6 @@ public class Tenant extends BaseEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 
-	}
-
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
 	}
 
 	public String getUsername() {
@@ -286,27 +272,35 @@ public class Tenant extends BaseEntity implements Serializable {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	
 
-	public Lookup getSalutationLookupId() {
-		return salutationLookupId;
+
+	public Compound getCompound() {
+		return compound;
 	}
 
-	public void setSalutationLookupId(Lookup salutationLookupId) {
-		this.salutationLookupId = salutationLookupId;
+	public void setCompound(Compound compound) {
+		this.compound = compound;
 	}
 
-	public Lookup getGenderLookupId() {
-		return genderLookupId;
+	public Lookup getSalutationLookup() {
+		return salutationLookup;
 	}
 
-	public void setGenderLookupId(Lookup genderLookupId) {
-		this.genderLookupId = genderLookupId;
+	public void setSalutationLookup(Lookup salutationLookup) {
+		this.salutationLookup = salutationLookup;
+	}
+
+	public Lookup getGenderLookup() {
+		return genderLookup;
+	}
+
+	public void setGenderLookup(Lookup genderLookup) {
+		this.genderLookup = genderLookup;
 	}
 
 	@Override
 	public String toString() {
-		return "Tenant [compoundId=" + compoundId + ", id=" + id
+		return "Tenant [compound=" + compound + ", id=" + id
 				+ ", salutation=" + salutation + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", username=" + username
 				+ ", password=" + password + ", gender=" + gender
@@ -317,7 +311,7 @@ public class Tenant extends BaseEntity implements Serializable {
 				+ email + ", phoneNumber1=" + phoneNumber1 + ", phoneNumber2="
 				+ phoneNumber2 + ", mobileNumber1=" + mobileNumber1
 				+ ", mobileNumber2=" + mobileNumber2 + ", country=" + country
-				+ ", whatsapp=" + whatsapp + ", state=" + state + ", city="
+				+ ", whatsapp=" + whatsapp +  ", city="
 				+ city + ", facebook=" + facebook + ", job=" + job + "]";
 	}
 

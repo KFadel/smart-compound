@@ -3,8 +3,10 @@ package com.ntgclarity.smartcompound.dataaccess.daoimpl;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.base.BaseDAO;
 import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
@@ -15,9 +17,12 @@ import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
 public class TenantDAOImpl extends BaseDAO implements TenantDAO {
 
 	@Override
-	public List<Tenant> getAllTenants() {
+	public List<Tenant> getAllTenants(Compound comp) {
 
-		return (List<Tenant>) super.getAll(Tenant.class);
+	Query  query=getCurrentSession().createQuery("select o from Tenant o where o.compound.id=1");
+	List<Tenant> result = query.list();
+	System.out.println("result size in dao"+result.size());
+	return result;
 	}
 
 	@Override
@@ -54,6 +59,17 @@ public class TenantDAOImpl extends BaseDAO implements TenantDAO {
 	public int getNumOfTenantsRows(Map<String, Object> filters) {
 		
 		return super.getNumOfRows(Tenant.class,filters);
+	}
+
+	@Override
+	public List<Tenant> getCompoundTenants(Compound compound,String searchParam) {
+//		return (List<Tenant>) super.getAllByCompound(Tenant.class, compound);
+		Query query = getCurrentSession().createQuery(
+				"from " + Tenant.class.getCanonicalName()
+						+ " x where x.compound =:compound AND x.username LIKE :username");
+		query.setParameter("compound", compound);
+		query.setParameter("username", "%" + searchParam + "%");
+		return  query.list();
 	}
 
 }

@@ -3,13 +3,14 @@ package com.ntgclarity.smartcompound.business.service;
 import java.util.List;
 import java.util.Map;
 
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 
 /**Author: Heba**/
 
 public interface TenantService {
 
-	List<Tenant> getAllTenants();
+	List<Tenant> getAllTenants(Compound comp);
 
 	Tenant getTenant(Long id);
 
@@ -21,5 +22,7 @@ public interface TenantService {
 			boolean ascending, Map<String, Object> filters);
 
 	int getNumOfTenantsRows(Map<String, Object> filters);
+
+	List<Tenant> getCompoundTenants(Compound compound,String query);
 
 }

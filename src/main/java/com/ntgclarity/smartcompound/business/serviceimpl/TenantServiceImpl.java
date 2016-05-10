@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ntgclarity.smartcompound.business.service.TenantService;
+import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.dataaccess.dao.TenantDAO;
 
@@ -20,8 +21,8 @@ public class TenantServiceImpl implements TenantService {
 	private TenantDAO tenantDAO;
 	
 	@Override
-	public List<Tenant> getAllTenants() {
-		return tenantDAO.getAllTenants();
+	public List<Tenant> getAllTenants(Compound comp) {
+		return tenantDAO.getAllTenants(comp);
 	}
 
 	@Override
@@ -61,6 +62,11 @@ public class TenantServiceImpl implements TenantService {
 	public int getNumOfTenantsRows(Map<String, Object> filters) {
 	
 		return  tenantDAO.getNumOfTenantsRows(filters);
+	}
+
+	@Override
+	public List<Tenant> getCompoundTenants(Compound compound,String query) {
+		return tenantDAO.getCompoundTenants(compound,query);
 	}
 
 

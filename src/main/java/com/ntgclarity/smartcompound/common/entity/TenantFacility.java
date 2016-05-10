@@ -17,19 +17,23 @@ import com.ntgclarity.smartcompound.common.base.BaseEntity;
 @Entity
 @Table(name = "ng_nts_tenants_facilities")
 public class TenantFacility extends BaseEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8080684629958627888L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "recid")
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "tenant_id", referencedColumnName = "recid")
-	private Tenant tenantId;
+	private Tenant tenant;
 	@ManyToOne
 	@JoinColumn(name = "facility_id", referencedColumnName = "recid")
-	private Facility facilityId;
+	private Facility facility;
 	@ManyToOne
 	@JoinColumn(name = "compound_id", referencedColumnName = "recid")
-	private Compound compoundId;
+	private Compound compound;
 	@Column(name = "is_leased")
 	private Integer isLeased;
 	@Column(name = "leasing_or_ownership_start_date")
@@ -42,24 +46,7 @@ public class TenantFacility extends BaseEntity implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Tenant getTenantId() {
-		return tenantId;
-	}
-	public void setTenantId(Tenant tenantId) {
-		this.tenantId = tenantId;
-	}
-	public Facility getFacilityId() {
-		return facilityId;
-	}
-	public void setFacilityId(Facility facilityId) {
-		this.facilityId = facilityId;
-	}
-	public Compound getCompoundId() {
-		return compoundId;
-	}
-	public void setCompoundId(Compound compoundId) {
-		this.compoundId = compoundId;
-	}
+
 	public Integer getIsLeased() {
 		return isLeased;
 	}
@@ -78,10 +65,29 @@ public class TenantFacility extends BaseEntity implements Serializable {
 	public void setLeasingOrOwnershipEndDate(Date leasingOrOwnershipEndDate) {
 		this.leasingOrOwnershipEndDate = leasingOrOwnershipEndDate;
 	}
+	
+	public Tenant getTenant() {
+		return tenant;
+	}
+	public void setTenant(Tenant tenant) {
+		this.tenant = tenant;
+	}
+	public Facility getFacility() {
+		return facility;
+	}
+	public void setFacility(Facility facility) {
+		this.facility = facility;
+	}
+	public Compound getCompound() {
+		return compound;
+	}
+	public void setCompound(Compound compound) {
+		this.compound = compound;
+	}
 	@Override
 	public String toString() {
-		return "TenantFacility [id=" + id + ", tenantId=" + tenantId
-				+ ", facilityId=" + facilityId + ", compoundId=" + compoundId
+		return "TenantFacility [id=" + id + ", tenant=" + tenant
+				+ ", facility=" + facility + ", compound=" + compound
 				+ ", isLeased=" + isLeased + ", leasingOrOwnershipStartDate="
 				+ leasingOrOwnershipStartDate + ", leasingOrOwnershipEndDate="
 				+ leasingOrOwnershipEndDate + "]";
