@@ -1,0 +1,134 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="viewEmployeeDialog" widgetVar="viewEmployeeDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+		<h:form id="viewEmployeeForm">
+			<p:wizard>
+				<p:tab id="account" title="Account">
+					<p:panel header="Account Details">
+
+						<p:messages id="messageAccount" />
+						<h:panelGrid columns="2">
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_USERNAME}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.username}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PASSWORD}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.password}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_FIRSTNAME}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.firstName}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MIDDLENAME}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.middleName}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_LASTNAME}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.lastName}" />
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				<p:tab id="personal" title="Personal">
+					<p:panel header="Personal Details">
+
+						<p:messages id="messagePersonal" />
+						<h:panelGrid columns="2">
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_ADDRESS}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.address}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_TYPE}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.identificationType}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_IDENTIFICATION_NUMBER}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.identificationNumber}" />
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				<p:tab id="contact" title="Contact">
+					<p:panel header="Contact Details">
+
+						<p:messages id="messageContact" />
+						<h:panelGrid columns="2">
+							<h:outputText value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_EMAIL}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.email}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_1}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.phoneNumber1}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_PHONE_NUMBER_2}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.phoneNumber2}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILE_NUMBER_1}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.mobileNumber1}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_MOBILE_NUMBER_2}" />
+
+							<h:outputText
+								value="#{employeeBean.selectedEmployee.mobileNumber2}" />
+
+						</h:panelGrid>
+					</p:panel>
+				</p:tab>
+				<p:tab id="job" title="Job">
+					<p:panel header="Job Details">
+
+						<p:messages id="messageJob" />
+						<h:panelGrid columns="2">
+							<h:outputText value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_JOB}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.job}" />
+
+							<h:outputText
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_HIRE_DATE}" />
+
+							<h:outputText value="#{employeeBean.selectedEmployee.hireDate}" />
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="1">
+							<p:commandButton oncomplete="PF('viewEmployeeDialog').hide()"
+								value="#{msgs.SMART_COMPOUND_EMPLOYEE_PAGE_OK_BUTTON}"
+								look="success" style="align:middle;" />
+
+						</h:panelGrid>
+					</p:panel>
+
+				</p:tab>
+			</p:wizard>
+
+		</h:form>
+	</p:dialog>
+</ui:composition>
