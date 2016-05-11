@@ -20,11 +20,9 @@ public interface FacilityService {
 	Facility updateFacility(Facility facility) throws SmartCompoundException;
 
 	List<Facility> loadFacilities(int first, int pageSize, String sortField,
-			boolean ascending, Map<String, Object> filters)
-			throws SmartCompoundException;
+			boolean ascending, Map<String, Object> filters);
 
-	int getNumOfFacilitiesRows(Map<String, Object> filters)
-			throws SmartCompoundException;
+	int getNumOfFacilitiesRows(Map<String, Object> filters);
 
 	List<Facility> getCompoundFacilites(Compound compound, String searchParam)
 			throws SmartCompoundException;

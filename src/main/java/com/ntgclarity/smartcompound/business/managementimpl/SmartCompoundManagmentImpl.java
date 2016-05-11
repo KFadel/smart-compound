@@ -52,7 +52,7 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	private ServiceService serviceService;
 	
 	@Autowired
-	LookupService lookupService;
+	private LookupService lookupService;
 
 	
 	@Autowired
@@ -270,6 +270,23 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	{
 		return lookupService.getLookups(lookupType);
 		
+	}
+
+	@Override
+	public Facility insertFacility(Facility facility) throws SmartCompoundException{
+		return facilityService.insertFacility(facility);
+	}
+
+	@Override
+	public List<Facility> loadFacilities(int first, int pageSize,
+			String sortField, boolean ascending, Map<String, Object> filters){
+		return facilityService.loadFacilities(first, pageSize, sortField, ascending,
+				filters);
+	}
+
+	@Override
+	public int getNumOfFacilitiesRows(Map<String, Object> filters){
+		return facilityService.getNumOfFacilitiesRows(filters);
 	}
 
 }

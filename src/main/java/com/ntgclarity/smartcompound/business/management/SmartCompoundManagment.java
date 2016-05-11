@@ -95,7 +95,10 @@ public interface SmartCompoundManagment {
 	/**START HEBA'S WORK**/
 	public Employee insertEmployee(Employee employee);
 	/**END HEBA'S WORK**/
-
+	
+	/**
+	 *@author KFadel 
+	**/
 	List<Employee> loadEmployees(int first, int pageSize, String sortField,
 			boolean b, Map<String, Object> filters);
 
@@ -103,4 +106,12 @@ public interface SmartCompoundManagment {
 
 	List<Lookup> getLookups(LookupType lookupType);
 
+	
+	public Facility insertFacility(Facility facility) throws SmartCompoundException;
+				   
+	List<Facility> loadFacilities(int first, int pageSize, String sortField,
+			boolean b, Map<String, Object> filters) ;
+
+	int getNumOfFacilitiesRows(Map<String, Object> filters);
+	
 }

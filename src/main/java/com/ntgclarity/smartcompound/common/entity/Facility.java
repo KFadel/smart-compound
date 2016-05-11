@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 
 
@@ -24,7 +26,8 @@ public class Facility extends BaseEntity implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator="ng_nts_facilities_recid_seq")
+	@SequenceGenerator(name="ng_nts_facilities_recid_seq",sequenceName="ng_nts_facilities_recid_seq")
 	@Column(name = "recid")
 	private Long id;
 	@Column(name="building_number")

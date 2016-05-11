@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="viewFacilityDialog" widgetVar="viewFacilityDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+		<h:form id="viewFacilityForm">
+
+			<p:messages id="messageAccount" />
+			<h:panelGrid columns="2">
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_TYPE}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.facilityType}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BLOCK}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.block}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STREET}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.street}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BUILDING_NUMBER}" />
+
+				<h:outputText
+					value="#{facilityBean.selectedFacility.buildingNumber}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FLOOR_NUMBER}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.floorNumber}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_NUMBER}" />
+
+				<h:outputText
+					value="#{facilityBean.selectedFacility.facilityNumber}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STATUS}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.status}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_AREA}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.area}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_DESCRIPTION}" />
+
+				<h:outputText value="#{facilityBean.selectedFacility.description}" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton actionListener="#{facilityBean.insertFacility}"
+					update=":facilityListForm"
+					oncomplete="PF('viewFacilityDialog').hide()"
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_SUBMIT_BUTTON}"
+					look="success" style="align:left;" />
+				<p:commandButton
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_CANCEL_BUTTON}"
+					look="warning" style="align:right;" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+</ui:composition>
+
+
+
+
+
+
+

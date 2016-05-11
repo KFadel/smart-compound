@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+
+	<h:form id="facilityListForm">
+
+		<p:dataTable var="facility" rows="10" paginator="true"
+			value="#{facilityBean.lazyFacilityModel}" resizableColumns="true"
+			draggableColumns="true" rowKey="#{facility.id}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+			selection="#{facilityBean.selectedFacility}" id="facilityTable"
+			lazy="true">
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_TYPE}">
+				<h:outputText value="#{facility.facilityType}" />
+			</p:column>
+			
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BLOCK}">
+				<h:outputText value="#{facility.block}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STREET}">
+				<h:outputText value="#{facility.street}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BUILDING_NUMBER}">
+				<h:outputText value="#{facility.buildingNumber}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FLOOR_NUMBER}">
+				<h:outputText value="#{facility.floorNumber}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_NUMBER}">
+				<h:outputText value="#{facility.facilityNumber}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STATUS}">
+				<h:outputText value="#{facility.status}" />
+			</p:column>
+			
+			
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_IS_FOR_RENT}">
+				<h:outputText value="#{facility.isForRent}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_AREA}">
+				<h:outputText value="#{facility.area}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_DESCRIPTION}">
+				<h:outputText value="#{facility.description}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_FACILITY_PAGE_PICTURE_URL}">
+				<h:outputText value="#{facility.pictureUrl}" />
+			</p:column>			
+			
+		</p:dataTable>
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_CREATE_FACILITY}"
+			actionListener="#{facilityBean.initiateFacility}"
+			update=":createFacilityForm"
+			oncomplete="PF('createFacilityDialog').show()"></p:commandButton>
+
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_EDIT_FACILITY}"
+			update=":editFacilityForm"
+			oncomplete="PF('editFacilityDialog').show()"></p:commandButton>
+
+		<p:commandButton
+			value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_VIEW_FACILITY}"
+			update=":viewFacilityForm"
+			oncomplete="PF('viewFacilityDialog').show()"></p:commandButton>
+	</h:form>
+</ui:composition>
