@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+<h:head>
+</h:head>
+<h:body>
+
+	<h:form>
+		<b:container layout="fluid">
+			<b:row>
+				<b:column medium-screen="2">
+					<p:outputLabel value=" Groups" />
+				</b:column>
+				<b:column medium-screen="2">
+					<b:selectOneMenu value="#{menuItemGroupBean.selectedGroup}"
+						onchange="ajax:menuItemGroupBean.onGroupChange()" update="grid">
+						<f:selectItem itemValue="" itemLabel="Select Group"
+							noSelectionOption="true" />
+						<f:selectItems value="#{menuItemGroupBean.allGroup}" var="group"
+							itemValue="#{group}" itemLabel="#{group.groupName}" />
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+
+			<b:row>
+				<p:selectManyCheckbox id="grid"
+					value="#{menuItemGroupBean.selectedItems}" layout="grid"
+					columns="2" converter="#{menuItemConverter}" >
+					<f:selectItems value="#{menuItemGroupBean.allMenuItem}"
+						var="menuItem" itemLabel="#{menuItem.name}"
+						itemValue="#{menuItem}" />
+				</p:selectManyCheckbox>
+			</b:row>
+
+
+			<b:row>
+				<b:column medium-screen="12">
+					<b:commandButton value="Save" look="success"
+						actionListener="#{menuItemGroupBean.saveSelectedMenus()}"></b:commandButton>
+				</b:column>
+			</b:row>
+			
+		</b:container>
+	</h:form>
+
+</h:body>
+</html>

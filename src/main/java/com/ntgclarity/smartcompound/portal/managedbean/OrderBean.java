@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Spliterator;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -14,6 +15,7 @@ import org.primefaces.model.SortOrder;
 import org.primefaces.model.LazyDataModel;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 import com.ntgclarity.smartcompound.common.entity.*;
 import com.ntgclarity.smartcompound.business.management.SmartCompoundManagment;
@@ -79,6 +81,18 @@ public class OrderBean extends BaseBean implements Serializable{
 						.getNumOfOrdersRows(filters));
 
 				return result;
+			}
+
+			@Override
+			public void forEach(Consumer<? super Order> action) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public Spliterator<Order> spliterator() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 		};

@@ -3,6 +3,8 @@ package com.ntgclarity.smartcompound.portal.managedbean;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -78,6 +80,18 @@ public class EmployeeBean extends BaseBean implements Serializable {
 						.getNumOfEmployeesRows(filters));
 
 				return result;
+			}
+
+			@Override
+			public void forEach(Consumer<? super Employee> action) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public Spliterator<Employee> spliterator() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 		};

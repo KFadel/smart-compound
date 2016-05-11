@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -93,6 +95,16 @@ public class ServiceBean extends BaseBean implements Serializable {
 				result = getSmartCompoundManagment().loadServices(first,pageSize, sortField, sortOrder == SortOrder.ASCENDING,filters);
 				this.setRowCount(getSmartCompoundManagment().getNumOfServicesRows(filters));
 				return result;
+			}
+			@Override
+			public void forEach(Consumer<? super Service> action) {
+				// TODO Auto-generated method stub
+				
+			}
+			@Override
+			public Spliterator<Service> spliterator() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		};
 	}

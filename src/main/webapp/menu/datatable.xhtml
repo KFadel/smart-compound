@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<h:form id="menuListForm">
+		<p:dataTable var="menu" rows="10" paginator="true"
+			value="#{menuBean.lazyMenuModel}" resizableColumns="true"
+			draggableColumns="true" rowKey="#{menu.id}"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" selectionMode="single" dynamic="true"
+			selection="#{menuBean.menu}" id="menuTable" lazy="true">
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENU_LIST_PAGE_MENU_ID}">
+				<h:outputText value="#{menu.id}" />
+			</p:column>
+
+			<p:column headerText="#{msgs.SMART_COMPOUND_MENU_LIST_PAGE_MENU_NAME}">
+				<h:outputText value="#{menu.name}" />
+			</p:column>
+
+			<p:column
+				headerText="#{msgs.SMART_COMPOUND_MENU_LIST_PAGE_MENU_STATUS}">
+				<h:outputText value="#{menu.status.lookupName}" />
+			</p:column>
+		
+		</p:dataTable>
+
+	<p:commandButton value="#{msgs.SMART_COMPOUND_MENU_PAGE_MENU_BUTTON}"
+			actionListener="#{menuBean.init()}"
+			 oncomplete="PF('createMenuDialog').show()"></p:commandButton>
+			 
+			 	<p:commandButton
+			value="#{msgs.SMART_COMPOUND_MENUITEM_PAGE_MENUITEM_EDIT_BUTTON}"
+			update="editMenuForm"
+			oncomplete="PF('editMenuDialog').show()"></p:commandButton>
+
+
+	</h:form>
+</ui:composition>

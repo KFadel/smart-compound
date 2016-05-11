@@ -3,12 +3,15 @@ package com.ntgclarity.smartcompound.portal.managedbean;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+
 import org.primefaces.model.SortOrder;
 import org.primefaces.model.LazyDataModel;
 
@@ -206,6 +209,18 @@ public class TicketBean extends BaseBean implements Serializable {
 						.getNumOfTicketsRows(filters));
 
 				return result;
+			}
+
+			@Override
+			public void forEach(Consumer<? super Ticket> action) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public Spliterator<Ticket> spliterator() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 		};

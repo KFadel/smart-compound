@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.ntgclarity.smartcompound.common.entity.Group;
+import com.ntgclarity.smartcompound.common.entity.MenuItem;
 
 public interface GroupDAO {
 
@@ -14,6 +15,9 @@ public interface GroupDAO {
 	Group insertGroup(Group group);
 
 	Group updateGroup(Group group);
+	
+	List<MenuItem> getGroupMenuItem(Group group);
+    void insertGroupMenuItem(Group group, List<MenuItem> items);
 	
 	List<Group> loadGroups(int first, int pageSize, String sortField,
 			boolean ascending, Map<String, Object> filters);

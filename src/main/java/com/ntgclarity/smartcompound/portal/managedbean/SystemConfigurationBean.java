@@ -3,6 +3,8 @@ package com.ntgclarity.smartcompound.portal.managedbean;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -72,6 +74,18 @@ public class SystemConfigurationBean extends BaseBean implements Serializable{
 						.getNumOfSystemConfigurationsRows(filters));
 
 				return result;
+			}
+
+			@Override
+			public void forEach(Consumer<? super SystemConfiguration> action) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public Spliterator<SystemConfiguration> spliterator() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 
 		};
