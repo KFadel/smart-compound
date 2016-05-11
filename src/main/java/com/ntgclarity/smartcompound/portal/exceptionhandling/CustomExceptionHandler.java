@@ -47,7 +47,7 @@ public class CustomExceptionHandler extends ExceptionHandlerWrapper {
 			ExceptionQueuedEventContext context = (ExceptionQueuedEventContext) event
 					.getSource();
 			Throwable t = getRootCause(context.getException());
-
+			//context.getException().printStackTrace();
 			try {
 				if (t instanceof SmartCompoundException) {
 					baseBean.addInfoMessage(((SmartCompoundException) t)

@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
 import com.ntgclarity.smartcompound.common.entity.Lookup;
 import com.ntgclarity.smartcompound.common.entity.LookupType;
 import com.ntgclarity.smartcompound.common.entity.Order;
+import com.ntgclarity.smartcompound.common.entity.SystemConfiguration;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
 import com.ntgclarity.smartcompound.common.entity.Tenant;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
@@ -27,7 +27,7 @@ public interface SmartCompoundManagment {
 
 	Employee getEmployee(Long id);
 
-	public void insertCompound(Compound compound);
+	public Compound insertCompound(Compound compound);
 
 	/*added by Hend*/
 	com.ntgclarity.smartcompound.common.entity.Service insertService(com.ntgclarity.smartcompound.common.entity.Service service) throws SmartCompoundException ;
@@ -77,7 +77,19 @@ public interface SmartCompoundManagment {
 	List<Facility> getAllFacilities(Compound comp);
 
 	Facility getFacility(Long long1);
+	
+	
+	/*added by Mai*/
+	public List<SystemConfiguration> getAllSystemConfigurations();
+	
+	public SystemConfiguration getSystemConfiguration(Long id);
+	
+	public SystemConfiguration insertSystemConfiguration(SystemConfiguration systemConfiguration);
+	
+	public int getNumOfSystemConfigurationsRows(Map<String, Object> filters);
 
+	public List<SystemConfiguration> loadSystemConfigurations(int first, int pageSize,String sortField, boolean b, Map<String, Object> filters);
+	/*End of Mai's part */
 
 
 	/**START HEBA'S WORK**/
