@@ -65,7 +65,7 @@ public class FacilityDAOImpl extends BaseDAO implements FacilityDAO {
 		Query query = getCurrentSession().createQuery
 				("from "+Facility.class.getCanonicalName()
 						+" x where x.compound =:compound AND "
-						+ "CONCAT(STR(x.buildingNumber),STR(x.floorNumber),STR(x.facilityNumber))  LIKE :fullFacilityName");
+						+ "CONCAT(LOWER(STR(x.buildingNumber)),LOWER(STR(x.floorNumber)),LOWER(STR(x.facilityNumber)))  LIKE :fullFacilityName");
 		query.setParameter("compound", compound);
 		query.setParameter("fullFacilityName", "%" + searchParam.trim() + "%");
 		List list = query.list();

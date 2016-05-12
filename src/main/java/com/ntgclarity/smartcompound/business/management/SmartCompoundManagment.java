@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Employee;
+import com.ntgclarity.smartcompound.common.entity.Lookup;
+import com.ntgclarity.smartcompound.common.entity.LookupType;
 import com.ntgclarity.smartcompound.common.entity.Order;
 import com.ntgclarity.smartcompound.common.entity.SystemConfiguration;
 import com.ntgclarity.smartcompound.common.entity.Ticket;
@@ -100,12 +102,25 @@ public interface SmartCompoundManagment {
 	/**START HEBA'S WORK**/
 	public Employee insertEmployee(Employee employee);
 	/**END HEBA'S WORK**/
-
+	
+	/**
+	 *@author KFadel 
+	**/
 	List<Employee> loadEmployees(int first, int pageSize, String sortField,
 			boolean b, Map<String, Object> filters);
 
 	int getNumOfEmployeesRows(Map<String, Object> filters);
 
+	List<Lookup> getLookups(LookupType lookupType);
+
+	
+	public Facility insertFacility(Facility facility) throws SmartCompoundException;
+				   
+	List<Facility> loadFacilities(int first, int pageSize, String sortField,
+			boolean b, Map<String, Object> filters) ;
+
+	int getNumOfFacilitiesRows(Map<String, Object> filters);
+	
 	MenuItem getMenuItem(Long id);
 
 	MenuItem insertMenuItem(MenuItem menuItem);

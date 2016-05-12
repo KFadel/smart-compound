@@ -6,7 +6,7 @@ import java.util.Map;
 import com.ntgclarity.smartcompound.common.entity.Compound;
 import com.ntgclarity.smartcompound.common.entity.Facility;
 
-/**Author: Heba**/
+/** Author: Heba **/
 
 public interface FacilityDAO {
 
@@ -17,12 +17,12 @@ public interface FacilityDAO {
 	Facility insertFacility(Facility facility);
 
 	Facility updateFacility(Facility facility);
-	
+
 	List<Facility> loadFacilities(int first, int pageSize, String sortField,
 			boolean ascending, Map<String, Object> filters);
 
 	int getNumOfFacilitiesRows(Map<String, Object> filters);
 
-	List<Facility> getCompoundFacilites(Compound compound,String searchParam);
+	List<Facility> getCompoundFacilites(Compound compound, String searchParam);
 
 }

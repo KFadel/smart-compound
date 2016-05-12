@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<p:dialog id="createFacilityDialog" widgetVar="createFacilityDialog"
+		modal="true" resizable="false" closeOnEscape="true">
+		<h:form id="createFacilityForm">
+
+			<p:messages id="messageAccount" />
+			<h:panelGrid columns="2">
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_TYPE}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_TYPE_REQUIRED}"
+					value="#{facilityBean.selectedFacility.facilityType}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BLOCK}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BLOCK_REQUIRED}"
+					value="#{facilityBean.selectedFacility.block}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STREET}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_STREET_REQUIRED}"
+					value="#{facilityBean.selectedFacility.street}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BUILDING_NUMBER}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_BUILDING_NUMBER_REQUIRED}"
+					value="#{facilityBean.selectedFacility.buildingNumber}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FLOOR_NUMBER}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FLOOR_NUMBER_REQUIRED}"
+					value="#{facilityBean.selectedFacility.floorNumber}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_NUMBER}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_FACILITY_NUMBER_REQUIRED}"
+					value="#{facilityBean.selectedFacility.facilityNumber}" />
+
+				<h:outputText value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_AREA}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_AREA_REQUIRED}"
+					value="#{facilityBean.selectedFacility.area}" />
+
+				<h:outputText
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_DESCRIPTION}" />
+
+				<p:inputText required="true"
+					requiredMessage="#{msgs.SMART_COMPOUND_FACILITY_PAGE_DESCRIPTION_REQUIRED}"
+					value="#{facilityBean.selectedFacility.description}" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton actionListener="#{facilityBean.insertFacility}"
+					update=":facilityListForm"
+					oncomplete="PF('createFacilityDialog').hide()"
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_SUBMIT_BUTTON}"
+					look="success" style="align:left;" />
+				<p:commandButton
+					value="#{msgs.SMART_COMPOUND_FACILITY_PAGE_CANCEL_BUTTON}"
+					look="warning" style="align:right;" />
+			</h:panelGrid>
+
+		</h:form>
+	</p:dialog>
+</ui:composition>
+
+
+
+
+
+
+

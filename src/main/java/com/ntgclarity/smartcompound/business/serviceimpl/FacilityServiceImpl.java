@@ -55,12 +55,12 @@ public class FacilityServiceImpl implements FacilityService {
 
 	@Override
 	public List<Facility> loadFacilities(int first, int pageSize,
-			String sortField, boolean ascending, Map<String, Object> filters) throws SmartCompoundException {
+			String sortField, boolean ascending, Map<String, Object> filters) {
 		return facilityDAO.loadFacilities(first,pageSize,sortField,ascending,filters);
 	}
 
 	@Override
-	public int getNumOfFacilitiesRows(Map<String, Object> filters) throws SmartCompoundException {
+	public int getNumOfFacilitiesRows(Map<String, Object> filters){
 	
 		return  facilityDAO.getNumOfFacilitiesRows(filters);
 	}

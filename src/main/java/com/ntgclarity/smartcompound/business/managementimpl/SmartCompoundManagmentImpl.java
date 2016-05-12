@@ -63,6 +63,10 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	private MenuItemService menuItemService;
 	
 	@Autowired
+	private LookupService lookupService;
+
+	
+	@Autowired
 	private SystemConfigurationService systemConfigurationService;
 	
 	@Autowired
@@ -277,6 +281,30 @@ public class SmartCompoundManagmentImpl implements SmartCompoundManagment {
 	@Override
 	public int getNumOfEmployeesRows(Map<String, Object> filters) {
 		return employeeService.getNumOfOrdersRows(filters);
+	}
+	
+	@Override
+	public List<Lookup> getLookups(LookupType lookupType)
+	{
+		return lookupService.getLookups(lookupType);
+		
+	}
+
+	@Override
+	public Facility insertFacility(Facility facility) throws SmartCompoundException{
+		return facilityService.insertFacility(facility);
+	}
+
+	@Override
+	public List<Facility> loadFacilities(int first, int pageSize,
+			String sortField, boolean ascending, Map<String, Object> filters){
+		return facilityService.loadFacilities(first, pageSize, sortField, ascending,
+				filters);
+	}
+
+	@Override
+	public int getNumOfFacilitiesRows(Map<String, Object> filters){
+		return facilityService.getNumOfFacilitiesRows(filters);
 	}
 
 

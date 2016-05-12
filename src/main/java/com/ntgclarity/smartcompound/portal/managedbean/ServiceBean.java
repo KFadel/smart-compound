@@ -39,25 +39,24 @@ public class ServiceBean extends BaseBean implements Serializable {
 	private List<Lookup> measuringUnits;
 	private String isActive = "0", postPre = "0";
 	private LazyDataModel<Service> lazyServiceModel;
-
+	private List<Lookup> statusesList;
 	@PostConstruct
 	public void init() {
 		createdService = new Service();
 		compounds = new ArrayList<Compound>();
-		measuringUnits = new ArrayList<>();
 		loadCompoundList();
 		loadMeasuringUnits();
 		LoadData();
+		loadStatusList();
+	}
+
+	private void loadStatusList() {
+		statusesList = smartCompoundManagment.getLookups(LookupType.STATUS);
+		
 	}
 
 	public void loadMeasuringUnits() {
-		LookupType lookupType1 = new LookupType();
-		lookupType1.setId(1L);
-		lookupType1.setTypeName("measuringUnitType");
-		Lookup lookup = new Lookup();
-		lookup.setLookupName("Litre");
-		lookup.setTypeName(lookupType1.getTypeName());
-		measuringUnits.add(lookup);
+		measuringUnits = smartCompoundManagment.getLookups(LookupType.MEASUREMENT_UNITES);
 	}
 
 	public void loadCompoundList() {
